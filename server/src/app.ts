@@ -1,26 +1,51 @@
-import express, { Request, Response } from "express";
-
+// Libraries
+const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
+// Import Request and Response types using ES Modules
+import { Request, Response } from "express";
+
+// Models
+import Shop from "./models/Shop-model";
+
+// Routes
+const userRoutes = require("./routes/UserRoute.ts");
+
+// Environment variables
 dotenv.config();
 
+// App variables
 const PORT = process.env.PORT || 3000;
-
 const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// mongoose
-//   .connect(process.env.MONGODB_URI)
-//   .then(() => console.log("MongoDB connected"))
-//   .catch((err) => console.log(err));
+// Mongoose connection
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err: Error) => console.log(err));
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, TypeScript with Node.js!");
-});
+// app.get("/", async (req: Request, res: Response) => {
+//   try {
+//     const newShop = await Shop.create({
+//       name: "BabaBaba",
+//       phone: "0987654321",
+//       locations: { lon: 44.333, lat: 33.444 },
+//       avgDeliveryTime: 25,
+//     });
+//     res.send(newShop);
+//   } catch (err) {
+//     console.log(err);
+//   }
+//   res.send("Hello, TypeScript with Node.js!");
+// });
+
+app.use("/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
