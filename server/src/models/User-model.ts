@@ -4,6 +4,7 @@ import LocationType from "../types/location-type";
 interface IUser extends Document {
   email: string;
   password: string;
+  name: string;
   phone: string;
   photo: string;
   locations: [LocationType];
@@ -58,14 +59,14 @@ const userSchema = new Schema({
   }, //* list of all the user favorites shops
 
   cart: {
-    types: [{ type: Schema.Types.ObjectId }],
-    ref: "Order",
+    // types: [{ type: Schema.Types.ObjectId }],
+    // ref: "Order",
+    type: [{ type: Schema.Types.ObjectId, ref: "Order" }],
     default: [],
   },
 
   lastOrders: {
-    type: [Schema.Types.ObjectId],
-    ref: "Order",
+    type: [{ type: Schema.Types.ObjectId, ref: "Order" }],
     default: [],
   }, //* List of all the user's last orders
 });
