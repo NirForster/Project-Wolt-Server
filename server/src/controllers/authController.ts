@@ -1,25 +1,11 @@
 import { Request, Response } from "express";
 import User from "../models/User-model";
-
+import { emailValidate, phoneValidate } from "../utils/dataValidate";
 const bcrypt = require("bcrypt");
-
-function emailValidate(email: string) {
-  return email.split("@").length === 2;
-}
-
-function phoneValidate(phone: string) {
-  const DIGITS = "1234567890";
-  if (phone.length !== 10) {
-    return false;
-  }
-  return phone.split("").every((char) => {
-    return DIGITS.includes(char);
-  });
-}
 
 // TODO: add JWT
 //* Sign up with new user
-//! POST http://localhost:3000/api/v1/users/signup
+//! POST http://localhost:3000/api/v1/auth/signup
 const signup = async (req: Request, res: Response) => {
   const { email, password, name, phone } = req.body;
   if (!email || !password || !name || !phone) {
@@ -31,6 +17,7 @@ const signup = async (req: Request, res: Response) => {
         } ${phone ? "" : "phone"}) are missing!`
       );
   }
+  // Validate data
   if (!emailValidate(email)) {
     return res.status(400).send("Email must have the '@' character ");
   }
@@ -60,7 +47,7 @@ const signup = async (req: Request, res: Response) => {
 
 // TODO: add JWT
 //* Log in with registered user
-//! POST http://localhost:3000/api/v1/users/login
+//! POST http://localhost:3000/api/v1/auth/login
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -96,28 +83,12 @@ const login = async (req: Request, res: Response) => {
 }; // Send: 200, 401, 404,  500
 
 // TODO
+//* Log out from registered user
+//! POST http://localhost:3000/api/v1/auth/logout
 const logout = async (req: Request, res: Response) => {};
 
-// TODO: add JWT
-//* Delete a registered user
-//! DELETE http://localhost:3000/api/v1/users/:id
-const deleteUser = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  if (id) {
-    try {
-      await User.findByIdAndDelete(id);
-      res.send("User deleted!");
-    } catch (err) {
-      res.status(500).send("Server error!");
-    }
-  } else {
-    res.status(404).send("There is no user with that id");
-  }
-}; // Send 200, 404, 500
-
 module.exports = {
-  signup,
-  login,
+  signup, //✅
+  login, //✅
   logout,
-  deleteUser,
 };

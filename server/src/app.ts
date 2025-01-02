@@ -13,7 +13,8 @@ import Order from "./models/Order-model";
 import Item from "./models/Item-model";
 
 // Routes
-const userRoutes = require("./routes/authRoute.ts");
+const authRoutes = require("./routes/authRoute.ts");
+const userRoutes = require("./routes/userRoutes.ts");
 
 // Environment variables
 dotenv.config();
@@ -38,50 +39,52 @@ mongoose
   })
   .catch((err: Error) => console.log(err));
 
-// app.get("/", async (req: Request, res: Response) => {
-//   try {
-//     const newShop = await Shop.create({
-//       name: "BabaBaba",
-//       phone: "0987654321",
-//       locations: { lon: 44.333, lat: 33.444 },
-//       avgDeliveryTime: 25,
-//     });
-//     res.send(newShop);
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   res.send("Hello, TypeScript with Node.js!");
-// });
+{
+  // app.get("/", async (req: Request, res: Response) => {
+  //   try {
+  //     const newShop = await Shop.create({
+  //       name: "BabaBaba",
+  //       phone: "0987654321",
+  //       locations: { lon: 44.333, lat: 33.444 },
+  //       avgDeliveryTime: 25,
+  //     });
+  //     res.send(newShop);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   res.send("Hello, TypeScript with Node.js!");
+  // });
+  // app.get("/", async (req: Request, res: Response) => {
+  //   try {
+  //     const newOrder = await Order.create({
+  //       user: "67763f44137c31ed9ace939e",
+  //       shop: "6775a198e86e54f39ce52596",
+  //       deliveringTime: 30,
+  //     });
+  //     res.send(newOrder);
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).send("bad");
+  //   }
+  // });
+  // app.get("/", async (req: Request, res: Response) => {
+  //   try {
+  //     const newItem = await Item.create({
+  //       shop: "6775a198e86e54f39ce52596",
+  //       currentPrice: 50.4,
+  //       foodName: "pizza",
+  //       description: "its a fucking pizza",
+  //     });
+  //     res.send(newItem);
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).send("bad");
+  //   }
+  // });
+}
 
-// app.get("/", async (req: Request, res: Response) => {
-//   try {
-//     const newOrder = await Order.create({
-//       user: "67763f44137c31ed9ace939e",
-//       shop: "6775a198e86e54f39ce52596",
-//       deliveringTime: 30,
-//     });
-//     res.send(newOrder);
-//   } catch (err) {
-//     console.log(err);
+// TODO: add JWT to the functions, do logout
+app.use(`${BASE_URL}auth`, authRoutes);
 
-//     res.status(500).send("bad");
-//   }
-// });
-
-// app.get("/", async (req: Request, res: Response) => {
-//   try {
-//     const newItem = await Item.create({
-//       shop: "6775a198e86e54f39ce52596",
-//       currentPrice: 50.4,
-//       foodName: "pizza",
-//       description: "its a fucking pizza",
-//     });
-//     res.send(newItem);
-//   } catch (err) {
-//     console.log(err);
-
-//     res.status(500).send("bad");
-//   }
-// });
-
-app.use(`${BASE_URL}users`, userRoutes);
+// TODO: add JWT
+app.use(`${BASE_URL}user`, userRoutes);
