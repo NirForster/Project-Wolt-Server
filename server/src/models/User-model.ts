@@ -17,20 +17,30 @@ const userSchema = new Schema({
   //! User authentication / authorization
   email: {
     type: String,
-    required: true,
-    unique: true,
+    required: [true, "Email is a required field in order to create new user"],
+    unique: [true, "User with Email already exist"],
     match: [/.+@.+\..+/, "Invalid email format"],
   }, //* the "email" value will be the user's unique username
 
-  password: { type: String, required: true, minLength: 5 },
+  password: {
+    type: String,
+    required: [
+      true,
+      "Password is a required field in order to create new user",
+    ],
+    minLength: "5",
+  },
 
   //! User data
-  name: { type: String, required: true },
+  name: {
+    type: String,
+    required: [true, "Name is a required field in order to create new user"],
+  },
 
   phone: {
     type: String,
-    required: true,
-    unique: true,
+    required: [true, "Phone is a required field in order to create new user"],
+    unique: [true, "User with Phone already exist"],
     match: [/^\d{10}$/, "Phone number must be 10 digits"],
   },
 

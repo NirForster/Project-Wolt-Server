@@ -13,12 +13,13 @@ import Order from "./models/Order-model";
 import Item from "./models/Item-model";
 
 // Routes
-const userRoutes = require("./routes/UserRoute.ts");
+const userRoutes = require("./routes/authRoute.ts");
 
 // Environment variables
 dotenv.config();
 
 // App variables
+const BASE_URL = "/api/v1/";
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -29,7 +30,12 @@ app.use(express.json());
 // Mongoose connection
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB connected"))
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+      console.log("MongoDB connected");
+    });
+  })
   .catch((err: Error) => console.log(err));
 
 // app.get("/", async (req: Request, res: Response) => {
@@ -62,24 +68,20 @@ mongoose
 //   }
 // });
 
-app.get("/", async (req: Request, res: Response) => {
-  try {
-    const newItem = await Item.create({
-      shop: "6775a198e86e54f39ce52596",
-      currentPrice: 50.4,
-      foodName: "pizza",
-      description: "its a fucking pizza",
-    });
-    res.send(newItem);
-  } catch (err) {
-    console.log(err);
+// app.get("/", async (req: Request, res: Response) => {
+//   try {
+//     const newItem = await Item.create({
+//       shop: "6775a198e86e54f39ce52596",
+//       currentPrice: 50.4,
+//       foodName: "pizza",
+//       description: "its a fucking pizza",
+//     });
+//     res.send(newItem);
+//   } catch (err) {
+//     console.log(err);
 
-    res.status(500).send("bad");
-  }
-});
+//     res.status(500).send("bad");
+//   }
+// });
 
-app.use("/users", userRoutes);
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.use(`${BASE_URL}users`, userRoutes);

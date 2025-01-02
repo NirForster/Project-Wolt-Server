@@ -1,0 +1,123 @@
+import { Request, Response } from "express";
+import User from "../models/User-model";
+
+const bcrypt = require("bcrypt");
+
+function emailValidate(email: string) {
+  return email.split("@").length === 2;
+}
+
+function phoneValidate(phone: string) {
+  const DIGITS = "1234567890";
+  if (phone.length !== 10) {
+    return false;
+  }
+  return phone.split("").every((char) => {
+    return DIGITS.includes(char);
+  });
+}
+
+// TODO: add JWT
+//* Sign up with new user
+//! POST http://localhost:3000/api/v1/users/signup
+const signup = async (req: Request, res: Response) => {
+  const { email, password, name, phone } = req.body;
+  if (!email || !password || !name || !phone) {
+    return res
+      .status(400)
+      .send(
+        `Some fields (${email ? "" : "email"} ${password ? "" : "password"} ${
+          name ? "" : "name"
+        } ${phone ? "" : "phone"}) are missing!`
+      );
+  }
+  if (!emailValidate(email)) {
+    return res.status(400).send("Email must have the '@' character ");
+  }
+  if (!phoneValidate(phone)) {
+    return res.status(400).send("Phone must be made of 10 digits only");
+  }
+  if (password.length < 5) {
+    return res
+      .status(400)
+      .send("Password must contain at least 5 letters (minimum)");
+  }
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await User.create({
+      email,
+      password: hashedPassword,
+      name,
+      phone,
+    });
+    res
+      .status(201)
+      .send({ message: "New user was successfully signed up!", user: newUser });
+  } catch (err: any) {
+    res.status(500).send(err?.message || "An unknown error occurred");
+  }
+}; // Send: 201, 400, 500
+
+// TODO: add JWT
+//* Log in with registered user
+//! POST http://localhost:3000/api/v1/users/login
+const login = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res
+      .status(400)
+      .send(
+        `Some fields (${email ? "" : "email"} ${
+          password ? "" : "password"
+        }) are missing!`
+      );
+  }
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(404).send("There is no user with that email");
+  }
+  try {
+    bcrypt.compare(password, user.password, (err: Error, result: boolean) => {
+      console.log("-------------------------------------------");
+      console.log(result);
+      console.log("-------------------------------------------");
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.send({ message: "User was successfully logged in!", user });
+      } else {
+        res.status(401).send("Invalid password!");
+      }
+    });
+  } catch (err: any) {
+    res.status(500).send(err?.message || "An unknown error occurred");
+  }
+}; // Send: 200, 401, 404,  500
+
+// TODO
+const logout = async (req: Request, res: Response) => {};
+
+// TODO: add JWT
+//* Delete a registered user
+//! DELETE http://localhost:3000/api/v1/users/:id
+const deleteUser = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (id) {
+    try {
+      await User.findByIdAndDelete(id);
+      res.send("User deleted!");
+    } catch (err) {
+      res.status(500).send("Server error!");
+    }
+  } else {
+    res.status(404).send("There is no user with that id");
+  }
+}; // Send 200, 404, 500
+
+module.exports = {
+  signup,
+  login,
+  logout,
+  deleteUser,
+};
