@@ -21,4 +21,4 @@ router.post("/logout", logout);
 
 module.exports = router;
 
-// TODO: add JWT to the functions, do logout
+// TODO: do logout

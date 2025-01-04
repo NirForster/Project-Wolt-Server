@@ -29,7 +29,7 @@ const updateUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(id);
     if (user) {
-      const { email, password, name, photo, phone } = req.body;
+      const { email, password, fname, lname, photo, phone } = req.body;
       if (email) {
         if (emailValidate(email)) {
           user.email = email;
@@ -54,7 +54,8 @@ const updateUser = async (req: Request, res: Response) => {
           return res.status(400).send("Phone must be made of 10 digits only");
         }
       }
-      user.name = name ? name : user.name;
+      user.fname = fname ? fname : user.fname;
+      user.lname = lname ? lname : user.lname;
       user.photo = photo ? photo : user.photo;
 
       await user.save();

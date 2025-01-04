@@ -2,19 +2,19 @@ import { Request, Response } from "express";
 import User from "../models/User-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-// TODO: add JWT
 //* Sign up with new user
 //! POST http://localhost:3000/api/v1/auth/signup
 const signup = async (req: Request, res: Response) => {
-  const { email, password, name, phone } = req.body;
-  if (!email || !password || !name || !phone) {
+  const { email, password, fname, lname, phone } = req.body;
+  if (!email || !password || !fname || !phone) {
     return res
       .status(400)
       .send(
-        `Some fields (${email ? "" : "email"} ${password ? "" : "password"} ${
-          name ? "" : "name"
-        } ${phone ? "" : "phone"}) are missing!`
+        `Some fields (${email ? "" : " email "}${password ? "" : " password "}${
+          fname ? "" : " first name "
+        }${phone ? "" : " phone "}) are missing!`
       );
   }
   // Validate data
@@ -34,18 +34,23 @@ const signup = async (req: Request, res: Response) => {
     const newUser = await User.create({
       email,
       password: hashedPassword,
-      name,
+      fname,
+      lname,
       phone,
     });
+    const jwtSecret = process.env.JWT_SECRET as string;
+    const token = jwt.sign({ userID: newUser._id }, jwtSecret, {
+      expiresIn: "1d",
+    });
+    res.cookie("token", token, { sameSite: "strict" });
     res
       .status(201)
-      .send({ message: "New user was successfully signed up!", user: newUser });
+      .send({ message: "New user was successfully signed up!", token: token });
   } catch (err: any) {
     res.status(500).send(err?.message || "An unknown error occurred");
   }
 }; // Send: 201, 400, 500
 
-// TODO: add JWT
 //* Log in with registered user
 //! POST http://localhost:3000/api/v1/auth/login
 const login = async (req: Request, res: Response) => {
@@ -65,14 +70,15 @@ const login = async (req: Request, res: Response) => {
   }
   try {
     bcrypt.compare(password, user.password, (err: Error, result: boolean) => {
-      console.log("-------------------------------------------");
-      console.log(result);
-      console.log("-------------------------------------------");
+      const jwtSecret = process.env.JWT_SECRET as string;
+      const token = jwt.sign({ userID: user._id }, jwtSecret, {
+        expiresIn: "1d",
+      });
       if (err) {
         throw err;
       }
       if (result) {
-        res.send({ message: "User was successfully logged in!", user });
+        res.send({ message: "User was successfully logged in!", token });
       } else {
         res.status(401).send("Invalid password!");
       }

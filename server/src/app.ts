@@ -83,7 +83,7 @@ mongoose
   // });
 }
 
-// TODO: add JWT to the functions, do logout
+// TODO: do logout
 app.use(`${BASE_URL}auth`, authRoutes);
 
 // TODO: add JWT

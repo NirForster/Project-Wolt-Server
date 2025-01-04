@@ -4,7 +4,8 @@ import LocationType from "../types/location-type";
 interface IUser extends Document {
   email: string;
   password: string;
-  name: string;
+  fname: string;
+  lname: string;
   phone: string;
   photo: string;
   locations: [LocationType];
@@ -32,9 +33,16 @@ const userSchema = new Schema({
   },
 
   //! User data
-  name: {
+  fname: {
     type: String,
-    required: [true, "Name is a required field in order to create new user"],
+    required: [
+      true,
+      "First name is a required field in order to create new user",
+    ],
+  },
+
+  lname: {
+    type: String,
   },
 
   phone: {
