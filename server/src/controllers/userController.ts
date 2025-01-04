@@ -1,34 +1,39 @@
 import { Request, Response } from "express";
 import User from "../models/User-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
+import { RequestWithUserID } from "src/types/expressType";
 
 const bcrypt = require("bcrypt");
 
 //* Delete a registered user
 //! DELETE http://localhost:3000/api/v1/user/:id
-const deleteUser = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  try {
-    const user = await User.findByIdAndDelete(id);
-    if (user) {
-      res.cookie("token", "", {
-        maxAge: 1,
-        // httpOnly: true,
-        sameSite: "strict",
+const deleteUser = async (req: RequestWithUserID, res: Response) => {
+  const id = req.userID;
+  if (id) {
+    try {
+      const user = await User.findByIdAndDelete(id);
+      if (user) {
+        res.cookie("token", "", {
+          maxAge: 1,
+          // httpOnly: true,
+          sameSite: "strict",
+        });
+        res.send({ status: "Success", message: "User deleted!" });
+      } else {
+        res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that id" });
+      }
+    } catch (err: any) {
+      res.status(500).send({
+        message: err?.message || "An unknown error occurred",
+        status: "Error",
       });
-      res.send({ status: "Success", message: "User deleted!" });
-    } else {
-      res
-        .status(404)
-        .send({ status: "Error", message: "There is no user with that id" });
     }
-  } catch (err: any) {
-    res.status(500).send({
-      message: err?.message || "An unknown error occurred",
-      status: "Error",
-    });
+  } else {
+    res.status(400).send({ status: "Error", message: "No ID was provided" });
   }
-}; // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
+}; // Send: 200, 400 404, 500 ({ message: string, status: "Success" | "Error" })
 
 //* Update a registered user
 //! PUT http://localhost:3000/api/v1/user/:id

@@ -42,4 +42,22 @@ const orderSchema = new Schema({
   },
 });
 
+orderSchema.pre("save", async function (next) {
+  const allOrdersOfShop = await mongoose
+    .model("Order")
+    .find({ shop: this.shop }, "deliveringTime"); // Retrieving all that shop orders
+  const totalDeliveryTime = allOrdersOfShop.reduce((sum, order) => {
+    return sum + order.deliveringTime;
+  }, this.deliveringTime);
+  const avgDeliveryTime = totalDeliveryTime / (allOrdersOfShop.length + 1); // Calculating the avg delivering time
+  try {
+    await mongoose
+      .model("Shop")
+      .findByIdAndUpdate(this.shop, { avgDeliveryTime });
+    next();
+  } catch (err: any) {
+    next(err);
+  }
+});
+
 export default mongoose.model<IOrder>("Order", orderSchema);

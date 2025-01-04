@@ -1,10 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import User from "../models/User-model";
+import { RequestWithUserID } from "src/types/expressType";
 const jwt = require("jsonwebtoken");
-
-interface RequestWithUserID extends Request {
-  userID?: string;
-}
 
 export default async function userAuth(
   req: RequestWithUserID,

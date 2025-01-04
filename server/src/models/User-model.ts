@@ -8,10 +8,11 @@ interface IUser extends Document {
   lname: string;
   phone: string;
   photo: string;
-  locations: [LocationType];
-  favoritesShops: [Types.ObjectId];
-  cart: [Types.ObjectId];
-  lastOrders: [Types.ObjectId];
+  locations: LocationType[];
+  favoritesShops: Types.ObjectId[];
+  cart: Types.ObjectId[];
+  lastOrders: Types.ObjectId[]; // Virtual property
+  fullname: string;
 }
 
 const userSchema = new Schema({
@@ -77,16 +78,24 @@ const userSchema = new Schema({
   }, //* list of all the user favorites shops
 
   cart: {
-    // types: [{ type: Schema.Types.ObjectId }],
-    // ref: "Order",
-    type: [{ type: Schema.Types.ObjectId, ref: "Order" }],
+    type: [{ type: Schema.Types.ObjectId }],
+    ref: "Order",
     default: [],
   },
+});
 
-  lastOrders: {
-    type: [{ type: Schema.Types.ObjectId, ref: "Order" }],
-    default: [],
-  }, //* List of all the user's last orders
+userSchema.virtual("fullname").get(function () {
+  if (this.lname) {
+    return `${this.fname} ${this.lname}`;
+  }
+  return this.fname;
+});
+
+userSchema.virtual("lastOrders", {
+  ref: "Order",
+  localField: "_id",
+  foreignField: "user",
+  options: { sort: { createdAt: -1 } },
 });
 
 export default mongoose.model<IUser>("User", userSchema);

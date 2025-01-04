@@ -13,15 +13,15 @@ const router = express.Router();
 router.use(userAuth); // Send: 401, 404
 
 //* Delete a registered user
-//! DELETE http://localhost:3000/api/v1/user/:id
-router.delete("/:id", deleteUser); // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
+//! DELETE http://localhost:3000/api/v1/user
+router.delete("/", deleteUser); // Send: 200, 400 404, 500 ({ message: string, status: "Success" | "Error" })
 
 //* Update a registered user
-//! PUT http://localhost:3000/api/v1/user/:id
-router.put("/:id", updateUser); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error", user? : User})
+//! PUT http://localhost:3000/api/v1/user/
+router.put("/", updateUser); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error", user? : User})
 
 //* Get the data of a user
-//! GET http://localhost:3000/api/v1/user/:id
-router.get("/:id", getUserData); // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User})
+//! GET http://localhost:3000/api/v1/user/
+router.get("/", getUserData); // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User})
 
 module.exports = router;

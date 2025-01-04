@@ -4,17 +4,10 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
-// Import Request and Response types using ES Modules
-import { Request, response, Response } from "express";
-
-// Models
-import Shop from "./models/Shop-model";
-import Order from "./models/Order-model";
-import Item from "./models/Item-model";
-
 // Routes
 const authRoutes = require("./routes/authRoute.ts");
 const userRoutes = require("./routes/userRoutes.ts");
+const orderRoutes = require("./routes/ordersRoutes.ts");
 
 // Environment variables
 dotenv.config();
@@ -86,3 +79,5 @@ mongoose
 app.use(`${BASE_URL}auth`, authRoutes); //✅
 
 app.use(`${BASE_URL}user`, userRoutes); //✅
+
+app.use(`${BASE_URL}shop`, orderRoutes);

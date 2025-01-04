@@ -24,8 +24,8 @@ interface IShop extends Document {
       closing: string;
     }
   ];
-  menu: Types.ObjectId;
-  orders: Types.ObjectId;
+  menu: Types.ObjectId[]; // Virtual property
+  orders: Types.ObjectId[]; // Virtual property
   avgDeliveryTime: number;
   reviews: [
     {
@@ -34,6 +34,7 @@ interface IShop extends Document {
       comment: string;
     }
   ];
+  rate: number;
 }
 
 const shopSchema = new Schema({
@@ -105,19 +106,8 @@ const shopSchema = new Schema({
     ],
   },
 
-  menu: {
-    type: [{ type: Schema.Types.ObjectId, ref: "Item", required: true }],
-    required: [],
-  },
-
   //! Shop activity / history
-  orders: {
-    type: [Schema.Types.ObjectId],
-    ref: "Order",
-    default: [],
-  }, //* List of all the orders of the restaurant
-
-  avgDeliveryTime: { type: Number, required: true },
+  avgDeliveryTime: { type: Number, required: true, default: 0 },
 
   reviews: {
     type: [
@@ -152,4 +142,29 @@ shopSchema.pre<IShop>("save", function (next) {
   }
   next();
 }); // Allow to save new store using only single location object
+
+shopSchema.virtual("rate").get(function () {
+  const reviewsAmount = this.reviews.length;
+  if (reviewsAmount > 0) {
+    const totalRating = this.reviews.reduce((sum, currentReview) => {
+      return sum + currentReview.rating;
+    }, 0);
+    return parseFloat((totalRating / reviewsAmount).toFixed(1));
+  }
+  return 0;
+});
+
+shopSchema.virtual("orders", {
+  ref: "Order",
+  localField: "_id",
+  foreignField: "shop",
+  options: { sort: { createdAt: -1 } },
+});
+
+shopSchema.virtual("menu", {
+  ref: "Item",
+  localField: "_id",
+  foreignField: "shop",
+});
+
 export default mongoose.model<IShop>("Shop", shopSchema);
