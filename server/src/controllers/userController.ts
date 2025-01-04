@@ -4,37 +4,49 @@ import { emailValidate, phoneValidate } from "../utils/dataValidate";
 
 const bcrypt = require("bcrypt");
 
-// TODO: add JWT
 //* Delete a registered user
 //! DELETE http://localhost:3000/api/v1/user/:id
 const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
-  if (id) {
-    try {
-      await User.findByIdAndDelete(id);
-      res.send("User deleted!");
-    } catch (err) {
-      res.status(500).send("Server error!");
+  try {
+    const user = await User.findByIdAndDelete(id);
+    if (user) {
+      res.cookie("token", "", {
+        maxAge: 1,
+        // httpOnly: true,
+        sameSite: "strict",
+      });
+      res.send({ status: "Success", message: "User deleted!" });
+    } else {
+      res
+        .status(404)
+        .send({ status: "Error", message: "There is no user with that id" });
     }
-  } else {
-    res.status(404).send("There is no user with that id");
+  } catch (err: any) {
+    res.status(500).send({
+      message: err?.message || "An unknown error occurred",
+      status: "Error",
+    });
   }
-}; // Send: 200, 404, 500
+}; // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
 
-// TODO: add JWT
 //* Update a registered user
 //! PUT http://localhost:3000/api/v1/user/:id
 const updateUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const user = await User.findById(id);
+
     if (user) {
       const { email, password, fname, lname, photo, phone } = req.body;
       if (email) {
         if (emailValidate(email)) {
           user.email = email;
         } else {
-          return res.status(400).send("Email must have the '@' character ");
+          return res.status(400).send({
+            status: "Error",
+            message: "Email must have the '@' character ",
+          });
         }
       }
       if (password) {
@@ -42,16 +54,20 @@ const updateUser = async (req: Request, res: Response) => {
           const hashedPassword = await bcrypt.hash(password, 10);
           user.password = hashedPassword;
         } else {
-          return res
-            .status(400)
-            .send("Password must contain at least 5 letters (minimum)");
+          return res.status(400).send({
+            status: "Error",
+            message: "Password must contain at least 5 letters (minimum)",
+          });
         }
       }
       if (phone) {
         if (phoneValidate(phone)) {
           user.phone = phone;
         } else {
-          return res.status(400).send("Phone must be made of 10 digits only");
+          return res.status(400).send({
+            status: "Error",
+            message: "Phone must be made of 10 digits only",
+          });
         }
       }
       user.fname = fname ? fname : user.fname;
@@ -59,29 +75,41 @@ const updateUser = async (req: Request, res: Response) => {
       user.photo = photo ? photo : user.photo;
 
       await user.save();
-      res.send({ message: "User updated", user });
+      res.send({ status: "Success", message: "User updated", user });
+    } else {
+      res
+        .status(404)
+        .send({ status: "Error", message: "There is no user with that id" });
     }
   } catch (err: any) {
-    res.status(500).send(err?.message);
+    res.status(500).send({
+      message: err?.message || "An unknown error occurred",
+      status: "Error",
+    });
   }
-}; // Send: 200, 400, 404, 500
+}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error", user? : User})
 
 const getUserData = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const user = await User.findById(id);
     if (user) {
-      res.send(user);
+      res.send({ status: "Success", user });
     } else {
-      res.status(404).send("There is no user with that id");
+      res
+        .status(404)
+        .send({ status: "Error", message: "There is no user with that id" });
     }
   } catch (err: any) {
-    res.status(500).send(err?.message);
+    res.status(500).send({
+      message: err?.message || "An unknown error occurred",
+      status: "Error",
+    });
   }
-}; // Send: 200, 404, 500
+}; // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User})
 
 module.exports = {
-  deleteUser, //✅
-  updateUser, //✅
+  deleteUser,
+  updateUser,
   getUserData,
 };
