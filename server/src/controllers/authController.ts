@@ -113,7 +113,6 @@ const login = async (req: Request, res: Response) => {
   }
 }; // Send: 200, 401, 404,  500 ({ message: string, status: "Success" | "Error", user?: User })
 
-// TODO
 //* Log out from registered user
 //! GET http://localhost:3000/api/v1/auth/logout
 const logout = async (req: Request, res: Response) => {

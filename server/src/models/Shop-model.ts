@@ -6,9 +6,9 @@ interface IShop extends Document {
   name: string;
   photo: string;
   description?: string;
-  locations: [LocationType];
-  categories?: [string];
-  tags?: [string];
+  locations: LocationType[];
+  categories?: string[];
+  tags?: string[];
   deliveryFee: number;
   workingTime: [
     {
@@ -37,104 +37,110 @@ interface IShop extends Document {
   rate: number;
 }
 
-const shopSchema = new Schema({
-  //! Shop data
-  phone: {
-    type: String,
-    required: true,
-    unique: true,
-    match: [/^\d{10}$/, "Phone number must be 10 digits"],
-  },
-
-  name: { type: String, required: true, unique: true },
-
-  photo: {
-    type: String,
-    required: true,
-    default:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEM-vsJGYRxX0_EI2S6KDFKSuryQirn0LDcQ&s",
-  },
-
-  description: { type: String },
-
-  locations: {
-    type: [
-      {
-        lat: { type: Number, min: -90, max: 90, required: true },
-        lon: { type: Number, min: -180, max: 180, required: true },
-      },
-    ],
-    default: [],
-    required: true,
-    validate: {
-      validator: function (v: LocationType[]) {
-        return v.length > 0; // Ensures at least one element in the array
-      },
-      message: "At least one location is required.",
+const shopSchema = new Schema(
+  {
+    //! Shop data
+    phone: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/^\d{10}$/, "Phone number must be 10 digits"],
     },
-  }, //* List of all the shop's branches locations with validating of at list 1 location
 
-  categories: [{ type: String }],
+    name: { type: String, required: true, unique: true },
 
-  tags: [{ type: String }],
+    photo: {
+      type: String,
+      required: true,
+      default:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEM-vsJGYRxX0_EI2S6KDFKSuryQirn0LDcQ&s",
+    },
 
-  deliveryFee: {
-    type: Number,
-    default: 0,
-    min: 0,
-  },
+    description: { type: String },
 
-  workingTime: {
-    type: [
-      {
-        day: {
-          type: String,
-          enum: [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-          ],
-          required: true,
+    locations: {
+      type: [
+        {
+          lat: { type: Number, min: -90, max: 90, required: true },
+          lon: { type: Number, min: -180, max: 180, required: true },
         },
-        opening: { type: String, required: true },
-        closing: { type: String, required: true },
+      ],
+      default: [],
+      required: true,
+      validate: {
+        validator: function (v: LocationType[]) {
+          return v.length > 0; // Ensures at least one element in the array
+        },
+        message: "At least one location is required.",
       },
-    ],
-  },
+    }, //* List of all the shop's branches locations with validating of at list 1 location
 
-  //! Shop activity / history
-  avgDeliveryTime: { type: Number, required: true, default: 0 },
+    categories: [{ type: String }],
 
-  reviews: {
-    type: [
-      {
-        user: {
-          type: Schema.Types.ObjectId,
-          ref: "User",
-          required: true,
+    tags: [{ type: String }],
+
+    deliveryFee: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
+    workingTime: {
+      type: [
+        {
+          day: {
+            type: String,
+            enum: [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ],
+            required: true,
+          },
+          opening: { type: String, required: true },
+          closing: { type: String, required: true },
         },
-        rating: {
-          type: Number,
-          required: true,
-          min: 1,
-          max: 10,
+      ],
+    },
+
+    //! Shop activity / history
+    avgDeliveryTime: { type: Number, required: true, default: 0 },
+
+    reviews: {
+      type: [
+        {
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+          },
+          rating: {
+            type: Number,
+            required: true,
+            min: 1,
+            max: 10,
+          },
+          comment: {
+            type: String,
+          },
+          createdAt: {
+            type: Date,
+            default: Date.now,
+          },
         },
-        comment: {
-          type: String,
-        },
-        createdAt: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
-    default: [],
+      ],
+      default: [],
+    },
   },
-});
+  {
+    toJSON: { virtuals: true }, // Include virtuals in JSON output
+    toObject: { virtuals: true }, // Include virtuals in Object output
+  }
+);
 
 shopSchema.pre<IShop>("save", function (next) {
   if (this.isModified("locations") && !Array.isArray(this.locations)) {

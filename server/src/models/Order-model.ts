@@ -1,17 +1,16 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-interface IOrder extends Document {
+export interface IOrder extends Document {
   user: Types.ObjectId;
   shop: Types.ObjectId;
   createdAt: Date;
-  deliveringTime: number;
-  items: [
-    {
-      product: Types.ObjectId;
-      quantity: number;
-      pricePerUnit: number;
-    }
-  ];
+  deliveringTime?: number;
+  items: {
+    product: Types.ObjectId;
+    quantity: number;
+    pricePerUnit: number;
+  }[];
+  hasSent: boolean;
 }
 
 const orderSchema = new Schema({
@@ -26,7 +25,6 @@ const orderSchema = new Schema({
 
   deliveringTime: {
     type: Number,
-    required: true,
   },
 
   items: {
@@ -40,16 +38,24 @@ const orderSchema = new Schema({
     required: true,
     default: [],
   },
+
+  hasSent: { type: Boolean, default: false },
 });
 
 orderSchema.pre("save", async function (next) {
   const allOrdersOfShop = await mongoose
     .model("Order")
-    .find({ shop: this.shop }, "deliveringTime"); // Retrieving all that shop orders
+    .find({ shop: this.shop }, "deliveringTime"); // Retrieving all that shop's orders
+
   const totalDeliveryTime = allOrdersOfShop.reduce((sum, order) => {
-    return sum + order.deliveringTime;
-  }, this.deliveringTime);
+    if (order.hasSent) {
+      return sum + order.deliveringTime;
+    }
+    return sum;
+  }, this.deliveringTime || 0); // Calculating the total delivery time
+
   const avgDeliveryTime = totalDeliveryTime / (allOrdersOfShop.length + 1); // Calculating the avg delivering time
+
   try {
     await mongoose
       .model("Shop")
@@ -57,7 +63,7 @@ orderSchema.pre("save", async function (next) {
     next();
   } catch (err: any) {
     next(err);
-  }
+  } // Update the shop's avg delivery time
 });
 
 export default mongoose.model<IOrder>("Order", orderSchema);

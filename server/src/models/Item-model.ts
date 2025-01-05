@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-interface IItem extends Document {
+export interface IItem extends Document {
   shop: Types.ObjectId;
   currentPrice: number;
   foodName: string;
