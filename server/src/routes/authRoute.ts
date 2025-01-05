@@ -6,7 +6,7 @@ const router = express.Router();
 
 //* Sign up with new user
 //! POST http://localhost:3000/api/v1/auth/signup
-router.post("/signup", signup); // Send: 201, 400, 500 ({ message: string, status: "Success" | "Error", user?: User })
+router.post("/signup", signup); // Send: 201, 400, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
 //* Log in with registered user
 //! POST http://localhost:3000/api/v1/auth/login

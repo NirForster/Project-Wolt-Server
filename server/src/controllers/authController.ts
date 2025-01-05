@@ -40,9 +40,12 @@ const signup = async (req: Request, res: Response) => {
       email,
       password: hashedPassword,
       fname,
-      lname,
       phone,
     });
+    if (lname) {
+      newUser.lname = lname;
+      newUser.save();
+    }
     const jwtSecret = process.env.JWT_SECRET as string;
     const token = jwt.sign({ userID: newUser._id }, jwtSecret, {
       expiresIn: "1d",
@@ -53,7 +56,6 @@ const signup = async (req: Request, res: Response) => {
     });
     res.status(201).send({
       status: "Success",
-      message: "New user was successfully signed up!",
       user: newUser,
     });
   } catch (err: any) {
@@ -62,7 +64,7 @@ const signup = async (req: Request, res: Response) => {
       status: "Error",
     });
   }
-}; // Send: 201, 400, 500 ({ message: string, status: "Success" | "Error", user?: User })
+}; // Send: 201, 400, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
 //* Log in with registered user
 //! POST http://localhost:3000/api/v1/auth/login
@@ -97,7 +99,6 @@ const login = async (req: Request, res: Response) => {
           sameSite: "strict",
         });
         res.send({
-          message: "User was successfully logged in!",
           status: "Success",
           user,
         });

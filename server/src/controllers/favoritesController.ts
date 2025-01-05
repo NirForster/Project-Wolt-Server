@@ -15,7 +15,7 @@ const getUserFavoritesShops = async (req: RequestWithUserID, res: Response) => {
           .send({ status: "Error", message: "There is no user with that ID" });
       }
       return res.send({
-        status: "Success",
+        status: "Successes",
         favoritesShops: user.favoritesShops,
       });
     } catch (err: any) {

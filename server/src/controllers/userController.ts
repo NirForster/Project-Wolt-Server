@@ -83,7 +83,7 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
         user.photo = photo ? photo : user.photo;
 
         await user.save();
-        res.send({ status: "Success", message: "User updated", user });
+        res.send({ status: "Success", user });
       } else {
         res
           .status(404)
@@ -100,7 +100,7 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
       .status(400)
       .send({ status: "Error", message: "No user ID was provided" });
   }
-}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error", user? : User})
+}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user? : User})
 
 const getUserData = async (req: RequestWithUserID, res: Response) => {
   const id = req.userID;

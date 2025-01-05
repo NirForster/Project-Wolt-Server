@@ -55,6 +55,7 @@ async function deleteOrderHandler(user: IUser, currentOrder: IOrder) {
   user.save();
   await Order.findByIdAndDelete(currentOrder._id); // Delete the order
 }
+
 //* Get the data of the given store
 //! GET http://localhost:3000/api/v1/shop/:id
 const getShopData = async (req: Request, res: Response) => {
@@ -66,14 +67,14 @@ const getShopData = async (req: Request, res: Response) => {
         .status(404)
         .send({ status: "Error", message: "There is no shop with that id" });
     }
-    return res.send(shop);
+    return res.send({ status: "Success", shop });
   } catch (err: any) {
     return res.status(500).send({
       message: err?.message || "An unknown error occurred",
       status: "Error",
     });
   }
-}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+}; // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 const editOrder = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
