@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { RequestWithUserID } from "../types/expressType";
-import Shop from "../models/Shop-model";
+import Shop, { IShop } from "../models/Shop-model";
 import Item, { IItem } from "../models/Item-model";
 import User, { IUser } from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
 import { Types } from "mongoose";
+import Review from "src/types/reviewType";
 
 async function newOrderHandle(
   user: IUser,
@@ -77,6 +78,8 @@ const getShopData = async (req: Request, res: Response) => {
 }; // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 const editOrder = async (req: RequestWithUserID, res: Response) => {
+  console.log("mama");
+
   const userID = req.userID;
   if (userID) {
     try {
@@ -89,9 +92,7 @@ const editOrder = async (req: RequestWithUserID, res: Response) => {
           message: `There is no ${user ? "item" : "user"} with that id`,
         });
       }
-
       const shopID = item.shop.toString();
-
       let orderIndex = user.cart.findIndex((order) => {
         const currentOrder = order as IOrder;
         return currentOrder.shop.toString() === shopID.toString();
@@ -182,7 +183,64 @@ const editOrder = async (req: RequestWithUserID, res: Response) => {
   }
 };
 
+const addNewReview = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = await User.findById(userID).populate({
+        path: "lastOrders",
+        select: "shop",
+      });
+      if (!user) {
+        return res.status(404).send({
+          status: "Error",
+          message: `There is no user with that id`,
+        });
+      }
+      const shopID = req.params.id;
+      const isShopInUsersOrders = user.lastOrders.some((order) => {
+        const currentOrder = order as IOrder;
+        return currentOrder.shop.toString() === shopID;
+      });
+      if (!isShopInUsersOrders) {
+        return res.status(403).send({
+          status: "Error",
+          message: "User must first order from that shop before adding reviews",
+        });
+      }
+      const shop = (await Shop.findById(shopID)) as IShop;
+      const { rating, comment } = req.body;
+      if (!rating || rating > 10 || rating < 1) {
+        return res.status(400).send({
+          status: "Error",
+          message: "Rating must be valid number between 1 to 10",
+        });
+      }
+      const newReview: Review = { user: new Types.ObjectId(userID), rating };
+      if (comment) {
+        newReview.comment = comment;
+      }
+      shop.reviews.push(newReview);
+      res.status(201).send({
+        status: "Success",
+        message: "New review was added successfully",
+      });
+      shop.save();
+    } catch (err: any) {
+      return res.status(500).send({
+        message: err?.message || "An unknown error occurred",
+        status: "Error",
+      });
+    }
+  } else {
+    res
+      .status(400)
+      .send({ status: "Error", message: "No user ID was provided" });
+  }
+};
+
 module.exports = {
   getShopData,
   editOrder,
+  addNewReview,
 };

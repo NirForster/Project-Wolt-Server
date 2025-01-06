@@ -1,7 +1,8 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 import LocationType from "../types/location-type";
+import Review from "../types/reviewType";
 
-interface IShop extends Document {
+export interface IShop extends Document {
   phone: string;
   name: string;
   photo: string;
@@ -27,13 +28,7 @@ interface IShop extends Document {
   menu: Types.ObjectId[]; // Virtual property
   orders: Types.ObjectId[]; // Virtual property
   avgDeliveryTime: number;
-  reviews: [
-    {
-      user: Types.ObjectId;
-      rating: number;
-      comment: string;
-    }
-  ];
+  reviews: Review[];
   rate: number;
 }
 

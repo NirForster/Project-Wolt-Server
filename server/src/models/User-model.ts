@@ -12,7 +12,7 @@ export interface IUser extends Document {
   locations: LocationType[];
   favoritesShops: Types.ObjectId[];
   cart: Types.ObjectId[] | IOrder[];
-  lastOrders: Types.ObjectId[]; // Virtual property
+  lastOrders: Types.ObjectId[] | IOrder[]; // Virtual property
   fullname: string;
 }
 
