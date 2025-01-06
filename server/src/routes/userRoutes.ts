@@ -5,6 +5,7 @@ const {
   deleteUser,
   updateUser,
   getUserData,
+  getUserLastOrders,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -19,6 +20,10 @@ router.delete("/", deleteUser); // Send: 200, 400 404, 500 ({ message: string, s
 //* Update a registered user
 //! PUT http://localhost:3000/api/v1/user
 router.put("/", updateUser); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error", user? : User})
+
+//* Get the user's last orders
+//! GET http://localhost:300/api/v1/user/last-orders
+router.get("last-orders", getUserLastOrders);
 
 //* Get the data of a user
 //! GET http://localhost:3000/api/v1/user

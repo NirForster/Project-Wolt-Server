@@ -112,30 +112,11 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
     try {
       const user = (await User.findById(id).populate({
         path: "lastOrders",
-        populate: { path: "shop" },
-        // options: {
-        //   populate: [{ path: "shop", select: "name photo rate" }],
-        // },
+        populate: {
+          path: "shop",
+          select: "name photo rate description",
+        },
       })) as IUser;
-
-      // populate({
-      //   path: "lastOrders",
-      //   populate: [
-      //     { path: "shop", select: "name photo rate" },
-      //     // { path: "totalPrice" },
-      //   ],
-      // })) as IUser;
-      // user.lastOrders.forEach((order) => {
-      //   order.populate("item");
-      // });
-
-      // .populate({
-      //   path: "lastOrders",
-      //   populate: [
-      //     { path: "item", select: "foodName photo description" },
-      //     { path: "shop", select: "name photo description" },
-      //   ],
-      // });
       if (user) {
         return res.send({ status: "Success", user });
       } else {
@@ -146,7 +127,7 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
     } catch (err: any) {
       return res.status(500).send({
         message: err?.message || "An unknown error occurred",
-        status: "Error1",
+        status: "Error",
       });
     }
   } else {
@@ -156,8 +137,25 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
+const getUserLastOrders = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    const user = await User.findById(userID).populate("lastOrders");
+    if (!userID) {
+      return res
+        .status(404)
+        .send({ status: "Error", message: "There is no user with that id" });
+    }
+  } else {
+    return res
+      .status(400)
+      .send({ status: "Error", message: "No  user ID was provided" });
+  }
+};
+
 module.exports = {
   deleteUser,
   updateUser,
   getUserData,
+  getUserLastOrders,
 };
