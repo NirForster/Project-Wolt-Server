@@ -77,9 +77,9 @@ const getShopData = async (req: Request, res: Response) => {
   }
 }; // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
 
+//* Updating the user's cart
+//! PUT http://localhost:3000/api/v1/shop/
 const editOrder = async (req: RequestWithUserID, res: Response) => {
-  console.log("mama");
-
   const userID = req.userID;
   if (userID) {
     try {
@@ -183,6 +183,8 @@ const editOrder = async (req: RequestWithUserID, res: Response) => {
   }
 };
 
+//* Adding new review on shop
+//! POST http://localhost:3000/api/v1/shop/:id/review
 const addNewReview = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {

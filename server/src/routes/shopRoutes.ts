@@ -12,7 +12,7 @@ const router = express.Router();
 //* Middleware to check the user authentication using JWT
 // router.use(userAuth); // Send: 401, 404
 
-//* Add new review
+//* Add new review on shop
 //! POST http://localhost:3000/api/v1/shop/:id/review
 router.post("/:id/review", userAuth, addNewReview);
 

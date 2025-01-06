@@ -1,7 +1,10 @@
-import { Request, Response } from "express";
-import User from "../models/User-model";
+import { Response } from "express";
+import User, { IUser } from "../models/User-model";
+import Item from "../models/Item-model";
+import Shop from "../models/Shop-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
 import { RequestWithUserID } from "src/types/expressType";
+import path from "path";
 
 const bcrypt = require("bcrypt");
 
@@ -103,10 +106,36 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user? : User})
 
 const getUserData = async (req: RequestWithUserID, res: Response) => {
+  const Baba = { Item, Shop };
   const id = req.userID;
   if (id) {
     try {
-      const user = await User.findById(id);
+      const user = (await User.findById(id).populate({
+        path: "lastOrders",
+        populate: { path: "shop" },
+        // options: {
+        //   populate: [{ path: "shop", select: "name photo rate" }],
+        // },
+      })) as IUser;
+
+      // populate({
+      //   path: "lastOrders",
+      //   populate: [
+      //     { path: "shop", select: "name photo rate" },
+      //     // { path: "totalPrice" },
+      //   ],
+      // })) as IUser;
+      // user.lastOrders.forEach((order) => {
+      //   order.populate("item");
+      // });
+
+      // .populate({
+      //   path: "lastOrders",
+      //   populate: [
+      //     { path: "item", select: "foodName photo description" },
+      //     { path: "shop", select: "name photo description" },
+      //   ],
+      // });
       if (user) {
         return res.send({ status: "Success", user });
       } else {
@@ -117,7 +146,7 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
     } catch (err: any) {
       return res.status(500).send({
         message: err?.message || "An unknown error occurred",
-        status: "Error",
+        status: "Error1",
       });
     }
   } else {

@@ -11,35 +11,58 @@ export interface IOrder extends Document {
     pricePerUnit: number;
   }[];
   hasSent: boolean;
+  totalPrice: number; // Virtual property
 }
 
-const orderSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+const orderSchema = new Schema(
+  {
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
 
-  shop: { type: Schema.Types.ObjectId, ref: "Shop", required: true },
+    shop: { type: Schema.Types.ObjectId, ref: "Shop", required: true },
 
-  createdAt: {
-    type: Date,
-    default: Date.now,
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+
+    deliveringTime: {
+      type: Number,
+    },
+
+    items: {
+      type: [
+        {
+          product: { type: Schema.Types.ObjectId, ref: "Item", required: true },
+          quantity: { type: Number, default: 1, min: 1 },
+          pricePerUnit: { type: Number, required: true, min: 0 },
+        },
+      ],
+      required: true,
+      default: [],
+    },
+
+    hasSent: { type: Boolean, default: false },
   },
+  {
+    toJSON: { virtuals: true }, // Include virtuals in JSON output
+    toObject: { virtuals: true }, // Include virtuals in Object output
+  }
+);
 
-  deliveringTime: {
-    type: Number,
-  },
+orderSchema.virtual("totalPrice").get(function () {
+  console.log("baba 1");
 
-  items: {
-    type: [
-      {
-        product: { type: Schema.Types.ObjectId, ref: "Item", required: true },
-        quantity: { type: Number, default: 1, min: 1 },
-        pricePerUnit: { type: Number, required: true, min: 0 },
-      },
-    ],
-    required: true,
-    default: [],
-  },
-
-  hasSent: { type: Boolean, default: false },
+  const itemsAmount = this.items.length;
+  console.log("baba 2");
+  if (itemsAmount > 0) {
+    const prices = this.items.map((item) => {
+      return item.quantity * item.pricePerUnit;
+    });
+    return prices.reduce((sum, price) => {
+      return sum + price;
+    }, 0);
+  }
+  return 0;
 });
 
 orderSchema.pre("save", async function (next) {
@@ -63,7 +86,7 @@ orderSchema.pre("save", async function (next) {
     next();
   } catch (err: any) {
     next(err);
-  } // Update the shop's avg delivery time
-});
+  }
+}); // Update the shop's avg delivery time
 
 export default mongoose.model<IOrder>("Order", orderSchema);
