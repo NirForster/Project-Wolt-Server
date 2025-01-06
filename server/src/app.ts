@@ -25,7 +25,12 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Specify the allowed origin
+    credentials: true, // Allow credentials (cookies, headers)
+  })
+);
 app.use(express.json());
 
 // Mongoose connection
