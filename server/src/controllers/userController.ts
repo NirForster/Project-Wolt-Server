@@ -1,10 +1,13 @@
 import { Response } from "express";
 import User, { IUser } from "../models/User-model";
-import Item from "../models/Item-model";
-import Shop from "../models/Shop-model";
+import Item, { IItem } from "../models/Item-model";
+import Shop, { IShop } from "../models/Shop-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
 import { RequestWithUserID } from "src/types/expressType";
 import path from "path";
+import { IOrder } from "src/models/Order-model";
+import { populate } from "dotenv";
+import { Types } from "mongoose";
 
 const bcrypt = require("bcrypt");
 
@@ -110,13 +113,7 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
   const id = req.userID;
   if (id) {
     try {
-      const user = (await User.findById(id).populate({
-        path: "lastOrders",
-        populate: {
-          path: "shop",
-          select: "name photo rate description",
-        },
-      })) as IUser;
+      const user = (await User.findById(id)) as IUser;
       if (user) {
         return res.send({ status: "Success", user });
       } else {
@@ -140,11 +137,45 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
 const getUserLastOrders = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
-    const user = await User.findById(userID).populate("lastOrders");
-    if (!userID) {
-      return res
-        .status(404)
-        .send({ status: "Error", message: "There is no user with that id" });
+    try {
+      const user = (await User.findById(userID).populate({
+        path: "lastOrders",
+        populate: [{ path: "shop" }, { path: "items.product" }],
+      })) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that id" });
+      }
+      const lastOrders = user.lastOrders.map((order) => {
+        const currentOrder = order as IOrder;
+        const shop = currentOrder.shop as IShop;
+
+        const result = {
+          _id: currentOrder._id,
+          shop: {
+            name: shop.name,
+            photo: shop.photo,
+            description: shop.description,
+            rate: shop.rate,
+          },
+          items: currentOrder.items.map((item) => {
+            return (item.product as IItem).photo;
+          }),
+        };
+        console.log(
+          "                                                                  "
+        );
+
+        return result;
+      });
+
+      return res.send({ status: "Success", orders: lastOrders });
+    } catch (err: any) {
+      return res.status(500).send({
+        message: err?.message || "An unknown error occurred",
+        status: "Error",
+      });
     }
   } else {
     return res
