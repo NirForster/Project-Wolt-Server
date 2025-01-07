@@ -163,9 +163,6 @@ const getUserLastOrders = async (req: RequestWithUserID, res: Response) => {
             return (item.product as IItem).photo;
           }),
         };
-        console.log(
-          "                                                                  "
-        );
 
         return result;
       });
