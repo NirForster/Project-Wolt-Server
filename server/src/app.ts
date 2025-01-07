@@ -11,6 +11,7 @@ const authRoutes = require("./routes/authRoute.ts");
 const userRoutes = require("./routes/userRoutes.ts");
 const shopRoutes = require("./routes/shopRoutes.ts");
 const favoritesRoutes = require("./routes/favoritesRoutes.ts");
+const ordersRoutes = require("./routes/ordersRoutes.ts");
 
 import Shop from "./models/Shop-model";
 import Item from "./models/Item-model";
@@ -685,10 +686,12 @@ mongoose
   // });
 }
 
-app.use(`${BASE_URL}auth`, authRoutes); //✅
+app.use(`${BASE_URL}auth`, authRoutes);
 
-app.use(`${BASE_URL}user`, userRoutes); //✅
+app.use(`${BASE_URL}user`, userRoutes);
 
-app.use(`${BASE_URL}favorites`, favoritesRoutes); //✅
+app.use(`${BASE_URL}favorites`, favoritesRoutes);
 
 app.use(`${BASE_URL}shop`, shopRoutes);
+
+app.use(`${BASE_URL}orders`, ordersRoutes);

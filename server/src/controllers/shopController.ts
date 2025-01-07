@@ -7,56 +7,6 @@ import Order, { IOrder } from "../models/Order-model";
 import { Types } from "mongoose";
 import Review from "src/types/reviewType";
 
-async function newOrderHandle(
-  user: IUser,
-  userID: string,
-  shop: string,
-  product: string,
-  quantity: number,
-  pricePerUnit: number
-) {
-  const newOrder = await Order.create({
-    user: userID,
-    shop,
-    items: { product, quantity, pricePerUnit },
-  }); // Creating new order
-
-  const newCart = [
-    newOrder._id as Types.ObjectId,
-    ...user.cart.map((order) => {
-      return order._id as Types.ObjectId;
-    }), // Creating new cart full off orders, including the current new one, so the user could  just save this array as his cart
-  ];
-  return newCart;
-}
-
-function newItemHandler(
-  product: Types.ObjectId,
-  quantity: number,
-  pricePerUnit: number
-) {
-  return {
-    product,
-    quantity,
-    pricePerUnit,
-  };
-}
-
-async function deleteOrderHandler(user: IUser, currentOrder: IOrder) {
-  const newCart = [
-    ...user.cart
-      .map((order) => {
-        return order._id as Types.ObjectId;
-      }) // Converting it back for ObjectId
-      .filter((orderID) => {
-        return orderID !== currentOrder._id;
-      }), // Removing the order
-  ];
-  user.cart = newCart; // Setting the new cart
-  user.save();
-  await Order.findByIdAndDelete(currentOrder._id); // Delete the order
-}
-
 //* Get the data of the given store
 //! GET http://localhost:3000/api/v1/shop/:id
 const getShopData = async (req: Request, res: Response) => {
@@ -76,112 +26,6 @@ const getShopData = async (req: Request, res: Response) => {
     });
   }
 }; // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
-
-//* Updating the user's cart
-//! PUT http://localhost:3000/api/v1/shop/
-const editOrder = async (req: RequestWithUserID, res: Response) => {
-  const userID = req.userID;
-  if (userID) {
-    try {
-      const { itemID, quantity } = req.body;
-      const user = await User.findById(userID).populate("cart");
-      const item = (await Item.findById(itemID)) as IItem;
-      if (!user || !item) {
-        return res.status(404).send({
-          status: "Error",
-          message: `There is no ${user ? "item" : "user"} with that id`,
-        });
-      }
-      const shopID = item.shop.toString();
-      let orderIndex = user.cart.findIndex((order) => {
-        const currentOrder = order as IOrder;
-        return currentOrder.shop.toString() === shopID.toString();
-      });
-
-      if (orderIndex === -1) {
-        // new order
-        if (quantity <= 0) {
-          return res.status(400).send({
-            status: "Error",
-            message: "Quantity of items must be above 0 , if its new order",
-          });
-        }
-        user.cart = await newOrderHandle(
-          user,
-          userID,
-          shopID,
-          itemID,
-          quantity,
-          item.currentPrice
-        );
-        user.save();
-      } else {
-        // existing order
-
-        const currentOrder = user.cart[orderIndex] as IOrder;
-        const itemIndex = currentOrder.items.findIndex((item) => {
-          return item.product.toString() === itemID;
-        });
-        if (itemIndex === -1) {
-          if (quantity <= 0) {
-            return res.status(400).send({
-              status: "Error",
-              message: "Quantity of items must be above 0 , if its new item",
-            });
-          }
-
-          // adding new item to existing order
-          currentOrder.items.push(
-            newItemHandler(itemID, quantity, item.currentPrice)
-          );
-          currentOrder.save();
-        } else {
-          // updating quantity of item in an order
-          if (quantity * -1 > currentOrder.items[itemIndex].quantity) {
-            return res.status(400).send({
-              status: "Error",
-              message:
-                "Invalid quantity number - absolute value of quantity is bigger than actual quantity ",
-            });
-          }
-          if (
-            quantity === 0 ||
-            quantity * -1 === currentOrder.items[itemIndex].quantity
-          ) {
-            // remove the item from the order
-            const newItems = currentOrder.items.filter((item) => {
-              return item.product.toString() !== itemID.toString();
-            });
-            if (newItems.length === 0) {
-              // Deleting the order
-              deleteOrderHandler(user, currentOrder);
-            } else {
-              currentOrder.items = newItems;
-              currentOrder.save();
-            }
-          } else {
-            // update the item's quantity
-            currentOrder.items[itemIndex].quantity += quantity;
-            currentOrder.save();
-          }
-        }
-      }
-      res.send({
-        status: "Success",
-        message: "Order was successfully updated",
-      });
-    } catch (err: any) {
-      res.status(500).send({
-        message: err?.message || "An unknown error occurred",
-        status: "Error",
-      });
-    }
-  } else {
-    res
-      .status(400)
-      .send({ status: "Error", message: "No user ID was provided" });
-  }
-};
 
 //* Adding new review on shop
 //! POST http://localhost:3000/api/v1/shop/:id/review
@@ -239,10 +83,92 @@ const addNewReview = async (req: RequestWithUserID, res: Response) => {
       .status(400)
       .send({ status: "Error", message: "No user ID was provided" });
   }
-};
+}; // Send: 201, 400, 403, 404 500 ({ message: string, status: "Success" | "Error" })
+
+//* Get the last order the user made from this shop
+//! GET http://localhost:3000/api/v1/shop/:id/last-order
+const getShopLastOrder = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+
+  if (userID) {
+    const shopID = req.params.id;
+
+    try {
+      const shop = await Shop.findById(shopID);
+
+      if (!shop) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no shop with that id" });
+      }
+      const orders = (await Order.find({
+        user: userID,
+        shop: shopID,
+      })
+        .sort({ date: -1 })
+        .populate({
+          path: "items.product",
+          model: "Item",
+        })) as IOrder[];
+      if (orders.length === 0) {
+        return res.status(204).send();
+      }
+      res.send({ status: "Success", order: orders[0] });
+    } catch (err: any) {
+      return res.status(500).send({
+        message: err.message || "An unknown error occurred",
+        status: "Error",
+      });
+    }
+  } else {
+    res
+      .status(400)
+      .send({ status: "Error", message: "No user ID was provided" });
+  }
+}; //Send: 200, 204, 400, 404, 500 ({message?: string, status?: "Success" | "Error", order? :})
+
+const getAllShops = async (req: RequestWithUserID, res: Response) => {
+  try {
+    res.send({ status: "Success", shops: await Shop.find() });
+  } catch (err: any) {
+    return res.status(500).send({
+      message: err.message || "An unknown error occurred",
+      status: "Error",
+    });
+  }
+}; // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops: Shop[] })
+
+//* Get all the shops in a category
+//! GET http://localhost:3000/api/v1/shop/category/:category
+const getShopsByCategory = async (req: RequestWithUserID, res: Response) => {
+  const { category } = req.params;
+  if (category) {
+    try {
+      const shops = await Shop.find({ categories: category });
+
+      if (shops.length === 0) {
+        return res.status(404).send({
+          status: "Error",
+          message: `No shops found for the category: ${category}`,
+        });
+      }
+
+      return res.send({ status: "Success", shops });
+    } catch (err: any) {
+      return res.status(500).send({
+        message: err.message || "An unknown error occurred",
+        status: "Error",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No category was given" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", shops?: shop[] })
 
 module.exports = {
   getShopData,
-  editOrder,
   addNewReview,
+  getShopLastOrder,
+  getAllShops,
+  getShopsByCategory,
 };
