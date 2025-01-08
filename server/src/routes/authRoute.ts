@@ -1,8 +1,15 @@
 import express from "express";
 import userAuth from "../middlewares/userAuth";
-const { signup, login, logout } = require("../controllers/authController");
+const {
+  signup,
+  login,
+  logout,
+  getCurrentUser,
+} = require("../controllers/authController");
 
 const router = express.Router();
+
+router.get("/me", userAuth, getCurrentUser);
 
 //* Sign up with new user
 //! POST http://localhost:3000/api/v1/auth/signup

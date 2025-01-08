@@ -5,14 +5,15 @@ const {
   deleteUser,
   updateUser,
   getUserData,
-  getUserLastOrders,
-  sentOrders,
+  getCart,
 } = require("../controllers/userController");
 
 const router = express.Router();
 
 //* Middleware to check the user authentication using JWT
 router.use(userAuth); // Send: 401, 404
+
+router.get("/cart", getCart);
 
 //* Delete a registered user
 //! DELETE http://localhost:3000/api/v1/user

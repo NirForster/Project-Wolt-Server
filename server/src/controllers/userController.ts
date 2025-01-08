@@ -129,8 +129,37 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
+const getCart = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID).populate({
+        path: "cart",
+        populate: [
+          { path: "shop", select: "name photo description" },
+          { path: "items.product" },
+        ],
+      })) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      res.send({ status: "Success", cart: user.cart });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+};
+
 module.exports = {
   deleteUser,
   updateUser,
   getUserData,
+  getCart,
 };

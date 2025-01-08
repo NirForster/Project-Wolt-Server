@@ -161,7 +161,7 @@ shopSchema.virtual("orders", {
   ref: "Order",
   localField: "_id",
   foreignField: "shop",
-  options: { sort: { createdAt: -1 } },
+  options: { sort: { createdAt: -1 }, match: { hasSent: true } },
 });
 
 shopSchema.virtual("menu", {

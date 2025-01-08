@@ -102,7 +102,7 @@ userSchema.virtual("lastOrders", {
   ref: "Order",
   localField: "_id",
   foreignField: "user",
-  options: { sort: { createdAt: -1 } },
+  options: { sort: { createdAt: -1 }, match: { hasSend: true } },
 });
 
 export default mongoose.model<IUser>("User", userSchema);
