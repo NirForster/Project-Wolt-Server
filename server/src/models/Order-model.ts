@@ -1,12 +1,14 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
+import { IShop } from "./Shop-model";
+import { IItem } from "./Item-model";
 
 export interface IOrder extends Document {
   user: Types.ObjectId;
-  shop: Types.ObjectId;
+  shop: Types.ObjectId | IShop;
   createdAt: Date;
   deliveringTime?: number;
   items: {
-    product: Types.ObjectId;
+    product: Types.ObjectId | IItem;
     quantity: number;
     pricePerUnit: number;
   }[];
@@ -50,10 +52,7 @@ const orderSchema = new Schema(
 );
 
 orderSchema.virtual("totalPrice").get(function () {
-  console.log("baba 1");
-
   const itemsAmount = this.items.length;
-  console.log("baba 2");
   if (itemsAmount > 0) {
     const prices = this.items.map((item) => {
       return item.quantity * item.pricePerUnit;

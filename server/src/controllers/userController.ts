@@ -1,10 +1,7 @@
 import { Response } from "express";
 import User, { IUser } from "../models/User-model";
-import Item from "../models/Item-model";
-import Shop from "../models/Shop-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
 import { RequestWithUserID } from "src/types/expressType";
-import path from "path";
 
 const bcrypt = require("bcrypt");
 
@@ -105,37 +102,13 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user? : User})
 
+//* Get the data of a user
+//! GET http://localhost:3000/api/v1/user
 const getUserData = async (req: RequestWithUserID, res: Response) => {
-  const Baba = { Item, Shop };
   const id = req.userID;
   if (id) {
     try {
-      const user = (await User.findById(id).populate({
-        path: "lastOrders",
-        populate: { path: "shop" },
-        // options: {
-        //   populate: [{ path: "shop", select: "name photo rate" }],
-        // },
-      })) as IUser;
-
-      // populate({
-      //   path: "lastOrders",
-      //   populate: [
-      //     { path: "shop", select: "name photo rate" },
-      //     // { path: "totalPrice" },
-      //   ],
-      // })) as IUser;
-      // user.lastOrders.forEach((order) => {
-      //   order.populate("item");
-      // });
-
-      // .populate({
-      //   path: "lastOrders",
-      //   populate: [
-      //     { path: "item", select: "foodName photo description" },
-      //     { path: "shop", select: "name photo description" },
-      //   ],
-      // });
+      const user = (await User.findById(id)) as IUser;
       if (user) {
         return res.send({ status: "Success", user });
       } else {
@@ -146,7 +119,7 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
     } catch (err: any) {
       return res.status(500).send({
         message: err?.message || "An unknown error occurred",
-        status: "Error1",
+        status: "Error",
       });
     }
   } else {
@@ -156,8 +129,37 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
+const getCart = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID).populate({
+        path: "cart",
+        populate: [
+          { path: "shop", select: "name photo description" },
+          { path: "items.product" },
+        ],
+      })) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      res.send({ status: "Success", cart: user.cart });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+};
+
 module.exports = {
   deleteUser,
   updateUser,
   getUserData,
+  getCart,
 };

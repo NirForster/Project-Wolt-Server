@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/User-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
+import { RequestWithUserID } from "src/types/expressType";
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -125,8 +126,35 @@ const logout = async (req: Request, res: Response) => {
   res.send({ message: "Logout-ed successfully", status: "Success" });
 }; // Send: 200 ({ message: string, status: "Success" })
 
+//* Fetch the current logged-in user
+//! GET http://localhost:3000/api/v1/auth/me
+const getCurrentUser = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID; // userID is set by the userAuth middleware
+  if (!userID) {
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
+  }
+
+  try {
+    const user = await User.findById(userID).select("-password"); // Avoid sending password in response
+    if (!user) {
+      return res
+        .status(404)
+        .send({ message: "User not found", status: "Error" });
+    }
+    res.status(200).send({ status: "Success", user });
+  } catch (error: any) {
+    res.status(500).send({
+      message: error.message || "An error occurred while fetching the user",
+      status: "Error",
+    });
+  }
+};
+
 module.exports = {
   signup,
   login,
   logout,
+  getCurrentUser,
 };

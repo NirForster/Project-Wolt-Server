@@ -145,12 +145,14 @@ shopSchema.pre<IShop>("save", function (next) {
 }); // Allow to save new store using only single location object
 
 shopSchema.virtual("rate").get(function () {
-  const reviewsAmount = this.reviews.length;
-  if (reviewsAmount > 0) {
-    const totalRating = this.reviews.reduce((sum, currentReview) => {
-      return sum + currentReview.rating;
-    }, 0);
-    return parseFloat((totalRating / reviewsAmount).toFixed(1));
+  if (this && this.reviews) {
+    const reviewsAmount = this.reviews.length;
+    if (reviewsAmount > 0) {
+      const totalRating = this.reviews.reduce((sum, currentReview) => {
+        return sum + currentReview.rating;
+      }, 0);
+      return parseFloat((totalRating / reviewsAmount).toFixed(1));
+    }
   }
   return 0;
 });
@@ -159,7 +161,7 @@ shopSchema.virtual("orders", {
   ref: "Order",
   localField: "_id",
   foreignField: "shop",
-  options: { sort: { createdAt: -1 } },
+  options: { sort: { createdAt: -1 }, match: { hasSent: true } },
 });
 
 shopSchema.virtual("menu", {
