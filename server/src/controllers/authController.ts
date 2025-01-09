@@ -119,11 +119,17 @@ const login = async (req: Request, res: Response) => {
 //! GET http://localhost:3000/api/v1/auth/logout
 const logout = async (req: Request, res: Response) => {
   res.cookie("token", "", {
-    maxAge: 1,
+
+
+
+    maxAge: 1, // Expires immediately
+
     httpOnly: true,
     sameSite: "strict",
   });
-  res.send({ message: "Logout-ed successfully", status: "Success" });
+  res
+    .status(200)
+    .send({ message: "Logged out successfully", status: "Success" });
 }; // Send: 200 ({ message: string, status: "Success" })
 
 //* Fetch the current logged-in user
