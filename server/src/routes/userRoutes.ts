@@ -8,6 +8,7 @@ const {
   getCart,
   addNewLocation,
   removeLocation,
+  getLocations,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -15,13 +16,17 @@ const router = express.Router();
 //* Middleware to check the user authentication using JWT
 router.use(userAuth); // Send: 401, 404
 
-//* add new location to the user
-//! PUT http://localhost:3000/api/v1/user/location/add
-router.put("/location/add", addNewLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+//* get all the user's locations
+//! GET http://localhost:3000/api/v1/user/locations
+router.get("/locations", getLocations); // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", locations?: [{type: "Home" | "Work" | "Other", address: string }] })
 
-//* remove a location based on his name from the user locations array
-//! PUT http://localhost:3000/api/v1/user/location/remove
-router.put("/location/remove", removeLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+//* add new location to the user locations
+//! PUT http://localhost:3000/api/v1/user/locations/add
+router.put("/locations/add", addNewLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
+//* remove a location from the user locations
+//! PUT http://localhost:3000/api/v1/user/locations/remove
+router.put("/locations/remove", removeLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 //* get the orders in the users cart
 //! GET http://localhost:3000/api/v1/user/cart

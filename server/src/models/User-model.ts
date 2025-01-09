@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
-import LocationType from "../types/location-type";
 import { IOrder } from "./Order-model";
 
 export interface IUser extends Document {
@@ -9,7 +8,10 @@ export interface IUser extends Document {
   lname: string;
   phone: string;
   photo: string;
-  locations: LocationType[];
+  locations: {
+    type: "Home" | "Work" | "Other";
+    address: string;
+  }[];
   favoritesShops: Types.ObjectId[];
   cart: Types.ObjectId[] | IOrder[];
   lastOrders: Types.ObjectId[] | IOrder[]; // Virtual property
@@ -64,7 +66,11 @@ const userSchema = new Schema(
     locations: {
       type: [
         {
-          name: { type: String, required: true },
+          type: {
+            type: String,
+            enum: ["Home", "Work", "Other"],
+            required: true,
+          },
           address: { type: String, required: true },
         },
       ],

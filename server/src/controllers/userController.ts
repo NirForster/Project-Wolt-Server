@@ -159,8 +159,8 @@ const getCart = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", cart?: Order[] })
 
-//* add new location to the user
-//! PUT http://localhost:3000/api/v1/user/location/add
+//* add new location to the user locations
+//! PUT http://localhost:3000/api/v1/user/locations/add
 const addNewLocation = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
@@ -171,23 +171,14 @@ const addNewLocation = async (req: RequestWithUserID, res: Response) => {
           .status(404)
           .send({ status: "Error", message: "There is no user with that ID" });
       }
-      const { name, address } = req.body;
-      if (!name || !address) {
+      const { type, address } = req.body;
+      if (!type || !address) {
         return res.status(400).send({
           status: "Error",
-          message: `Missing the ${name ? "address" : "name"} field`,
+          message: `Missing the ${type ? "address" : "type"} field`,
         });
       }
-      const hasThisName = user.locations.find((loc) => {
-        return loc.name.toLowerCase() === name.toLowerCase();
-      });
-      if (hasThisName) {
-        return res.status(400).send({
-          status: "Error",
-          message: "The user already have a location with that name",
-        });
-      }
-      user.locations.push({ name, address });
+      user.locations.push({ type, address });
       await user.save();
       return res.send({ status: "Success", message: "Location was added" });
     } catch (err: any) {
@@ -201,8 +192,8 @@ const addNewLocation = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
 
-//* remove a location based on his name from the user locations array
-//! PUT http://localhost:3000/api/v1/user/location/remove
+//* remove a location from the user locations
+//! PUT http://localhost:3000/api/v1/user/locations/remove
 const removeLocation = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
@@ -213,17 +204,17 @@ const removeLocation = async (req: RequestWithUserID, res: Response) => {
           .status(404)
           .send({ status: "Error", message: "There is no user with that ID" });
       }
-      const { name } = req.body;
-      if (!name) {
-        return res.send({ status: "Error", message: "Missing name field" });
+      const { address } = req.body;
+      if (!address) {
+        return res.send({ status: "Error", message: "Missing address field" });
       }
       const locIndex = user.locations.findIndex((loc) => {
-        return loc.name.toLowerCase() === name.toLowerCase();
+        return loc.address.toLowerCase() === address.toLowerCase();
       });
       if (locIndex === -1) {
         return res.status(400).send({
           status: "Error",
-          message: "The user don't have a location with that name",
+          message: "The user don't have a location with that address",
         });
       }
       user.locations.splice(locIndex, 1);
@@ -240,6 +231,30 @@ const removeLocation = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
 
+//* get all the user's locations
+//! GET http://localhost:3000/api/v1/user/locations
+const getLocations = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID)) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      return res.send({ status: "Success", locations: user.locations });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", locations?: [{type: "Home" | "Work" | "Other", address: string }] })
+
 module.exports = {
   deleteUser,
   updateUser,
@@ -247,4 +262,5 @@ module.exports = {
   getCart,
   addNewLocation,
   removeLocation,
+  getLocations,
 };

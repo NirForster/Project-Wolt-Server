@@ -56,7 +56,7 @@ const shopSchema = new Schema(
     locations: {
       type: [
         {
-          name: { type: String, required: true },
+          branchName: { type: String, required: true },
           address: { type: String, required: true },
         },
       ],
