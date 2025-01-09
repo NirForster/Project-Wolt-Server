@@ -2,13 +2,17 @@ import { NextFunction, Request, Response } from "express";
 import User from "../models/User-model";
 import { RequestWithUserID } from "src/types/expressType";
 const jwt = require("jsonwebtoken");
+const cookie = require("cookie");
 
 export default async function userAuth(
   req: RequestWithUserID,
   res: Response,
   next: NextFunction
 ): Promise<void> {
-  const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
+  const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {}; // ✅ Safely parse cookies
+  const token = cookies.token || req.headers.authorization?.split(" ")[1];
+  console.log(token);
+
   if (!token) {
     res.status(401).json({
       status: "error",
