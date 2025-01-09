@@ -6,6 +6,7 @@ export interface IItem extends Document {
   foodName: string;
   photo: string;
   description?: string;
+  category: string;
 }
 
 const ItemSchema = new Schema(
@@ -23,6 +24,8 @@ const ItemSchema = new Schema(
     },
 
     description: { type: String },
+
+    category: { type: String, required: true },
   },
   {
     toJSON: { virtuals: true }, // Include virtuals in JSON output
