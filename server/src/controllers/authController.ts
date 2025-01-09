@@ -52,7 +52,7 @@ const signup = async (req: Request, res: Response) => {
       expiresIn: "1d",
     });
     res.cookie("token", token, {
-      // httpOnly: true,
+      httpOnly: true,
       sameSite: "strict",
     });
     res.status(201).send({
@@ -96,7 +96,7 @@ const login = async (req: Request, res: Response) => {
       }
       if (result) {
         res.cookie("token", token, {
-          // httpOnly: true,
+          httpOnly: true,
           sameSite: "strict",
         });
         res.send({
@@ -119,7 +119,11 @@ const login = async (req: Request, res: Response) => {
 //! GET http://localhost:3000/api/v1/auth/logout
 const logout = async (req: Request, res: Response) => {
   res.cookie("token", "", {
+
+
+
     maxAge: 1, // Expires immediately
+
     httpOnly: true,
     sameSite: "strict",
   });

@@ -14,9 +14,9 @@ const shopRoutes = require("./routes/shopRoutes.ts");
 const favoritesRoutes = require("./routes/favoritesRoutes.ts");
 const ordersRoutes = require("./routes/ordersRoutes.ts");
 
-import Shop from "./models/Shop-model";
-import Item from "./models/Item-model";
-import Order from "./models/Order-model";
+// import Shop from "./models/Shop-model";
+// import Item from "./models/Item-model";
+// import Order from "./models/Order-model";
 
 // Environment variables
 dotenv.config();

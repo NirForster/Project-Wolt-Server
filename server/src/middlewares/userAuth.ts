@@ -11,8 +11,6 @@ export default async function userAuth(
 ): Promise<void> {
   const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {}; // ✅ Safely parse cookies
   const token = cookies.token || req.headers.authorization?.split(" ")[1];
-  console.log(token);
-
   if (!token) {
     res.status(401).json({
       status: "error",

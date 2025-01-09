@@ -129,6 +129,8 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
+//* get the orders in the users cart
+//! GET http://localhost:3000/api/v1/user/cart
 const getCart = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
@@ -155,11 +157,110 @@ const getCart = async (req: RequestWithUserID, res: Response) => {
   } else {
     res.status(400).send({ status: "Error", message: "No id was provided" });
   }
-};
+}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", cart?: Order[] })
+
+//* add new location to the user locations
+//! PUT http://localhost:3000/api/v1/user/locations/add
+const addNewLocation = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID)) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      const { type, address } = req.body;
+      if (!type || !address) {
+        return res.status(400).send({
+          status: "Error",
+          message: `Missing the ${type ? "address" : "type"} field`,
+        });
+      }
+      user.locations.push({ type, address });
+      await user.save();
+      return res.send({ status: "Success", message: "Location was added" });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
+//* remove a location from the user locations
+//! PUT http://localhost:3000/api/v1/user/locations/remove
+const removeLocation = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID)) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      const { address } = req.body;
+      if (!address) {
+        return res.send({ status: "Error", message: "Missing address field" });
+      }
+      const locIndex = user.locations.findIndex((loc) => {
+        return loc.address.toLowerCase() === address.toLowerCase();
+      });
+      if (locIndex === -1) {
+        return res.status(400).send({
+          status: "Error",
+          message: "The user don't have a location with that address",
+        });
+      }
+      user.locations.splice(locIndex, 1);
+      await user.save();
+      return res.send({ status: "Success", message: "Location was removed" });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
+//* get all the user's locations
+//! GET http://localhost:3000/api/v1/user/locations
+const getLocations = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID)) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      return res.send({ status: "Success", locations: user.locations });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", locations?: [{type: "Home" | "Work" | "Other", address: string }] })
 
 module.exports = {
   deleteUser,
   updateUser,
   getUserData,
   getCart,
+  addNewLocation,
+  removeLocation,
+  getLocations,
 };
