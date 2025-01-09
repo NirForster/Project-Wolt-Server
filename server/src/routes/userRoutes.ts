@@ -6,6 +6,8 @@ const {
   updateUser,
   getUserData,
   getCart,
+  addNewLocation,
+  removeLocation,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -13,7 +15,17 @@ const router = express.Router();
 //* Middleware to check the user authentication using JWT
 router.use(userAuth); // Send: 401, 404
 
-router.get("/cart", getCart);
+//* add new location to the user
+//! PUT http://localhost:3000/api/v1/user/location/add
+router.put("/location/add", addNewLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
+//* remove a location based on his name from the user locations array
+//! PUT http://localhost:3000/api/v1/user/location/remove
+router.put("/location/remove", removeLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
+//* get the orders in the users cart
+//! GET http://localhost:3000/api/v1/user/cart
+router.get("/cart", getCart); // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", cart?: Order[] })
 
 //* Delete a registered user
 //! DELETE http://localhost:3000/api/v1/user

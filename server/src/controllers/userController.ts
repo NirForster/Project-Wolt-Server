@@ -129,6 +129,8 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
+//* get the orders in the users cart
+//! GET http://localhost:3000/api/v1/user/cart
 const getCart = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
@@ -155,11 +157,94 @@ const getCart = async (req: RequestWithUserID, res: Response) => {
   } else {
     res.status(400).send({ status: "Error", message: "No id was provided" });
   }
-};
+}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", cart?: Order[] })
+
+//* add new location to the user
+//! PUT http://localhost:3000/api/v1/user/location/add
+const addNewLocation = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID)) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      const { name, address } = req.body;
+      if (!name || !address) {
+        return res.status(400).send({
+          status: "Error",
+          message: `Missing the ${name ? "address" : "name"} field`,
+        });
+      }
+      const hasThisName = user.locations.find((loc) => {
+        return loc.name.toLowerCase() === name.toLowerCase();
+      });
+      if (hasThisName) {
+        return res.status(400).send({
+          status: "Error",
+          message: "The user already have a location with that name",
+        });
+      }
+      user.locations.push({ name, address });
+      await user.save();
+      return res.send({ status: "Success", message: "Location was added" });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
+//* remove a location based on his name from the user locations array
+//! PUT http://localhost:3000/api/v1/user/location/remove
+const removeLocation = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID)) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      const { name } = req.body;
+      if (!name) {
+        return res.send({ status: "Error", message: "Missing name field" });
+      }
+      const locIndex = user.locations.findIndex((loc) => {
+        return loc.name.toLowerCase() === name.toLowerCase();
+      });
+      if (locIndex === -1) {
+        return res.status(400).send({
+          status: "Error",
+          message: "The user don't have a location with that name",
+        });
+      }
+      user.locations.splice(locIndex, 1);
+      await user.save();
+      return res.send({ status: "Success", message: "Location was removed" });
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "Unknown error has accrued",
+      });
+    }
+  } else {
+    res.status(400).send({ status: "Error", message: "No id was provided" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 module.exports = {
   deleteUser,
   updateUser,
   getUserData,
   getCart,
+  addNewLocation,
+  removeLocation,
 };

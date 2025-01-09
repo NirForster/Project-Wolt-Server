@@ -56,8 +56,8 @@ const shopSchema = new Schema(
     locations: {
       type: [
         {
-          lat: { type: Number, min: -90, max: 90, required: true },
-          lon: { type: Number, min: -180, max: 180, required: true },
+          name: { type: String, required: true },
+          address: { type: String, required: true },
         },
       ],
       default: [],
