@@ -21,8 +21,8 @@ router.get("/last", getUserLastOrders); // Send: 200, 400, 404, 500 ({ message?:
 router.put("/", userAuth, editOrder); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error "})
 
 //* "Send" the user orders to the shops
-//! GET http://localhost:3000/api/v1/orders/send
-router.get("/send", sendOrders); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+//! PUT http://localhost:3000/api/v1/orders/send
+router.put("/send", sendOrders); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 //* Get the order data
 //! GET http://localhost:3000/api/v1/orders/:id

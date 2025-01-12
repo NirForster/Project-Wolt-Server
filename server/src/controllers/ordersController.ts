@@ -217,7 +217,7 @@ const editOrder = async (req: RequestWithUserID, res: Response) => {
 }; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error "})
 
 //* "Send" the user orders to the shops
-//! GET http://localhost:3000/api/v1/orders/send
+//! PUT http://localhost:3000/api/v1/orders/send
 const sendOrders = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
@@ -236,6 +236,14 @@ const sendOrders = async (req: RequestWithUserID, res: Response) => {
             "In order to send the orders, tou first need to have orders and you have non!",
         });
       }
+      const { currentAddress } = req.body;
+      user.locations.forEach((loc) => {
+        if (loc.address === currentAddress) {
+          loc.isLast = true;
+        } else {
+          loc.isLast = false;
+        }
+      });
       user.cart.forEach((order) => {
         const currentOrder = order as IOrder;
         currentOrder.hasSent = true;

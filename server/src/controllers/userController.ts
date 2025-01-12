@@ -178,7 +178,7 @@ const addNewLocation = async (req: RequestWithUserID, res: Response) => {
           message: `Missing the ${type ? "address" : "type"} field`,
         });
       }
-      user.locations.push({ type, address });
+      user.locations.push({ type, address, isLast: false });
       await user.save();
       return res.send({ status: "Success", message: "Location was added" });
     } catch (err: any) {
