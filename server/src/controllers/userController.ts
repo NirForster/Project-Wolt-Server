@@ -255,6 +255,54 @@ const getLocations = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", locations?: [{type: "Home" | "Work" | "Other", address: string }] })
 
+//* Set the last location to the one that was received
+//! PUT http://localhost:3000/api/v1/user/locations/last
+const setLastLocation = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = await User.findById(userID);
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that ID" });
+      }
+      const { currentAddress } = req.body;
+      let hasFound = false;
+      const newLocations = user.locations.map((loc) => {
+        const address = loc.address;
+        if (address === currentAddress) {
+          hasFound = true;
+          return { type: loc.type, address, isLast: true };
+        }
+        return { type: loc.type, address, isLast: false };
+      });
+      if (hasFound) {
+        user.locations = newLocations;
+        user.save();
+        return res.send({
+          status: "Success",
+          message: `The address ${currentAddress} was saved as Last location`,
+        });
+      } else {
+        return res.status(404).send({
+          status: "Error",
+          message: "There is no such address in the user locations",
+        });
+      }
+    } catch (err: any) {
+      return res.status(500).send({
+        status: "Error",
+        message: err.message || "An unknown error had accrued",
+      });
+    }
+  } else {
+    res
+      .status(400)
+      .send({ status: "Error", message: "No user ID was provided" });
+  }
+}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
 module.exports = {
   deleteUser,
   updateUser,
@@ -263,4 +311,5 @@ module.exports = {
   addNewLocation,
   removeLocation,
   getLocations,
+  setLastLocation,
 };

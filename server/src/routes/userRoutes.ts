@@ -9,6 +9,7 @@ const {
   addNewLocation,
   removeLocation,
   getLocations,
+  setLastLocation,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -27,6 +28,10 @@ router.put("/locations/add", addNewLocation); // Send: 200, 400, 404, 500 ({ mes
 //* remove a location from the user locations
 //! PUT http://localhost:3000/api/v1/user/locations/remove
 router.put("/locations/remove", removeLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+
+//* Set the last location to the one that was received
+//! PUT http://localhost:3000/api/v1/user/locations/last
+router.put("/locations/last", setLastLocation); // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 //* get the orders in the users cart
 //! GET http://localhost:3000/api/v1/user/cart
