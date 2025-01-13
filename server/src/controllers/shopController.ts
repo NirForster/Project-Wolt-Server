@@ -21,11 +21,11 @@ const getShopData = async (req: Request, res: Response) => {
     return res.send({ status: "Success", shop });
   } catch (err: any) {
     return res.status(500).send({
-      message: err?.message || "An unknown error occurred",
+      message: err.message || "An unknown error occurred",
       status: "Error",
     });
   }
-}; // Send: 200, 404, 500 ({ message: string, status: "Success" | "Error" })
+}; // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", shop?: Shop })
 
 //* Adding new review on shop
 //! POST http://localhost:3000/api/v1/shop/:id/review
@@ -79,11 +79,11 @@ const addNewReview = async (req: RequestWithUserID, res: Response) => {
       });
     }
   } else {
-    res
-      .status(400)
-      .send({ status: "Error", message: "No user ID was provided" });
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 201, 400, 403, 404 500 ({ message: string, status: "Success" | "Error" })
+}; // Send: 201, 400, 401, 403, 404 500 ({ message: string, status: "Success" | "Error" })
 
 //* Get the last order the user made from this shop
 //! GET http://localhost:3000/api/v1/shop/:id/last-order
@@ -121,12 +121,14 @@ const getShopLastOrder = async (req: RequestWithUserID, res: Response) => {
       });
     }
   } else {
-    res
-      .status(400)
-      .send({ status: "Error", message: "No user ID was provided" });
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
   }
-}; //Send: 200, 204, 400, 404, 500 ({message?: string, status?: "Success" | "Error", order? :})
+}; // Send: 200, 204, 401 404, 500 ({ message?: string, status?: "Success" | "Error", order?: Order })
 
+//* Get all the shops
+//! GET http://localhost:3000/api/v1/shop/all
 const getAllShops = async (req: RequestWithUserID, res: Response) => {
   try {
     res.send({ status: "Success", shops: await Shop.find() });
@@ -136,7 +138,7 @@ const getAllShops = async (req: RequestWithUserID, res: Response) => {
       status: "Error",
     });
   }
-}; // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops: Shop[] })
+}; // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops?: Shop[] })
 
 //* Get all the shops in a category
 //! GET http://localhost:3000/api/v1/shop/category/:category
@@ -172,3 +174,7 @@ module.exports = {
   getAllShops,
   getShopsByCategory,
 };
+
+// return res
+// .status(401)
+// .send({ message: "User not authenticated", status: "Error" });

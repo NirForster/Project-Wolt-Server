@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { RequestWithUserID } from "src/types/expressType";
-import User from "../models/User-model";
+import User, { IUser } from "../models/User-model";
 
 //* Get all the user's favorites shops (populated together)
 //! GET http://localhost:3000/api/v1/favorites
@@ -20,16 +20,16 @@ const getUserFavoritesShops = async (req: RequestWithUserID, res: Response) => {
       });
     } catch (err: any) {
       return res.status(500).send({
-        message: err?.message || "An unknown error occurred",
+        message: err.message || "An unknown error occurred",
         status: "Error",
       });
     }
   } else {
-    res
-      .status(400)
-      .send({ status: "Error", message: "No user ID was provided" });
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error",  favoritesShops?: Shop[] })
+}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error",  favoritesShops?: Shop[] })
 
 //* Add new shop to the user favorites
 //! PUT http://localhost:3000/api/v1/favorites/add
@@ -66,19 +66,19 @@ const addToFavorites = async (req: RequestWithUserID, res: Response) => {
       });
     }
   } else {
-    res
-      .status(400)
-      .send({ status: "Error", message: "No user ID was provided" });
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+}; // Send: 200, 400, 401 404, 500 ({ message: string, status: "Success" | "Error" })
 
-//* Add new shop to the user favorites
+//* Remove a shop from the user favorites
 //! PUT http://localhost:3000/api/v1/favorites/remove
 const removeFromFavorites = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
     try {
-      const user = await User.findById(userID);
+      const user = (await User.findById(userID)) as IUser;
       if (!user) {
         return res
           .status(404)
@@ -104,16 +104,16 @@ const removeFromFavorites = async (req: RequestWithUserID, res: Response) => {
       });
     } catch (err: any) {
       return res.status(500).send({
-        message: err?.message || "An unknown error occurred",
+        message: err.message || "An unknown error occurred",
         status: "Error",
       });
     }
   } else {
-    res
-      .status(400)
-      .send({ status: "Error", message: "No user ID was provided" });
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 200, 400, 404, 500 ({ message: string, status: "Success" | "Error" })
+}; // Send: 200, 400, 401, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 module.exports = {
   getUserFavoritesShops,
