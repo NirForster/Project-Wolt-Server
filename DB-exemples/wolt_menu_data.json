@@ -1,0 +1,4004 @@
+{
+  "city": "TLV - Herzliya area",
+  "restaurants": [
+    {
+      "name": "Chawarma | Kosher",
+      "menu": [
+        {
+          "sectionTitle": "‫עסקיות 🍽",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "עסקית בצלחת",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/5259ff4c-659a-11ed-9372-72702179a224______________.jpeg",
+              "price": "₪93.00",
+              "description": "בחרו סוג בשר | מוגש עם סלטים, ציפס ושתיה לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "מעורב ירושלמי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חזה עוף",
+                      "optionPrice": "-₪7.00"
+                    },
+                    {
+                      "optionLabel": "שניצל",
+                      "optionPrice": "-₪7.00"
+                    },
+                    {
+                      "optionLabel": "סטייק פרגית",
+                      "optionPrice": "-₪7.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 1 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 2",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "אורז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל סומק",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס טחינה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ׳יפס",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "כן, בבקשה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "לא, תודה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "ללא פיתה בצד",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פיתה בצד",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת פיתה בתשלום",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "תוספת פיתה",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו שתייה",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "מים מינרלים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סודה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט זירו",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית פאנטה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה זירו",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "עסקית פיתה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/2b5e5b88-19b5-11ea-9136-0a586468f478_____________.jpeg",
+              "price": "₪78.00",
+              "description": "בחרו סוג בשר | מוגש עם סלטים, ציפס ושתיה לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "חזה עוף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "שניצל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מעורב ירושלמי",
+                      "optionPrice": "+₪7.00"
+                    },
+                    {
+                      "optionLabel": "סטייק פרגית",
+                      "optionPrice": "+₪7.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪11.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ׳יפס",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "כן, בבקשה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "לא, תודה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו שתייה",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "מים מינרלים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סודה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט זירו",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית פאנטה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה זירו",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "עסקית לאפה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/57c01e14-19b5-11ea-905d-0a58646a8606_____________.jpeg",
+              "price": "₪87.00",
+              "description": "בחרו סוג בשר | מוגש עם סלטים, ציפס ושתיה לבחירה",
+              "isPopular": true,
+              "formData": [
+                {
+                  "title": "בחרו בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "חזה עוף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "שניצל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מעורב ירושלמי",
+                      "optionPrice": "+₪7.00"
+                    },
+                    {
+                      "optionLabel": "סטייק פרגית",
+                      "optionPrice": "+₪7.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪21.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ׳יפס",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "כן, בבקשה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "לא, תודה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו שתייה",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "מים מינרלים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סודה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט זירו",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית פאנטה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה זירו",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "עסקית סלט",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/043a148e-7ec1-11ec-a781-9e181599e12f____________.jpeg",
+              "price": "₪83.00",
+              "description": "בחרו סוג בשר | מוגש עם סלטים, ציפס ושתיה לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "חזה עוף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "שניצל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סטייק פרגית",
+                      "optionPrice": "+₪4.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪21.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ׳יפס",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "כן, בבקשה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "לא, תודה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו שתייה",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "מים מינרלים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סודה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית ספרייט זירו",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית פאנטה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פחית קולה זירו",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionTitle": "מנות צ'אוורמה",
+          "sectionDescription": "השווארמה שלנו היא שווארמה הודו",
+          "items": [
+            {
+              "name": "פיתה צ'אוורמה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/b4c09448-659a-11ed-a7e5-eea3a1b01f05_____________.jpeg",
+              "price": "₪55.00",
+              "description": "שווארמה בפיתה | מוגש עם סלטים לבחירה",
+              "isPopular": true,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪11.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "לאפה צ'אוורמה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/9379824a-659a-11ed-b62f-3a5c7edbb0c9_____________.jpeg",
+              "price": "₪65.00",
+              "description": "שווארמה בלאפה | מוגש עם סלטים לבחירה",
+              "isPopular": true,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪21.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "סלט צ'אוורמה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/99c547f6-659a-11ed-ba41-daeda33bb51b____________.jpeg",
+              "price": "₪69.00",
+              "description": "מנה של צ'אוורמה עם הסלטים שלנו\nבחרו מה לשים בפנים\n*התמונה להמחשה בלבד",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים:",
+                  "description": "Choose at least 2 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חסה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose up to 11 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 1 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫תרצו רטבים בצד?",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪4.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "ללא פיתה בצד",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פיתה בצד",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת פיתה בתשלום",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "תוספת פיתה",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "צלחת שווארמה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/7a551a68-659a-11ed-b421-167392ac6060_____________.jpeg",
+              "price": "₪79.00",
+              "description": "שווארמה בצלחת | מוגש עם סלטים לבחירה",
+              "isPopular": true,
+              "formData": [
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 2",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "אורז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל סומק",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס טחינה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 2 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "בלי פיתה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת 2 פיתות",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionTitle": "המעורב הירושלמי האמיתי",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "לאפה מעורב",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/a18b974c-659a-11ed-b478-4add9c28a57d___________________.jpeg",
+              "price": "₪69.00",
+              "description": "כבד עוף, לבבות, חזה עוף וטחולים\nבחרו תוספות למנה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪21.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "פיתה מעורב",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/abe332ae-659a-11ed-bb6f-92e1bec08cce___________________.jpeg",
+              "price": "₪59.00",
+              "description": "כבד עוף, לבבות, חזה עוף וטחולים\nבחרו תוספות למנה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪11.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "צלחת מעורב",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/bb05db74-659a-11ed-a9e7-fa2338a721d1___________________.jpeg",
+              "price": "₪84.00",
+              "description": "כבד עוף, לבבות, חזה עוף וטחולים\nבחרו תוספות למנה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 2",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "אורז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל סומק",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס טחינה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 2 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "בלי פיתה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת 2 פיתות",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionTitle": "מנות חזה עוף",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "פיתה חזה עוף",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/eb7f9a6a-659a-11ed-85bf-de253075ef46_____________.jpeg",
+              "price": "₪53.00",
+              "description": "חזה עוף בפיתה | מוגש עם סלטים לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪11.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "לאפה חזה עוף",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/fadf60c6-659a-11ed-bb14-3232c38bff12_____________.jpeg",
+              "price": "₪63.00",
+              "description": "חזה עוף בלאפה | מוגש עם סלטים לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪21.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "צלחת חזה עוף",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/0417a130-659b-11ed-8bdf-d24d204b9a59_____________.jpeg",
+              "price": "₪77.00",
+              "description": "חזה עוף בצלחת | מוגש עם סלטים לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 2",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "אורז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל סומק",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס טחינה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "בלי פיתה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת 2 פיתות",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 2 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "סלט חזה עוף",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/2441d6f6-659b-11ed-90ba-fa2338a721d1____________.jpeg",
+              "price": "₪65.00",
+              "description": "בחרו מה לשים בפנים",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים:",
+                  "description": "Choose at least 2 and at most 11",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חסה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 11",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫תרצו רטבים בצד?",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪4.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "ללא פיתה בצד",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פיתה בצד",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת פיתה בתשלום",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "תוספת פיתה",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionTitle": "מנות שניצל",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "פיתה שניצל",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/eb7f9a6a-659a-11ed-85bf-de253075ef46_____________.jpeg",
+              "price": "₪51.00",
+              "description": "שניצל בפיתה | מוגש עם סלטים לבחירה",
+              "isPopular": true,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪11.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "לאפה שניצל",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/fadf60c6-659a-11ed-bb14-3232c38bff12_____________.jpeg",
+              "price": "₪57.00",
+              "description": "שניצל בלאפה | מוגש עם סלטים לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪21.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "צלחת שניצל",
+              "image": "No Image",
+              "price": "₪68.00",
+              "description": "שניצל בצלחת | מוגש עם סלטים לבחירה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 2",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "אורז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל סומק",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס טחינה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "בלי פיתה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת 2 פיתות",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 2 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "סלט שניצל",
+              "image": "No Image",
+              "price": "₪67.00",
+              "description": "בחרו מה לשים בפנים",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים:",
+                  "description": "Choose at least 2 and at most 11",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חסה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 11",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫תרצו רטבים בצד?",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪4.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "ללא פיתה בצד",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פיתה בצד",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת פיתה בתשלום",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "תוספת פיתה",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionTitle": "מנות פרגית",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "פיתה סטייק פרגית",
+              "image": "No Image",
+              "price": "₪55.00",
+              "description": "בחרו תוספות למנה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪11.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "לאפה סטייק פרגית",
+              "image": "No Image",
+              "price": "₪65.00",
+              "description": "בחרו תוספות למנה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים",
+                  "description": "Choose at least 1 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪21.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "סלט סטייק פרגית",
+              "image": "No Image",
+              "price": "₪69.00",
+              "description": "מנה של צ'אוורמה עם הסלטים שלנו\nבחרו מה לשים בפנים\n*התמונה להמחשה בלבד",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו מה לשים בפנים:",
+                  "description": "Choose at least 2 and at most 10",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חסה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose up to 11 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 1 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫תרצו רטבים בצד?",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪4.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪4.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "ללא פיתה בצד",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "פיתה בצד",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת פיתה בתשלום",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "תוספת פיתה",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "צלחת סטייק פרגית",
+              "image": "No Image",
+              "price": "₪84.00",
+              "description": "בחרו תוספות למנה",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 2 and at most 2",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "אורז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "בצל סומק",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חומוס טחינה",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת צ'יפס בצד",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "ללא צ'יפס",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת צ'יפס בצד",
+                      "optionPrice": "+₪16.00"
+                    },
+                    {
+                      "optionLabel": "צ'יפס גדול",
+                      "optionPrice": "+₪25.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת סלטים בצד",
+                  "description": "Choose up to 7 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "סלט ירקות",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "כרוב לבן",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "חמוצים",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "בצל",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "שיפקה",
+                      "optionPrice": "+₪5.00"
+                    },
+                    {
+                      "optionLabel": "‫חמוצי הבית חריף 🌶️",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "הגדלת מנת בשר",
+                  "description": "Choose up to 2 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "רגיל",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "מוגדל",
+                      "optionPrice": "+₪27.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "בחרו תוספת לחם",
+                  "description": "",
+                  "type": "radio",
+                  "options": [
+                    {
+                      "optionLabel": "בלי פיתה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "תוספת 2 פיתות",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                },
+                {
+                  "title": "תוספת פיתה בתשלום",
+                  "description": "Choose up to 10 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "תוספת פיתה",
+                      "optionPrice": "+₪5.00"
+                    }
+                  ]
+                },
+                {
+                  "title": "‫צריכים סכו״ם?",
+                  "description": "Choose up to 5 additional items",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "סכו״ם חד״פ 🍴",
+                      "optionPrice": "+₪2.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionTitle": "תוספות",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "אורז לבן",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/33f8163c-659b-11ed-bb5c-6a5b4ac8a621_____.jpeg",
+              "price": "₪27.00",
+              "description": "",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "צ'יפס ביתי קטן",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/3b40874e-659b-11ed-a1e1-de400c399ccc__________.jpeg",
+              "price": "₪19.00",
+              "description": "",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "צ'יפס ביתי גדול",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/413cb3ca-659b-11ed-be06-de253075ef46___________.jpeg",
+              "price": "₪33.00",
+              "description": "",
+              "isPopular": false,
+              "formData": []
+            }
+          ]
+        },
+        {
+          "sectionTitle": "במשקל",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "‫200 גרם",
+              "image": "No Image",
+              "price": "₪27.00",
+              "description": "בחרו סלט",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "‫500 גרם",
+              "image": "No Image",
+              "price": "₪52.00",
+              "description": "בחרו סלט",
+              "isPopular": false,
+              "formData": [
+                {
+                  "title": "בחרו תוספות",
+                  "description": "Choose at least 1 and at most 1",
+                  "type": "checkbox",
+                  "options": [
+                    {
+                      "optionLabel": "חציל במיונז",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "סלט טורקי",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "טחינה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "עמבה",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "חריף",
+                      "optionPrice": "Included"
+                    },
+                    {
+                      "optionLabel": "כרוב סגול במיונז",
+                      "optionPrice": "Included"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionTitle": "‫שתייה קלה 🥤",
+          "sectionDescription": "",
+          "items": [
+            {
+              "name": "פחית קוקה קולה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/b7c695a4-69dc-11eb-9b2d-6e1e2c8120b8_coca_cola_can_330ml.jpeg",
+              "price": "₪15.00",
+              "description": "0,33",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "פחית קוקה קולה זירו",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/bb8874f0-69dc-11eb-81c4-220ec666a12f_coca_cola_zero_can_330ml_.jpeg",
+              "price": "₪15.00",
+              "description": "0,33",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "פחית ספרייט",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/c057b478-69dc-11eb-86a3-8eba92ab317d_53003_wolt_8500x4800_sprite_can_lime.jpeg",
+              "price": "₪15.00",
+              "description": "0,33",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "פחית ספרייט זירו",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/c3c41b74-69dc-11eb-81b7-da2e4234fd34_53003_wolt_8500x4800_sprite_can_zero.jpeg",
+              "price": "₪15.00",
+              "description": "0,33",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "פחית פאנטה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/c813420e-69dc-11eb-b905-f214147832e1_52272_wolt_8500x4800_sleek_can_orenge.jpeg",
+              "price": "₪15.00",
+              "description": "0,33",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "סודה",
+              "image": "https://imageproxy.wolt.com/menu/menu-images/5de52420f37e516b3a03a83f/cc8d56f8-69dc-11eb-9e0d-da2e4234fd34_kinley_soda_250_ml.jpeg",
+              "price": "₪14.00",
+              "description": "0,25",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "פריגת תפוזים",
+              "image": "https://image-resizer-proxy.development.dev.woltapi.com/wolt-dev-development-restaurant-api-menu-images/menu-images/5fbe3d6b40ccbfedccfd71a0/008d2c30-f8e9-11eb-a39c-467f67de554e_52887_labels_mashkal_2020_orange_330ml_wolt_1440x810.jpeg",
+              "price": "₪16.00",
+              "description": "0,33",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "מים מינרליים",
+              "image": "https://image-resizer-proxy.development.dev.woltapi.com/wolt-dev-development-restaurant-api-menu-images/menu-images/5fbe3d6b40ccbfedccfd71a0/7da3790a-e29a-11eb-b3c3-22915ab626ac________________________.jpeg",
+              "price": "₪14.00",
+              "description": "0,5",
+              "isPopular": false,
+              "formData": []
+            },
+            {
+              "name": "פריגת ענבים",
+              "image": "https://image-resizer-proxy.development.dev.woltapi.com/wolt-dev-development-restaurant-api-menu-images/menu-images/5fbe3d6b40ccbfedccfd71a0/05bccf94-f8e9-11eb-ae94-c268f97193e5_52887_labels_mashkal_2020_grape_330ml_wolt_1440x810.jpeg",
+              "price": "₪16.00",
+              "description": "0,33",
+              "isPopular": false,
+              "formData": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
