@@ -1,0 +1,1494 @@
+[
+  {
+    "city": "TLV - Herzliya area",
+    "carousels": [
+      {
+        "title": "Unnamed Carousel",
+        "restaurants": [
+          {
+            "name": "Amore Mio",
+            "image": "https://imageproxy.wolt.com/assets/673206cd2d3e61400737f402",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "italian, pastaItalian restaurant in Tel Aviv City Center"
+          },
+          {
+            "name": "PASTA VIA | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/venue/5c332e779a4d65000b1a7b02/28b02f80-e0b9-11ea-833a-a6b6833e04fd_2.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pasta, italianItalian Pasta Deli"
+          },
+          {
+            "name": "MeatBar Burger | Ibn Gvirol",
+            "image": "https://imageproxy.wolt.com/mes-image/bd1e3b84-6a02-4e1d-ba66-390bf11b00dd/b1a4a636-e170-49d4-9d7f-f69101fb8509",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "hamburger, street foodPremium Burgers by MeatBar"
+          },
+          {
+            "name": "HaMosad",
+            "image": "https://imageproxy.wolt.com/venue/5bf185777d99cb000b2a85b3/8f6819d8-73ae-11ed-8d97-aa475ae0985a______.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, kidsThe Special Hamburger Institution"
+          },
+          {
+            "name": "Shi-Shi | שי-שי",
+            "image": "https://imageproxy.wolt.com/venue/5c92064e38bff3000b58f5ca/b536a002-99c4-11ee-904d-8e1566199940_wolt_6.12_yael_bonfis1159.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sushi, asianTalk & Roll | Fine Asian Street Food"
+          },
+          {
+            "name": "FU Sushi",
+            "image": "https://imageproxy.wolt.com/venue/5e788e86754a042a5795ae86/bcfc39b4-99f0-11ef-9bb6-563187e4e0b2______________.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sushi, noodlesAsian Kitchen & Sushi Bar"
+          },
+          {
+            "name": "Under The Tree | Ben Yehuda",
+            "image": "https://imageproxy.wolt.com/venue/5d637a1c10314b0d7f26c30a/a0bc4c42-05f1-11ee-9190-1adf0ba4096d_cae83358_7c55_11ed_bb4e_6ac07effbb1f_list2__1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "breakfast, saladHappy Food & Good Vibes ❤️"
+          },
+          {
+            "name": "Ze Sushi | Bazel",
+            "image": "https://imageproxy.wolt.com/venue/5dfb3985024e8886d0302765/95d19586-3eac-11ef-8c64-be5bf445c05b_ze_shusi__________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, japaneseFine Sushi Delivery"
+          },
+          {
+            "name": "Fat Cow",
+            "image": "https://imageproxy.wolt.com/venue/5bf12a14344b00000a5a18d7/4d9ab718-7174-11ed-a3c8-deebe0fa9271_______.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, street foodButcher's Burger"
+          },
+          {
+            "name": "Bustan Hashcuna | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/assets/673206e9cdb5690c30836555",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, kosherFruits & Vegetables & More"
+          },
+          {
+            "name": "Katzavia Besheinkin | Tel aviv",
+            "image": "https://imageproxy.wolt.com/venue/636269cd88ba6483c695e730/fe0d003a-81c1-11ed-a429-a2fad5d2e9f0_759caf8c_3411_11ed_a916_a6254c19c1aa_r72a0921.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "Chef Israel Aharoni's butcher shop"
+          },
+          {
+            "name": "Baladi Market | TLV",
+            "image": "https://imageproxy.wolt.com/venue/659ab1130c00204d93f92635/fb266c46-b062-11ee-a864-be22cffa1f77_659ab1130c00204d93f92635_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, vegetableFruits, vegetables, pantry & dairy products"
+          },
+          {
+            "name": "Barbunia Deli",
+            "image": "https://imageproxy.wolt.com/venue/5e844ee83e48ba9ac8a794fd/68abeafa-b915-11ea-b5ba-d60ca616f7bd_dsc_4030_edit.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fish, seafoodBarbunia's Deli"
+          },
+          {
+            "name": "La Fromagerie | Sarona",
+            "image": "https://imageproxy.wolt.com/assets/67320708cc36c632963385b8",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deliMore than a cheese store"
+          },
+          {
+            "name": "Zuppa | Ibn Gabirol 138",
+            "image": "https://imageproxy.wolt.com/venue/5bfc35369f330a000be2cb0a/bd7f49d0-d1cb-11eb-aa46-5e0ea8b1fac7_______1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "salad, sandwichSoups & Stews For The Soul"
+          },
+          {
+            "name": "Giraffe | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/64ddf07f9ccd4f1430bb0ac2/dfc504d0-3ce5-11ee-8532-82d6d5f567fc_6e5fb4d8_3b60_11ee_a320_0aa1a3e77f9a_9325efdc_39c4_11ee_8f4c_8e8affe12086_725a80b8_31d3_11ee_bd17_cad10f2bbc22___________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, japaneseNoodles | Sushi Bar"
+          },
+          {
+            "name": "Lilush",
+            "image": "https://imageproxy.wolt.com/venue/5c1e9f9e9159cc0009a9864e/03cb1106-8ebd-11ea-a2f3-0a58646e610f_dsc_0919untitledbig_2.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pasta, sandwichYour Local Bistro"
+          },
+          {
+            "name": "Wok Republic | Ben Yehuda",
+            "image": "https://imageproxy.wolt.com/venue/5df7ae7668e0074e549b36c3/a8b6a36a-2a09-11ea-89d0-0a58646c41a5_yaelitz.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, noodlesASIAN STREET FOOD"
+          },
+          {
+            "name": "M32 | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/assets/67320727308c8149ae82d6e2",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "street food, burgerThe best burger in town"
+          },
+          {
+            "name": "Rainbow 🌈 Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/venue/5c02beb0c5e8cf0009e7419f/6868143a-6b7e-11eb-b902-72fef6a8740a_1__1__min.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "vegan, burger100% Vegan Burger Joint"
+          },
+          {
+            "name": "Silly Kid",
+            "image": "https://imageproxy.wolt.com/assets/673206d6308c8149ae82d3cc",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "street food, sandwichCrispy Street Food"
+          },
+          {
+            "name": "Aharoni's Fried Chicken | Sarona",
+            "image": "https://imageproxy.wolt.com/venue/648eed0017c8276b9965e6a6/4f8560c6-2aee-11ee-81b0-3639d3426b52_karela_08512.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "chicken, saladThe Fried Chicken of Chef Israel Aharoni"
+          },
+          {
+            "name": "Philadelphia",
+            "image": "https://imageproxy.wolt.com/venue/5f82dace547bd697d4dee4ea/8f0240a4-11ef-11eb-86e3-2eeee06bed79_karela_00327.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sandwich, kidsGood Food Fast"
+          },
+          {
+            "name": "Chawarma | Kosher",
+            "image": "https://imageproxy.wolt.com/venue/5de51fa6f86db168cdf4f205/f23a600348d2746a3fcad1b66d33ab36-edits/6bd00fc8121155ad02cfd38797b7d339",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pita, street foodShawarma | Chicken | Schnitzel | Jerusalem Mixed Grill"
+          },
+          {
+            "name": "Papi Pizza | פאפי פיצה",
+            "image": "https://imageproxy.wolt.com/venue/5f02e542e2d2ed2c416bdb86/c7291624-842f-11ed-838d-fad6cc3f5010_image_6487327.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pizza, italianHand made pizza | by chef Yiftach koren"
+          },
+          {
+            "name": "Rak Marak | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/assets/673206f1f45db57ef6003365",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "kosher, soupMORE THAN JUST SOUP"
+          },
+          {
+            "name": "Anastasia",
+            "image": "https://imageproxy.wolt.com/venue/5c9cbe0bbd41af000dc1275a/da9b507a-cdc3-11ef-9f56-e6caeccdc54b__________copy.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "vegan, sandwichVegan Cafe 🌱"
+          },
+          {
+            "name": "Joseph 'N' Sons",
+            "image": "https://imageproxy.wolt.com/venue/5c096e43cffeda000a5a441c/62fe9906-cc05-11ef-8f2f-6e5a6443365d_wpt_wolt_312_yael_bonfis12567__1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fish, street foodEat Your Fish & Drink Your Beer"
+          },
+          {
+            "name": "Taqueria",
+            "image": "https://imageproxy.wolt.com/venue/5c0d5fa272f68a000b041dbc/8acf5daa-f978-11ed-b037-162d8c4ac72b_whatsapp_image_2023_05_23_at_16.45.32.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mexican, salad‫Slow food, fast service"
+          },
+          {
+            "name": "Café Noir",
+            "image": "https://imageproxy.wolt.com/venue/5dfe6b40aa567678c7957efd/89b6071e-73d8-11ed-9f0d-9eba126da637_cafe_noir4729.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bistro, homemadeIntimate Bistro In The Heart of Tel Aviv"
+          },
+          {
+            "name": "McDonald's® Rothschild",
+            "image": "https://imageproxy.wolt.com/mes-image/c6b01755-2029-4c1b-99cc-cda8df8305a2/4f913b9f-5329-4858-9cd5-e53c8ba99685",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, hamburgerMcRoyal, the most popular hamburger in Israel"
+          },
+          {
+            "name": "Congress Basel",
+            "image": "https://imageproxy.wolt.com/venue/5ddbaafdb347a52a0e4807ec/c16016cc-a80c-11ef-afd6-d66b9127bec6_wolt_18118709__1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "street food, shawarmaShawarma, Sport and Home Food"
+          },
+          {
+            "name": "COFFEEBAR",
+            "image": "https://imageproxy.wolt.com/venue/5e57b2d11084fe67bbbd0e86/8f2c3f9c-748c-11ed-828a-1abe01cff893_coffeebar22881.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bistro, saladBy R2M"
+          },
+          {
+            "name": "Super Yuda | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/assets/673206d2479a971266a6831a",
+            "deliveryPrice": "0₪ Delivery fee(selected item)",
+            "category": "Supermarket, groceryThe Heart of Tel Aviv"
+          },
+          {
+            "name": "Wolt Market | Ben Yehuda",
+            "image": "https://imageproxy.wolt.com/assets/673206f2e797795fa3838d8d",
+            "deliveryPrice": "0₪ Delivery fee(selected item)",
+            "category": "groceries, groceryYour supermarket, Wolt style"
+          },
+          {
+            "name": "am:pm | Hakastel Old North",
+            "image": "https://imageproxy.wolt.com/mes-image/f075c9bf-d8ac-4256-9895-46d7db1ef9dd/175b3bc5-e3e5-4756-86c2-78cbad352ded",
+            "deliveryPrice": "0₪ Delivery fee(selected item)",
+            "category": "groceries, SupermarketCity Market"
+          },
+          {
+            "name": "Victory | Weizmann",
+            "image": "https://imageproxy.wolt.com/assets/673206ece24e8e5c114d9fdb",
+            "deliveryPrice": "0₪ Delivery fee(selected item)",
+            "category": "milk, groceriesSave&Win"
+          },
+          {
+            "name": "Shufersal | Yehuda HaMakkabbi",
+            "image": "https://imageproxy.wolt.com/assets/673207515c02197d8ff64469",
+            "deliveryPrice": "0₪ Delivery fee(selected item)",
+            "category": "Supermarket, groceriessupermarket"
+          },
+          {
+            "name": "Golda | Kikar HaMedina",
+            "image": "https://imageproxy.wolt.com/mes-image/e239cf58-488a-4a5d-97a5-22fe8caa1055/df26ac01-b1bb-4059-907e-baacfc933097",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "ice cream, sweetsGolda Ice Cream - Flavor Boutique"
+          },
+          {
+            "name": "May 6",
+            "image": "https://imageproxy.wolt.com/venue/5ec3caaa1cd67cae42c88bc3/03968b50-6ead-11ef-8354-8a91f8ec1456_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "café, saladGood Food Good Mood"
+          },
+          {
+            "name": "BRETONNE | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/venue/5c8f9044745f380012995348/edeba970-73c2-11ed-a20c-aa1a67cace85_bretonne___ibn_gabirol.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, street foodLocal Crêperie"
+          },
+          {
+            "name": "Night Cookie 🍪 | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/5c9752df94580d000c1f8539/40175cfc-b81b-11ed-aff9-7a803c230a0a_______1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, ice creamSweet and Hot Cookies | Desserts"
+          },
+          {
+            "name": "Black Store",
+            "image": "https://imageproxy.wolt.com/venue/631defb6856889ee3e22c4d0/5adb15fc-3296-11ed-824f-92cf5a438e1d_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pancakesWe Dream in Black"
+          },
+          {
+            "name": "Japanika Kosher | Bursa Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/630f07692701c6d758818884/f0400b28-2e8d-11ed-bf9a-6ae068abc488_yaelitz_33.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, japaneseHouse of Asian Food"
+          },
+          {
+            "name": "Shake Shack | TLV",
+            "image": "https://imageproxy.wolt.com/venue/66cc4638e2d7d5236de1cf82/ac172110-7036-11ef-853e-0a41309f4e7c_f34c829a_6e98_11ef_8c63_b6efc9d3e0f5_wolt2.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "hotdog, milkshakeStand For Something Good"
+          },
+          {
+            "name": "Abulafia | TLV Port",
+            "image": "https://imageproxy.wolt.com/venue/5c49c976115ac6000ba78d82/e6fa9a65d7e15465dcb1f9da743602a7-edits/e9830e0dbc1ee996b1cff09762e90eb1",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, vegetarianPastries From the Legendary Abulafia Bakery | By Said Abulafia"
+          },
+          {
+            "name": "Gusto",
+            "image": "https://imageproxy.wolt.com/venue/5c72d86d5c3da4000b254a7f/f7a00d56-73b0-11ed-ad5b-8a795aaacd3b_gusto.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "italian, pizzaHouse of Italian Food"
+          },
+          {
+            "name": "HaMexicani | TLV",
+            "image": "https://imageproxy.wolt.com/venue/5f8d633572face3cc3e5627a/9a17dbf0-17af-11eb-8d74-ba07a9ccdbf3_yaelitz.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "kosher, mexicanNext Generation Tortilla | Kosher"
+          },
+          {
+            "name": "JARS & BOWLS",
+            "image": "https://imageproxy.wolt.com/venue/5bf4380829844c000becdb73/4df8e8d6-980e-11ed-a489-ca304f34bc2d_jars_n_bowls._yael_bonfis30652.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "salad, vegetarianFresh Plant Based Vegan Bowls"
+          },
+          {
+            "name": "Doron's Jachnun | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/5fa3c2044aed93975b5034e8/1a46f9b6-1f47-11eb-875d-4653267a34a6_6ca46622_6916_11ea_9410_0a586474db5c_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "homemade, vegetarianHandmade Jachnun & Mallawach"
+          },
+          {
+            "name": "Edmund Coffee",
+            "image": "https://imageproxy.wolt.com/venue/5f6a2fb223e4a371d9b0b116/bec0d048-c03d-11ef-bcf6-3601052ff95f_wpt_2811_wolt_yael_bonfis11340_1.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "breakfast, sandwichCoffee, fresh juice, salad & sandwich"
+          },
+          {
+            "name": "Meni Roll",
+            "image": "https://imageproxy.wolt.com/venue/6523c0a10ff3d50fb38f9c15/cea8be62-82f4-11ee-a27b-66977584713d_____________photoroom.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, sandwichTortillas | Sandwiches | Burgers"
+          },
+          {
+            "name": "Nuchi Sushi | Kikar Hamdina",
+            "image": "https://imageproxy.wolt.com/venue/5c4ee4b35da2a7000b48524c/bd79bb2c-733b-11ef-b672-a6021cf9ed17_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "noodles, sushiKosher Sushi and Asian Kitchen"
+          },
+          {
+            "name": "Aloha",
+            "image": "https://imageproxy.wolt.com/venue/62c5a07b3daf734155617b4e/4805164e-73e1-11ed-8ee8-2a06ef87051a_ginsburg_alohawolt__49.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fish, HealthHawaiian Poke Madness | Kosher"
+          },
+          {
+            "name": "Otello | Bazel",
+            "image": "https://imageproxy.wolt.com/mes-image/49d98d7e-4050-4525-8120-79970b19922f/504f1582-9d9e-429c-b958-16144bda4996",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "ice cream, veganGelato E Cioccolato | Ice Cream"
+          },
+          {
+            "name": "Denita Shake",
+            "image": "https://imageproxy.wolt.com/venue/6196108dbb898f7d5051a656/6c06a68e-4d40-11ec-9502-92245caf82a2_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, smoothieRefresh your day"
+          },
+          {
+            "name": "Wellana",
+            "image": "https://imageproxy.wolt.com/venue/6488501017c8276b9965e08d/679d0d52-15b4-11ee-b48a-96edb4638eca_7i4a6819.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "salad, fishOrganic | Minimally processed"
+          },
+          {
+            "name": "Maadanei Jerusalem",
+            "image": "https://imageproxy.wolt.com/venue/674838275c939044b5824405/0eee192a-c5e5-11ef-a235-225718736b92_yaelitz_1.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deli, saladJewish Food & Delicacies"
+          },
+          {
+            "name": "Corazón",
+            "image": "https://imageproxy.wolt.com/venue/67614c8c1465d6697fa17e23/4f7861ca-c852-11ef-b84e-12b7c7515a6b_wpt_list_hq.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sandwich, street foodSavory and Sweet Croissants | Kosher"
+          },
+          {
+            "name": "Kuku Burger",
+            "image": "https://imageproxy.wolt.com/venue/676a6861569e3e0ebe2c4b19/9c8a21a0-c204-11ef-b93f-ca572a0b151b______________.jpg",
+            "deliveryPrice": "10% off (up to 50 ₪)",
+            "category": "burger, street foodLocal Burger"
+          },
+          {
+            "name": "Cafe Hmeshulash",
+            "image": "https://imageproxy.wolt.com/venue/6739e4e068824c02ee8e87a0/fea18590-bbab-11ef-ae60-0249812fea9b_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "salad, sandwichThe Oldest Coffee place in Dizengoff"
+          },
+          {
+            "name": "Jome Bar",
+            "image": "https://imageproxy.wolt.com/venue/673b4256a695e05b3841e7a8/9cae5d14-bbb4-11ef-b12c-9e93f76db3b2_untitled_capture1955.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, saladFusion Bar Restaurant | Kosher"
+          },
+          {
+            "name": "123 Alcohol & Wine",
+            "image": "https://imageproxy.wolt.com/assets/673206ff80eb896202a89fed",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, beerLiquor Store"
+          },
+          {
+            "name": "Wine Point - Wine & Alcohol",
+            "image": "https://imageproxy.wolt.com/venue/64749d557ae516733d8d05d8/1dc7b790-c229-11ef-822e-2ab67a94f311_1222a614_c1d6_11ef_aa6c_c646a4f6bdce_266620aa_f7e1_426c_bca6_e206f2315b85_copy.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineAlcohol, beer & wine"
+          },
+          {
+            "name": "Johnny Drinks - Wine & Alcohol",
+            "image": "https://imageproxy.wolt.com/venue/65d1da7913eebf5a5805fd35/cd6f369e-a0d9-11ef-b90d-3ee99736b4c3_3a0c04d6_f594_11ee_accf_8a9dc24b0e56_________________18_____photoroom__1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, drinksAlcohol, Wine, Beer & more"
+          },
+          {
+            "name": "Mano Vino | Dizengoff",
+            "image": "https://imageproxy.wolt.com/mes-image/bb3af30d-a6c8-486b-b3a1-22979ee7a03b/8fb1c7d7-6106-4039-9295-90c7ac26de9e",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, beerWine shop"
+          },
+          {
+            "name": "SPICEHAUS | Bazel",
+            "image": "https://imageproxy.wolt.com/venue/5eb4012b62f17c8438dde953/28b01402-c6a9-11ef-b589-32f98b3a41d7______.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, cocktailCocktails, wine and alcohol Deliveries"
+          },
+          {
+            "name": "adidas | Ayalon Mall",
+            "image": "https://imageproxy.wolt.com/venue/6729dbd6c9e094717b0fa573/7d15766a-b225-11ef-b017-160bb695d161_677348.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "shoesSports Fashion"
+          },
+          {
+            "name": "Oomai Konbini Japanese Deli",
+            "image": "https://imageproxy.wolt.com/venue/67270c94427ba83b1b30783b/388aaa78-9a9d-11ef-9063-6e7045d5ff18_wolt_907_yael_bonfis4766.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deli, japaneseDeli"
+          },
+          {
+            "name": "Feldman Ice Cream | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/675e79f72e1c8211dd025070/c4e7f08e-baaf-11ef-b769-52685a291b63_d86ad4be_e244_11ec_9f78_1621303ba66f_wolt_4april10499.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, ice creamQuality ice cream and popsicles by Feldman"
+          },
+          {
+            "name": "Yellow Market | TLV",
+            "image": "https://imageproxy.wolt.com/venue/6762c0acbc3ee21ac0d1dad9/431d609c-c780-11ef-afe9-5e88464d8586_6ca33e15_6be7_4606_85fd_f2f3dc45e360.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "groceries, groceryYellow. Your way"
+          },
+          {
+            "name": "adidas originals | TLV Mall",
+            "image": "https://imageproxy.wolt.com/venue/67160444c984c86be592934c/129f021a-a80c-11ef-9778-f2bb04a157f5_originals_1.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "shoesSports Fashion"
+          }
+        ]
+      },
+      {
+        "title": "Unnamed Carousel",
+        "restaurants": []
+      },
+      {
+        "title": "Dinner near you",
+        "restaurants": [
+          {
+            "name": "Nini Hachi",
+            "image": "https://imageproxy.wolt.com/venue/649839af41ca12b6678d490c/eb11d0fc-18dc-11ee-9554-8a0115509e36_wolt_27jun50541.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, sushiKosher Asian Japanese Restaurant"
+          },
+          {
+            "name": "Shabu Shawarma & Grill",
+            "image": "https://imageproxy.wolt.com/venue/63676ef606a17cab546b0df9/6d70dd5c-5de1-11ed-84f1-ea43493c1480___7.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mediterranean, grillShawarma and Grill"
+          }
+        ]
+      },
+      {
+        "title": "Binge cravings 📺",
+        "restaurants": []
+      },
+      {
+        "title": "Grocery list 🛒",
+        "restaurants": []
+      },
+      {
+        "title": "0 ₪ delivery fee",
+        "restaurants": []
+      },
+      {
+        "title": "Our stores 🛍️",
+        "restaurants": []
+      },
+      {
+        "title": "I feel like eating..",
+        "restaurants": []
+      },
+      {
+        "title": "Groceries list👇🏻",
+        "restaurants": [
+          {
+            "name": "Havat Naomi | Borochov",
+            "image": "https://imageproxy.wolt.com/assets/673206f2479a971266a68418",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deliFresh Deli Products"
+          },
+          {
+            "name": "Noy Hasade | Givatayim",
+            "image": "https://imageproxy.wolt.com/mes-image/2456ae2a-39cc-4e97-962f-310284084825/1132176f-e66e-4c05-a341-ea8dbfe588c0",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, vegetableFruits & Vegetables"
+          },
+          {
+            "name": "Meatman | Sarona",
+            "image": "https://imageproxy.wolt.com/venue/6460d67c59a158b4d4d6cbaa/c10054ba-58b8-11ef-8629-be6ed421abd2_73eb82c0_5882_11ef_a5e0_22f4069bd023_whatsapp_image_2024_08_12_at_09.21.24.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "chicken, steakButchery | KOSHER"
+          },
+          {
+            "name": "Noam Hapri",
+            "image": "https://imageproxy.wolt.com/assets/673206f63a4ce8588bd75ee8",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, vegetableA large selection of Fruits & Vegetables"
+          },
+          {
+            "name": "Hinnawi Wine & More | Ben Yehuda",
+            "image": "https://imageproxy.wolt.com/assets/673206d23df8a116fc655d4a",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bbq, drinksWine & Butcher Shop"
+          },
+          {
+            "name": "Itleez Roni",
+            "image": "https://imageproxy.wolt.com/assets/673207083023fb35876a5819",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "chickenPoultry, meats and more"
+          },
+          {
+            "name": "Perot Artzenu",
+            "image": "https://imageproxy.wolt.com/venue/664b24d6ea4cb26d2e94eb7e/ff29b512-438a-11ef-8df2-6abc3c39161e__enu.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "Fruits & Vegetables"
+          },
+          {
+            "name": "Eastern Block | Givatayim",
+            "image": "https://imageproxy.wolt.com/venue/63ab1272107c6c4be2a4a3b7/5657fdf0-85fd-11ed-a735-feaa0ad6a4cd_82c94564_633f_11ed_9cca_360fa0dfe9aa_3bccdc98_adc8_11ec_9c05_6237dff91fdf_yaelitz_3.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, deliAsian Deli"
+          },
+          {
+            "name": "Beatrice Deli | 88",
+            "image": "https://imageproxy.wolt.com/venue/6017fbbdcd3d2ffc0c36f6a9/6d9790ce-71e2-11eb-a1b2-1e0fd8c6eaa7_bonfis_3786.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deliDutch Deli"
+          },
+          {
+            "name": "Maadaney Haegel | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/630b6246f9fa1ca1385b606b/15133f50-60fd-11ed-972c-2ec47c9de98c_shutterstock_1160919277.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "chickenPremium Meat | Kosher"
+          },
+          {
+            "name": "Reut Fruit & Veg",
+            "image": "https://imageproxy.wolt.com/venue/6601790eeaae4c73a83f3029/6f3bb2a6-06e6-11ef-8898-b2b063258355_shutterstock_2355541537.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, vegetableFruits & Vegetables"
+          },
+          {
+            "name": "Shuk Yirmiyaho",
+            "image": "https://imageproxy.wolt.com/venue/630b1705f9816e456c72dea1/466abb86-26a2-11ed-8f93-6e82442e07b0_39f2f2ec_e2c0_11ea_8ed8_f633df8230c7_dsc_5609_edit.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, kosherFresh Vegetables | KOSHER"
+          },
+          {
+            "name": "Mizra Deli | HaHashmonaim",
+            "image": "https://imageproxy.wolt.com/mes-image/28220f90-6dcd-461a-a500-a6730afb90dc/dcf64b93-a74c-4282-9cf6-4dab7105b267",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deli, wineDeli"
+          },
+          {
+            "name": "Yevolei Hasade",
+            "image": "https://imageproxy.wolt.com/venue/646c8f782f4b5821696cde29/aa6cfa60-fd46-11ed-aed1-c2ebe3ed53ee_8ba14b00_bc04_11ed_9fb6_923a98607b1d_shutterstock_598749548.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruitFruits & Vegetables"
+          },
+          {
+            "name": "Shefa Taamim | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/assets/6732073e3d32943ace4fe892",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "groceries, groceryInternational Grocery Store"
+          },
+          {
+            "name": "Azuri Fruits & Vegetables",
+            "image": "https://imageproxy.wolt.com/venue/65d5f2d0b1aeb0488acf2160/dfe101fe-dba9-11ee-bbed-c65fdeb09cec_65d5f2d0b1aeb0488acf2160_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, vegetableFruits & Vegetables"
+          },
+          {
+            "name": "El Toro Butchery | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/6411cd8767e6a19fd4410203/ae2d2af0-ef48-11ed-af00-36dc837531cb_f4342b72_2ea8_11ed_81d0_6ea3ca47f980_shutterstock_1031664748.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "chicken, kosherButchery | KOSHER"
+          },
+          {
+            "name": "DeliSher | Cheeses & Wine",
+            "image": "https://imageproxy.wolt.com/assets/673206ceb5de01710c509391",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deliDeli"
+          },
+          {
+            "name": "Galiyano Italian Deli",
+            "image": "https://imageproxy.wolt.com/venue/66ec2d4a1a003f25bd62fd7f/ec7c8b18-8eff-11ef-a0f6-4af4bab3c172_listt.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deliDeli"
+          }
+        ]
+      },
+      {
+        "title": "Popular right now",
+        "restaurants": []
+      },
+      {
+        "title": "For burger lovers",
+        "restaurants": [
+          {
+            "name": "Benz Brothers | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/venue/616ea8763dd80b6392500eac/c9de9340-73ad-11ed-9609-8a728ea66af9_benz_brothers___ibn_gabirol.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, hamburgerHamburger Workshop"
+          },
+          {
+            "name": "Burger King | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/venue/5cfe2b4f331064d5a43dcc88/32208c2fed3b87e3e1009acd190a40b0-edits/c6e19052f9d2ad91d1151b238d3e58ec",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, kidsHome of the Whopper ®"
+          },
+          {
+            "name": "Burger Station | TLV",
+            "image": "https://imageproxy.wolt.com/mes-image/f17439c6-6a2b-477c-94f1-21ba0a6f0edd/8becec14-4094-428b-b771-cb6b0d9ef49a",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "kosher, burgerPremium Burger - Kosher"
+          },
+          {
+            "name": "CAFE TAIZU | Kikar Giv'on",
+            "image": "https://imageproxy.wolt.com/venue/5ef98a7d81212f58438ca95e/e16be864-3c86-11ec-90dd-fa142d043171_taizu0898.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, chineseASIATERRANEAN DELIVERIES"
+          },
+          {
+            "name": "Port 19 | Shlomo Hamelech",
+            "image": "https://imageproxy.wolt.com/venue/5d0ba0a2b76ba7217a546828/5c0045aa-2e40-11ee-a3be-0a137723fbc8_____.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sandwich, street foodButcher's Burger and Hot-dogs"
+          },
+          {
+            "name": "Marlen Burger | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/61eebec48ae41b576448a249/5270edea-7d26-11ec-afc3-be88d157e80b_f94faff6_f2bc_11eb_8e9d_2af3fc8352f6_karela_00429.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "street food, hamburgerMarlen's Famous Burger 🍔"
+          },
+          {
+            "name": "Classic",
+            "image": "https://imageproxy.wolt.com/venue/5dd282c1e9755b4bc3046034/dc44cbc4-5abe-11ed-8f5f-42b5f4c62254_wolt_tlv_24oct16271.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "hamburger, pizzaPizza, Pasta& Burgers by Wolfnights"
+          },
+          {
+            "name": "Reno Emilia",
+            "image": "https://imageproxy.wolt.com/venue/5dc2b8433a08544e557e6eb9/074101dc-5294-11ec-95aa-564f4ebced39_fto04426.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "italian, pastaIsraeli Diner"
+          },
+          {
+            "name": "THE LITTLE BRGR SHOP | Dizengoff",
+            "image": "https://imageproxy.wolt.com/venue/5c166c03174cea000afc49f7/0c7cef5c-73c3-11ed-90c0-42c132741c8c_the_little_brgr_shop___ramat_aviv.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "hamburger, burger364 ways to eat a burger!"
+          },
+          {
+            "name": "Jango | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/65096d547f361ddce01700c2/843dd318-717d-11ee-ae88-ce3eeba7ac7d_jungo_113.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burgerBy Triger & Fat Cow"
+          },
+          {
+            "name": "Moses Shop Kosher | Midtown",
+            "image": "https://imageproxy.wolt.com/venue/61bf364c6bbd5eaa01c893d4/4faa3168-60d2-11ec-a862-a63ad6b32c45_4493dffc_6c6f_11eb_b004_b28a483a005c_bonfis_2035.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "american, hamburgerLocal burger shop"
+          },
+          {
+            "name": "Paris Texas Burger | Givatayim",
+            "image": "https://imageproxy.wolt.com/venue/62cff45c0efa9a0acc56c838/97b5bbae-73ae-11ed-bcd1-5ac7237444a5_paris_texas_burger___givatayim.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, street foodBurgers and Steaks, made from dry-aged beef"
+          },
+          {
+            "name": "Dixie Grill-Bar",
+            "image": "https://imageproxy.wolt.com/venue/5f82d683feefad1e7725b7ad/e1d7f1dc-12dc-11eb-9295-c2859084c00a_whatsapp_image_2020_10_20_at_16.44.58.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "hamburger, kidsChef Haim Cohen"
+          }
+        ]
+      },
+      {
+        "title": "Top-rated",
+        "restaurants": [
+          {
+            "name": "Papi Pasta | פאפי פסטה",
+            "image": "https://imageproxy.wolt.com/venue/64f43b607d4dfbff4fcca9dd/380da37c-4a38-11ee-92b4-5228f3097f76_list_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pasta, saladפסטות שף | יפתח קורן"
+          },
+          {
+            "name": "Magic Soup | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/61cb203ccba3514017a67f70/899a7eb2-6881-11ec-94a2-6a18deb5bbb4_shutterstock_1865423533.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "homemade, soupMagical Soup | kosher"
+          },
+          {
+            "name": "JUSA COLD PRESSED",
+            "image": "https://imageproxy.wolt.com/venue/5c445d9a26102e000c3825e9/d34c718b3df85e39c55121558a6fca81-edits/8805019fac6f8b6651f52d0d041733c0",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "salad, smoothieSmoothies, Juices, Sandwiches, Salads & Healthy Snacks"
+          },
+          {
+            "name": "Hummus Eliyahu | Bursa",
+            "image": "https://imageproxy.wolt.com/venue/5e9588f3fb80f3dc8791294f/770bf602-2436-11ec-b0f5-6a67da3a1ad1_dsc_5699.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mediterranean, kosherUnique Israeli Hummus Kosher Mehadrin"
+          },
+          {
+            "name": "Arcaffé | Rabin Square",
+            "image": "https://imageproxy.wolt.com/venue/5f7b2099e8b92117e2c47014/0e615e9e-f613-11ec-a4cb-7a54447cd4e9_c101c152_b0d0_11ec_901e_3a004ebfe5f5_a5aab2a0_0c9a_11eb_9124_cab9ab280a5a_4d15519a_f5ca_11ea_b8aa_fae679140a48_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bakery, breakfastCoffee and more"
+          },
+          {
+            "name": "Chuma",
+            "image": "https://imageproxy.wolt.com/venue/5ec16f0b684a3c84cd154891/e2bfeab2-0ba9-11eb-8b9b-46974ce22937_dsc00277.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "kosher, mediterraneanGrill & Home Made Food Restaurant | Kosher"
+          },
+          {
+            "name": "Magazzino Konditoria",
+            "image": "https://imageproxy.wolt.com/venue/5c3c5552adac12000bf3aed8/3169e0ae-7a79-11ef-9378-ba305f848ad9___________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, bakeryDesserts, Pastries & Bakery by Magazzino"
+          },
+          {
+            "name": "Cafe Xoho",
+            "image": "https://imageproxy.wolt.com/venue/5f2aa5cb3535259812f52403/a350e622-f270-11ee-9850-16560a409bce_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "american, bagelA LIL' CAFE WITH BIG IDEAS"
+          },
+          {
+            "name": "Mr.Marak",
+            "image": "https://imageproxy.wolt.com/venue/640dd8c208f0509b24d3c1e4/439df1cc-c32b-11ed-95d8-eeb25635fd1f_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "soup, veganHearty Soups & Stews ❤️ 100% vegan 🌱"
+          },
+          {
+            "name": "Market Vegan | Dizengoff",
+            "image": "https://imageproxy.wolt.com/venue/5bfed13d0b5f6d000a81e138/0c91ea74-df31-11eb-893e-fa99db8d7936_fto07780.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "soup, veganMarket Seasonal Kitchen"
+          },
+          {
+            "name": "Pizza Shalachmech",
+            "image": "https://imageproxy.wolt.com/venue/65a7a7faeac9bb63c90037c4/71630f8e-c8f2-11ee-8bd8-d22cb97c0c4c_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "street food, pizzaLocal Chef's Pizza | Kosher L'mehadrin"
+          }
+        ]
+      },
+      {
+        "title": "Tasty brands 🍽️",
+        "restaurants": []
+      },
+      {
+        "title": "Local favorites",
+        "restaurants": [
+          {
+            "name": "Marlen Burger | Givataim",
+            "image": "https://imageproxy.wolt.com/venue/5eda3527462d3c57927ecbeb/24eaee2a-73b1-11ed-9207-9abbad066abe_marlen_burger___givataim.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "hamburger, street foodMarlen's Famous Burger🍔"
+          },
+          {
+            "name": "Japanika | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/630da971da309a4bc972736b/bfb16baa-2e8d-11ed-b3da-4e6431eb0414_yaelitz_33.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, noodlesHouse of Asian Food"
+          },
+          {
+            "name": "Halevantini",
+            "image": "https://imageproxy.wolt.com/venue/5c17e66eb13165000b9d6435/51c0968e1b0553432002162a643eda80-edits/fcd88d5b61a48a3d55dc1eeacfe8359f",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "kebab, mediterraneanShawarma & Meat on The Grill"
+          },
+          {
+            "name": "Busi Batikva",
+            "image": "https://imageproxy.wolt.com/venue/5e89c1273091944cfe15f39a/1df49d90-60d0-11ec-9ae7-a63ad6b32c45_image.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "kosher, street foodMeat & Grill in the Tikva Market"
+          },
+          {
+            "name": "Rolla Tortila Bar",
+            "image": "https://imageproxy.wolt.com/venue/5e1c8c3ffb1b66ead9006623/eec90ffc-5d60-11ea-8a88-0a586475d168_yaelitz-2.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mexican, street foodTortillas, burgers, sandwiches, and salads | kosher"
+          },
+          {
+            "name": "Meshek Barzilay",
+            "image": "https://imageproxy.wolt.com/venue/5c570c2461ca48000b3a4bb5/88b6ad1a-ef32-11ee-bfa7-cae2741df7e1_whatsapp_image_2024_03_28_at_16.39.32.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "salad, veganVegan & Organic 🌱"
+          },
+          {
+            "name": "Mezcalito",
+            "image": "https://imageproxy.wolt.com/venue/5bf18933f46890000b277853/cf0ec0de-7934-11ec-a720-c26f32798728_yaelitz.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mexican, street foodMexican Street Food"
+          },
+          {
+            "name": "Superfood Salad Bar",
+            "image": "https://imageproxy.wolt.com/venue/5df7729cd8d32e031e0ee6a9/9639e8f0-6ca1-11ec-80be-a2596f8e4d41_a40a7400_g________________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "healthy, saladFresh Salad Bar | Kosher"
+          }
+        ]
+      },
+      {
+        "title": "Top grocery picks",
+        "restaurants": [
+          {
+            "name": "Yellow Market | Hayarkon",
+            "image": "https://imageproxy.wolt.com/assets/673206f6b5de01710c5094c6",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "beer, fruitYellow. Your way"
+          },
+          {
+            "name": "Tiv Ta'am | Pinkas",
+            "image": "https://imageproxy.wolt.com/mes-image/131a8573-7aac-4f2a-8063-227f24b9e001/f923f891-840e-4f56-9c37-ba93d6969b4e",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "groceries, grocerysupermarket Tiv Ta'am Reshatot LTD, 512792714"
+          },
+          {
+            "name": "Tabak Center",
+            "image": "https://imageproxy.wolt.com/assets/673207519c9a8161a751d159",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "grocery, alcoholTobacco | Vape | alcohol | Sweets"
+          },
+          {
+            "name": "Kulinarik | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/660e7866546db052f3e88ab9/54a913b2-2bf2-11ef-8358-d6d4711d513b_kulinarik2.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "Supermarket, groceriesSupermarket"
+          },
+          {
+            "name": "Bombamela",
+            "image": "https://imageproxy.wolt.com/venue/66b08690526706381959749d/830234a6-aa77-11ef-a0c7-2ac6e1c61d2d_whatsapp_image_2024_11_24_at_17.13.26.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "grocery, alcoholConvenience Store"
+          },
+          {
+            "name": "Nespresso | Tel-Aviv",
+            "image": "https://imageproxy.wolt.com/mes-image/8ef376d3-5948-4729-9e14-d33799757267/638c1c5d-a15f-42e7-988b-c93e9ea75745",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "drinks, groceries‫תערובות הקפה האהובות עם הטעם הבלתי נשכח"
+          },
+          {
+            "name": "The Smoke Shop | Dizengoff",
+            "image": "https://imageproxy.wolt.com/mes-image/6a03f525-105c-4e56-a9c0-13944d345645/1945da05-a40d-4b53-910a-c9e22966c53c",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, groceryTobacco, Alcohol, Vaporizers & More"
+          },
+          {
+            "name": "Teva Castel | Dizengoff",
+            "image": "https://imageproxy.wolt.com/assets/67320739479a971266a68698",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "beyondmeat, fruitYour Place For Healthy Lifestyle"
+          },
+          {
+            "name": "Nutstation Hamama | TLV",
+            "image": "https://imageproxy.wolt.com/venue/65f06ad4737455504fce5001/3ac830d0-07a9-11ef-8366-ee1d2eb633a0__________.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "grocery, kosherNuts"
+          },
+          {
+            "name": "Shuk Hapizohim | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/64aa6446b6da778f8be49adc/26ee2450-1e2c-11ee-be54-7e837e94363e_shutterstock_1911293797.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "groceriesDried Fruit, Nuts & More"
+          },
+          {
+            "name": "Camuna",
+            "image": "https://imageproxy.wolt.com/venue/65f6bc026ad6de7684be7ace/76146b16-ffb3-11ee-af5f-06408aef0a9c_shutterstock_388342354.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "groceries, organicOrganic Groceries"
+          },
+          {
+            "name": "Kiosk Kundel",
+            "image": "https://imageproxy.wolt.com/venue/667953e62a7a0e1bf5bec53c/60de1e84-4f38-11ef-a49e-8a7ece7d9b26_8d2b72a2_7028_4f94_b3b3_d3666872578f.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, groceriesTobacco, cigarettes, vape, sweets and smoking products"
+          },
+          {
+            "name": "Well Green | Yigal Allon",
+            "image": "https://imageproxy.wolt.com/mes-image/031adf50-f795-403d-b738-2cad7cde9634/0398178f-1f60-425c-97f4-80ab9592b7d7",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, groceriesDried Fruits & Nuts Market | Kosher"
+          },
+          {
+            "name": "Maadanei tsidkiyaho | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/66ddbba369f33f111a30fc2c/d7b86e8c-6df2-11ef-bf6c-0e9cd93b31c1_66ddbba369f33f111a30fc2c_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deli, groceryCheese, Salad, Delicacy & More"
+          },
+          {
+            "name": "Boutique Shel Hasade",
+            "image": "https://imageproxy.wolt.com/assets/673207011aa2ca295a5e2000",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "fruit, vegetableFruits & Vegetables"
+          },
+          {
+            "name": "Pizuhei Givataim",
+            "image": "https://imageproxy.wolt.com/venue/65ae40e61d9df64041981bb2/eab43914-b90f-11ee-8dd1-2a76350ab6fc_shutterstock_2096753086.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "groceriesNuts, Dried Fruit & Spices"
+          },
+          {
+            "name": "Bustan | Givatayim",
+            "image": "https://imageproxy.wolt.com/venue/65ccb2d190de15336eeaa270/18022606-cb35-11ee-b13a-9e8e502343fc_65ccb2d190de15336eeaa270_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "groceryDried Fruit & Nuts"
+          }
+        ]
+      },
+      {
+        "title": "Sweet Cravings 🍪🍫",
+        "restaurants": [
+          {
+            "name": "Yaffa Knafeh | Dizengoff",
+            "image": "https://imageproxy.wolt.com/venue/64009ffedddf46412353a623/84fd0624-b8fb-11ed-8ff4-7e1d5bf2ea3d_1c2bc43712dac8a6993fa54d3897e7c7.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, mediterraneanUnforgettable Bite"
+          },
+          {
+            "name": "Choose Your Cookies",
+            "image": "https://imageproxy.wolt.com/venue/609a7b8df13a35838525b42e/18076a04-b3d1-11eb-b2a2-c66d3fa4a6a4_cyc_general_04.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, sweetsHomemade Cookies"
+          },
+          {
+            "name": "HaBrulia | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/64c633644e56b57d9ac7ab63/ecd184c0-2ebf-11ee-bd72-6ed8288d13e5_fe9a14da_5510_11ed_baf4_4226d7bf6633_whatsapp_image_2022_10_24_at_16.00.44.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sweets, dessertBrulee Dessert Boutique"
+          },
+          {
+            "name": "Mamo",
+            "image": "https://imageproxy.wolt.com/assets/65f8add19ff4060a3a3e9b6d",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sweets, dessertBelgian Waffles"
+          },
+          {
+            "name": "Gelateria Siciliana Desserts | Ibn Gavirol",
+            "image": "https://imageproxy.wolt.com/venue/5f3a8dad892892dcaf319680/841d6394-d427-11eb-8d0f-da3552cd0b32_054a0976.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, ice creamIce-cream flavors, Desserts & a Unique Sicilian vibe"
+          },
+          {
+            "name": "Vaniglia | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/venue/5f05a4b98b62f3438b0636d3/84103660-dff9-11ea-85c3-5e1b644cbff0_yaelitz_5.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "ice cream, sweetsYour local ice cream"
+          },
+          {
+            "name": "Juicery",
+            "image": "https://imageproxy.wolt.com/venue/64eafc870bf9663751512488/7eb6925a-5219-11ee-b8fe-4acad0026c58____________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "milkshake, ice creamShakes and Juices"
+          },
+          {
+            "name": "Deli Cream | HaArba'a",
+            "image": "https://imageproxy.wolt.com/venue/5f2a61340f29d960a249f640/c738c836-0666-11ed-b6d8-f2b7cc9dcd06_f9177cae_00c1_11ec_94b7_0e288e2507e6_deli_cream_1.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, ice creamPremium Ice Cream"
+          },
+          {
+            "name": "Abulafia | Menachem Begin",
+            "image": "https://imageproxy.wolt.com/venue/66815c972c65341efb730c26/7a197fa4-36e4-11ef-a566-baa5e2474dc6_66815c972c65341efb730c26_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, mediterraneanJaffa Mythologic Bakery | Kosher"
+          },
+          {
+            "name": "Arte Italian Ice Cream",
+            "image": "https://imageproxy.wolt.com/venue/5d25876a70bfc61476fe9774/1d3bb9c41565710c313996ab39623ee9-edits/fdec11eea2a5b5afe684b07acbbce331",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "ice creamThe Art of Ice-cream"
+          },
+          {
+            "name": "At Herzl's | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/64904bc84a758102cc05bd02/ff355686-2001-11ee-b21e-96e205edb629___3.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "milkshake, drinksJuices and Shakes at Herzl's"
+          },
+          {
+            "name": "Soft Cookies | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/5c4ed18083b097000a292269/94b265ac-177a-11eb-9455-0234cb2fa699_dsc08256.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, ice creamCookies 🍪 Crepe 🍪 Ice Cream"
+          },
+          {
+            "name": "Dessert",
+            "image": "https://imageproxy.wolt.com/venue/657ecabebdadd85944508617/0d9dec6e-b5f9-11ee-a821-c2be7e795d52__.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "ice cream, kosherIce Cream and Desserts | Kosher"
+          },
+          {
+            "name": "Mystic Artisan Ice Cream",
+            "image": "https://imageproxy.wolt.com/venue/60e2d0f943a524527159ed5a/e3e9888c-dfcd-11eb-81db-16f3a334651f___32.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "ice creamFrench artisan ice cream"
+          },
+          {
+            "name": "MUNCH",
+            "image": "https://imageproxy.wolt.com/venue/64eb2317c80a3167603f9fe6/b4694318-562c-11ee-823d-5e37ad50ea8b_12sep_wolt_._yael_bonfis0462.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sandwich, street foodEastern European \"Creps\" & Goods"
+          },
+          {
+            "name": "Amit Barkat Patisserie | Sarona",
+            "image": "https://imageproxy.wolt.com/venue/6487193a7a2251136b758fec/ebb893fc-0922-11ee-ae32-f6bc390bd29e_8bacb2c8_9582_11ec_94a2_ba0d17ba2b3e_wolt_jerus_222860.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, bakeryPremium desserts gluten free rich in wonderful flavors from unique and high quality materials"
+          },
+          {
+            "name": "Mochi | Dizengoff",
+            "image": "https://imageproxy.wolt.com/mes-image/be9bab00-8f92-400f-8f69-90d8aa34ec0e/6fefe805-c7f0-43ba-9c3a-cdaf2e9ae034",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "candyJapanese Candy"
+          },
+          {
+            "name": "Feldman Ice Cream | TLV Center",
+            "image": "https://imageproxy.wolt.com/assets/673206fe3df8a116fc655e93",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "ice cream, dessertQuality ice cream and popsicles by Feldman"
+          },
+          {
+            "name": "TASA+ | Levinsky",
+            "image": "https://imageproxy.wolt.com/assets/673206eee797795fa3838d37",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "candy, sweetsHouse of Candy & Bakery"
+          }
+        ]
+      },
+      {
+        "title": "Offers near you",
+        "restaurants": []
+      },
+      {
+        "title": "Wallet friendly",
+        "restaurants": [
+          {
+            "name": "Banana Loti",
+            "image": "https://imageproxy.wolt.com/venue/64667bf354eb15014431bd6d/dbf9bb2c-0b7e-11ee-956f-62410c325680_____.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "dessert, asianThe Sweet Flavors of Thailand at Your Door Step"
+          },
+          {
+            "name": "Bazili.com | Yehuda Maccabi",
+            "image": "https://imageproxy.wolt.com/venue/5cdad001abaa7fd7d09430de/3754c8508e07124ebccca02b74754a26-edits/a18e8f4483206f8bf878ee094dcafc68",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pizza, italianThin & Crispy Pizza\n\nGet 10 credits for your next order when you order Coca-Cola 🥤\n\nGet 10 credits for your next order when you order Coca-Cola 🥤"
+          },
+          {
+            "name": "Wok to Walk | Sarona",
+            "image": "https://imageproxy.wolt.com/mes-image/16eaa362-57e4-4691-b6bc-76be95d232c5/acee0e78-8d7a-46f5-8a82-62482010041c",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, noodlesFlamin' Good - Kosher"
+          },
+          {
+            "name": "Garger Hazahav | Dizengoff",
+            "image": "https://imageproxy.wolt.com/venue/6603e082b092e7026dca954f/cae48706-0081-11ef-9d8b-b65cc08b9fe3_920d0780_8ebd_11ea_9ef8_0a58647f85fd_gargerhazahav_1.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "vegetarian, saladGalilee Style Hummus Eatery"
+          },
+          {
+            "name": "Bourekas Amikam",
+            "image": "https://imageproxy.wolt.com/venue/61e6b0c15062ce33bc21084b/38a5a6e4-7867-11ec-bcb9-6e57997e21b6___2.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bakery, breakfastSince 1998"
+          },
+          {
+            "name": "Pita Dizengoff",
+            "image": "https://imageproxy.wolt.com/venue/5f735200bfa66b2a83f3b943/2125c9e0-0284-11eb-bbdf-aab0a92d02e8_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "kosher, sandwichAuthentic Grill Bar | Street Food | Kosher"
+          },
+          {
+            "name": "Teabar | Dizengoff",
+            "image": "https://imageproxy.wolt.com/venue/65a7a3436eba9ed49d97b83d/46583586-b51e-11ee-9fef-a237f1c31279_571aff2c_08fc_11ed_9249_ca55dec03278_______.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "smoothieIt's So Boba-Licious"
+          },
+          {
+            "name": "Bourekas Ramat Aviv",
+            "image": "https://imageproxy.wolt.com/venue/5c98ab0a31d8f5000d6be5ec/5076c35c-2cd7-11eb-8a9c-8a317767d376_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "breakfast, street foodAuthentic Dishes From the Yemenite Kitchen"
+          },
+          {
+            "name": "Frank | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/5bffbafa0f1657000beb49af/9db9cbb6e5dd9e2a8e101b2fc3fbddab-edits/4a901076691700cc962b95c9a54e8c4e",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "street food, sandwichGenuine German-style BratWürst Sausages"
+          },
+          {
+            "name": "Pita Rehov | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/venue/5f197010a31d666c40b8bb99/ed382690-e3cb-11ea-8e21-4a946f66ec82_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mediterranean, sandwichPita with Rich & Satisfying Fillings"
+          },
+          {
+            "name": "Wok Sushi 9 | Yigal Alon",
+            "image": "https://imageproxy.wolt.com/venue/5f4d29fb9cbf93eeaab44c15/6d15d88c-f1e4-11ea-b3fd-eaef0682dd3d_1.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "thai, sushiAuthentic Thai food"
+          }
+        ]
+      },
+      {
+        "title": "Vegan & vegetarian friendly",
+        "restaurants": [
+          {
+            "name": "Brooklyn Pizza | King George",
+            "image": "https://imageproxy.wolt.com/venue/61f10250af8a9d9ea3cf37d2/14cac5a6-73b1-11ed-a781-d6b6083a6611_brooklyn_pizza.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "american, pizzaNew York Pizza"
+          },
+          {
+            "name": "Ning Thai Food | King George",
+            "image": "https://imageproxy.wolt.com/venue/60b377b26bb21877a08797c2/197986f2-c13b-11eb-b24e-460c3c7332d3_e7c88a02_bbec_11eb_9f3c_c6a0e1622e85_258a9303.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "noodles, asianThai Restaurant"
+          }
+        ]
+      },
+      {
+        "title": "New restaurants on Wolt",
+        "restaurants": [
+          {
+            "name": "Pita Basar | Nahalat Binyamin",
+            "image": "https://imageproxy.wolt.com/venue/6739aaf463955c5fe4b2efca/5be91cca-abe1-11ef-b0e6-b2940fa46c9d_6739aaf463955c5fe4b2efca_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "chicken, grillPita is one thing, Pita Basar is another"
+          },
+          {
+            "name": "Soupreme | Frishman",
+            "image": "https://imageproxy.wolt.com/venue/676933df228dce739f3e575d/3994dd7e-c114-11ef-8879-fac40eeeef42_676933df228dce739f3e575d_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "soup, homeGrandma cooked soup"
+          },
+          {
+            "name": "Alma | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/673df3216dd2111bab41de84/cf214390-b706-11ef-b187-a6d6dd0076d8_31e15dd6_6040_11ee_a4fb_6224db9d1e46_f698b1ca_76da_11ec_8e61_9eb60da6ae51_1.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "soup, mediterraneanSoup & Kubbeh"
+          },
+          {
+            "name": "Speedy Roll",
+            "image": "https://imageproxy.wolt.com/venue/671f525ecfcdee646f5ce0c0/0ac8d0e0-b6f6-11ef-87dd-f65423e2acd9_wmx_wmx__________________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mexican, tortillaRolling for Your Flavor"
+          },
+          {
+            "name": "Souvlakia greek grill | Frishman",
+            "image": "https://imageproxy.wolt.com/mes-image/ed5bbd9b-024b-499a-818e-9551fcfcb8da/d288d68b-4648-4267-99fc-434502cae756",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "greek, souvlakiGreek skewer restaurant"
+          },
+          {
+            "name": "Refael Coffee Bar",
+            "image": "https://imageproxy.wolt.com/venue/66f0281d8fd9f808abf229c0/c9f4cd36-9070-11ef-a059-7290e52f4ca4_refael_coffee_bar_7.10.241264.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "breakfast, sandwichCoffee Bar"
+          },
+          {
+            "name": "Siena",
+            "image": "https://imageproxy.wolt.com/venue/67162372bff5063485ddf5bf/e18f8434-b246-11ef-8c2b-56df72a080c1_wpt_wolt_18119006.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "italian, pastaItalian Wine Bar"
+          },
+          {
+            "name": "Halab | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/6745d35de9e91078190c3918/53beebc8-ad86-11ef-91d4-1ee36635c8ba_shutterstock_1873204477.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "sweets, ice creamOriginal Knafe"
+          },
+          {
+            "name": "La Cuccina Kiosk",
+            "image": "https://imageproxy.wolt.com/venue/66d5ca973af574333afa5426/e9584d5a-78e3-11ef-b2dd-126658efbb8a_list_hq.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pasta, pizzaItalian Restaurant"
+          },
+          {
+            "name": "La Barca",
+            "image": "https://imageproxy.wolt.com/venue/66e6e9299cfd3979259a4dbb/9d2b24a4-a681-11ef-998b-6689ef2d1d38_wolt_tlv_1311_yael_bonfis7787_1.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "mediterranean, sandwichSea & Fast Food Restaurant"
+          },
+          {
+            "name": "Tommy Roll | Giv'atayim",
+            "image": "https://imageproxy.wolt.com/venue/67053347d03e421cd6bf648a/00e63caa-b0bd-11ef-aa75-8e02f4251e49_tomyroll0867__1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "burger, sandwichAuthentic Street Food | Kosher 🌯"
+          },
+          {
+            "name": "Pizza X | Nachalat Binyamin",
+            "image": "https://imageproxy.wolt.com/venue/670672a68acbbb7faca53155/626292f2-aa60-11ef-babe-9a436d5ee8f5_42429ef8_15bf_11ef_abda_6a53482077c0_6631e6f625631b58e63dbb86_list.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pasta, pizzaCrazy Pizza"
+          },
+          {
+            "name": "Hummus Eliyahu | Bnei Brak",
+            "image": "https://imageproxy.wolt.com/venue/6734bb3373e82c6ce2e5595e/707cd45e-a5ad-11ef-834f-cab88888d72a_c91a1610_b8fc_11ee_b8eb_6271a79975d8_c0a3d2a8_2436_11ec_81a3_a62968ac5edc_dsc_5699__1_.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "falafel, kosherUnique Israeli Hummus | Kosher Badatz"
+          },
+          {
+            "name": "Cafe Daisy",
+            "image": "https://imageproxy.wolt.com/venue/672a200e561f5b575fffe210/0639ab1c-c132-11ef-ae13-12bedc4f7c5a_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "café, sandwichFrom the Bucke Family"
+          },
+          {
+            "name": "Pizza Craft | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/67629e4b1465d6697fa17ef5/a0ae0f1c-bd27-11ef-bbe2-8ae181750c66_ab474bda_73ac_11ed_8542_aa475ae0985a______________________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "italian, pizzaArtisan Pizza"
+          },
+          {
+            "name": "Guido",
+            "image": "https://imageproxy.wolt.com/venue/66f53b8a43f47e037fa66ce0/9d608414-96cd-11ef-9068-02f4de79148f_yaelitz_5.jpg",
+            "deliveryPrice": "",
+            "category": "american, italianAmerican Italian food"
+          },
+          {
+            "name": "JMT | Jon Mattaeng",
+            "image": "https://imageproxy.wolt.com/venue/674dbe16596f7721070ffd9a/f72fc55c-cc17-11ef-b073-b2c5f15e46be_jmt56_4.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "asian, bbqKorean Soul Food"
+          },
+          {
+            "name": "Beitea | Givataim",
+            "image": "https://imageproxy.wolt.com/venue/674328827c561f6c9fb0b929/357fb11e-aa67-11ef-8ba8-1a259196a09d_d031a61a_196c_11ed_a2ba_2a29c4706be0_3cc185c4_fc01_11ea_b9be_f6e8514844ff_yaelitz.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "smoothieThe Bubble Tea Experience"
+          },
+          {
+            "name": "Hummus Eben Gabirol",
+            "image": "https://imageproxy.wolt.com/venue/66d44656af4788064632346d/74bedd7a-7a4f-11ef-b3d5-06e2e1aedcd7_list_hq.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "street food, saladTradition's Hummus"
+          }
+        ]
+      },
+      {
+        "title": "Popular Brands 🌟",
+        "restaurants": []
+      },
+      {
+        "title": "Alcohol & Cocktails 🥂",
+        "restaurants": [
+          {
+            "name": "Sar Hamashkaot | Dizengoff",
+            "image": "https://imageproxy.wolt.com/mes-image/25d1d792-eda4-4843-b713-ac2573d681d1/26818f00-0fc3-4e08-92b7-e8d055151dd5",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, drinksAlcohol, beer & wine"
+          },
+          {
+            "name": "Wine Pro",
+            "image": "https://imageproxy.wolt.com/venue/6465e75e2de63f6f103fea54/0a1ee454-bd4f-11ef-b517-f295c5f4d81f_image__4_.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineWine & Drinks"
+          },
+          {
+            "name": "WINEST.STORE",
+            "image": "https://imageproxy.wolt.com/venue/6514100679cbdb32e35faca8/b5d9ccc8-c9b2-11ee-9bc1-02b8084d1c4c_wolt_cover_svd_no_text__1_.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineLove at first sip 🧡 Wines curated by one of the top 10 best sommeliers in the world"
+          },
+          {
+            "name": "Wine Bakerem",
+            "image": "https://imageproxy.wolt.com/venue/65a6910f4f3f691ba8c57059/a4f591c0-be9b-11ee-bdd6-a69bd6695c16_shutterstock_712412785.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineWine"
+          },
+          {
+            "name": "Happy Sun | Wine & Alcohol",
+            "image": "https://imageproxy.wolt.com/venue/646cb2c4d1494f4720eb68c7/bac06ba6-f966-11ed-858c-32e2fe33b4fb_shutterstock_1209922612.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "drinks, alcoholWine | Alcohol | Beer & more"
+          },
+          {
+            "name": "Wine In The City | Kochav HaTzafon",
+            "image": "https://imageproxy.wolt.com/mes-image/c814df21-d6b8-443e-b6dd-ee4e3e59bbe7/dc30953e-4588-4ddf-b92a-e64c8f2dd63a",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "whiskey, wineWine & Alcohol"
+          },
+          {
+            "name": "Alcoholist",
+            "image": "https://imageproxy.wolt.com/venue/66d972874bc9c26581ac1d7b/5876c95a-75b5-11ef-b34e-5efedf29fad1_shutterstock_762963247.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, drinksDrinks & More"
+          },
+          {
+            "name": "Open Wine",
+            "image": "https://imageproxy.wolt.com/venue/66d9711e01ff9611a330fa0e/d66c767c-74d7-11ef-bf37-cee4d4360343_shutterstock_2082693724.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineWine Store"
+          },
+          {
+            "name": "MIVINO",
+            "image": "https://imageproxy.wolt.com/venue/5fa93d40b264a136c72c6b3b/e6fda384-7179-11ed-90cf-da602ae38501_image__2_.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "drinks, wineWine store"
+          },
+          {
+            "name": "Wine & Flavors",
+            "image": "https://imageproxy.wolt.com/venue/6466055054eb15014431bcc3/e08cad08-98f9-11ee-b1d2-9a6469a38ffe_chistmas.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, beerAlcohol & Drinks"
+          },
+          {
+            "name": "Gazzetta | Wine store",
+            "image": "https://imageproxy.wolt.com/venue/6579b2e9483b8d36e51530fc/45a8a8a6-b3a6-11ee-af99-7a18f53f891d_tot20538.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineWine | Vermouth | Sherry | Bitters"
+          },
+          {
+            "name": "Carmel 7 | Wine & Alcohol",
+            "image": "https://imageproxy.wolt.com/venue/65ce2b26801d35df282064b7/e9085e88-cc15-11ee-a2d4-32512bcfd90c_shutterstock_1201770478.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, drinksAlcohol & Drinks"
+          },
+          {
+            "name": "Wine And Friends",
+            "image": "https://imageproxy.wolt.com/assets/6732072e2d3e61400737f7b6",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineWine Store"
+          },
+          {
+            "name": "Le Bouchon - Wine store",
+            "image": "https://imageproxy.wolt.com/venue/640def565f9ef7ce0b7baa2b/3721287c-307e-11ee-a035-66a698478d56_whatsapp_image_2023_08_01_at_18.11.14.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineWine Store"
+          },
+          {
+            "name": "Bira Nekuda | Givatayim",
+            "image": "https://imageproxy.wolt.com/venue/620cd951f51755046d01ef46/c3bbd666-2bb3-11ef-8b34-f6f142892e2f_whatsapp_image_2024_06_16_at_10.16.33.jpeg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, beerDraft Beer"
+          },
+          {
+            "name": "WeDrink Wine & Alcohol",
+            "image": "https://imageproxy.wolt.com/venue/645cdf554f793041c1ff4f7f/cc8cfc6a-053b-11ee-97ba-e2f88ea63e6c_shutterstock_1008385732.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "wine, alcoholLiquor Store"
+          },
+          {
+            "name": "Derech Hayayin | Dizengoff",
+            "image": "https://imageproxy.wolt.com/mes-image/49d95466-4502-4539-ba36-2521a57e1328/dc5547d6-23ab-4427-8f36-3930c910b539",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, beerPremium Wine Store"
+          },
+          {
+            "name": "Deli Vino | Tel Aviv",
+            "image": "https://imageproxy.wolt.com/venue/66d84acaded4f73c93e7965f/6b4b1494-6ab8-11ef-9c28-2e85563eb402_75499868_d002_11ee_be45_9eb73a013344_wolt2.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, wineAlcohol"
+          },
+          {
+            "name": "Silon Cocktails",
+            "image": "https://imageproxy.wolt.com/venue/64c63a12b8216f69128f47eb/cbb6a93a-3f33-11ee-8b6e-3a3fe245aa56_bourbon_sour_200ml_web_photoroom__4_.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "alcohol, cocktailCocktails"
+          }
+        ]
+      },
+      {
+        "title": "New stores on Wolt",
+        "restaurants": [
+          {
+            "name": "Shibolet Hasharon | Bnei Brak",
+            "image": "https://imageproxy.wolt.com/venue/6763f078bc3ee21ac0d1db50/4afd0c82-c914-11ef-97c8-b60727683304_934fabca_f797_4608_bca0_9affd3a22547.avif",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bakeryBakery"
+          },
+          {
+            "name": "Sam Edelman",
+            "image": "https://imageproxy.wolt.com/venue/675193ea1c642577a4baa341/e299c2b8-c141-11ef-8fce-cade21453918_artboard_5.avif",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "shoesShoes and accessories"
+          },
+          {
+            "name": "Express | Hamasger TLV",
+            "image": "https://imageproxy.wolt.com/mes-image/c8a2d270-cc94-4ad9-b919-ead602379a9e/114b8cdc-048f-48e0-a0a6-8f072bc08e35",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "Alcohol & Tobacco"
+          },
+          {
+            "name": "Good Pharm | Ibn Gabirol",
+            "image": "https://imageproxy.wolt.com/mes-image/33efb251-edc8-4adb-956d-6dfed985e33e/425da946-0e3d-442d-b3d9-4ae5780232a8",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "cosmeticsPharm & Cosmetics"
+          },
+          {
+            "name": "Colbo For Dogs & Cats",
+            "image": "https://imageproxy.wolt.com/venue/6702716c2dd350242a191f06/417316cc-badf-11ef-965a-9e347345e85f_7a989dd0_b0dc_11ef_add0_8ee35bbacb4a_______________________photoroom.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pet food, pet supplyPet Store"
+          },
+          {
+            "name": "Converse",
+            "image": "https://imageproxy.wolt.com/venue/673db953c6ce18174dbb23c4/28749a4a-a808-11ef-9d54-56486d6a089b______copy.png",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "shoesFor over a century, Converse has been creating iconic sneakers like the Chuck Taylor All Star, celebrating self-expression and shaping street and creative culture across generations."
+          },
+          {
+            "name": "Speedog | Bugrashov",
+            "image": "https://imageproxy.wolt.com/mes-image/c6510c4c-6b4e-4faf-9645-83251bb90239/4e11c2fc-4a13-4a60-9d87-4bb655ffd555",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "pet food, pet supplyPet Store"
+          },
+          {
+            "name": "am:pm | Colbo Hashalom",
+            "image": "https://imageproxy.wolt.com/mes-image/f075c9bf-d8ac-4256-9895-46d7db1ef9dd/175b3bc5-e3e5-4756-86c2-78cbad352ded",
+            "deliveryPrice": "0₪ Delivery fee(selected item)",
+            "category": "grocery, SupermarketCity Market"
+          },
+          {
+            "name": "Mercato | Bazel",
+            "image": "https://imageproxy.wolt.com/mes-image/8d3d54a6-8796-41bf-8c76-0315d0aabcba/8d3d1cab-2419-4314-ad8d-2f9ac856034a",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "deliPremium Deli"
+          },
+          {
+            "name": "Dekel Bakery",
+            "image": "https://imageproxy.wolt.com/venue/67487403bb4b970e63468cfb/4216cf82-b662-11ef-b3b4-d2162381cfb6_wpt_wolt_11211736.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bakery, cakeBakery"
+          },
+          {
+            "name": "City Boulangerie",
+            "image": "https://imageproxy.wolt.com/venue/671e2e6823595026412188ca/58e7ef8c-bace-11ef-a9a7-4644de2732c4____________.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bakery, cakeBakery"
+          },
+          {
+            "name": "Shuk Hayir | Ramat Gan",
+            "image": "https://imageproxy.wolt.com/mes-image/b45343e4-0fde-4041-968d-17338b19b272/d0ec3b0d-b36a-4140-b166-d1c750a26b1c",
+            "deliveryPrice": "0₪ Delivery fee(selected item)",
+            "category": "grocery, SupermarketYour local Supermarket"
+          },
+          {
+            "name": "Anise | Givatayim",
+            "image": "https://imageproxy.wolt.com/mes-image/fe4a894f-3a6b-49b7-a1d4-034d9d06cc41/b3303b1a-0900-4918-adc7-6dc51fccabfb",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "grocery, HealthHealth and home goods stores"
+          },
+          {
+            "name": "The little Prince | Kochav Hazafon",
+            "image": "https://imageproxy.wolt.com/venue/673c661cfeb9ed2cf43e9f21/b6c1da60-a65f-11ef-9759-46191f9889ac_673c661cfeb9ed2cf43e9f21_list",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "Flowers, Plants, Nursery & Gifts"
+          },
+          {
+            "name": "Zest Deli | Nahalat Yitzhak",
+            "image": "https://imageproxy.wolt.com/venue/67435008c387b33cc98c4eaa/ec2a41d8-aa7e-11ef-b48e-460d50b241be_41eb0924_86fb_11ef_bfab_3664786e42bd_______________10_.png",
+            "deliveryPrice": "",
+            "category": "deliNature Deli"
+          },
+          {
+            "name": "Doli Bakery",
+            "image": "https://imageproxy.wolt.com/venue/66f14b9dd4853b1aeb5e962d/a97beec2-8f9e-11ef-aac0-a28267f91a6c_list_2.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "bakeryהסינבון המושלם | CINNABON HEAVEN"
+          },
+          {
+            "name": "Bustan Hashcuna | Neve Avivim",
+            "image": "https://imageproxy.wolt.com/venue/676c4311ba9dfa14e920be6c/45e8d362-c2e7-11ef-aab8-aa56ba9e8e86_71189370_a7d5_11ee_bc4a_163eb8dec7fc_657edcb7a3c2ab43f2221b1b_list.jpg",
+            "deliveryPrice": "0₪ delivery fee",
+            "category": "vegetableFruits & Vegetables & More"
+          }
+        ]
+      },
+      {
+        "title": "All about us 💙",
+        "restaurants": []
+      },
+      {
+        "title": "Quick links",
+        "restaurants": []
+      }
+    ]
+  }
+]

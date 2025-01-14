@@ -1,0 +1,379 @@
+{
+  "city": "TLV - Herzliya area",
+  "restaurants": [
+    {
+      "name": "MeatBar Burger | Ibn Gvirol",
+      "image": "https://imageproxy.wolt.com/mes-image/bd1e3b84-6a02-4e1d-ba66-390bf11b00dd/b1a4a636-e170-49d4-9d7f-f69101fb8509",
+      "description": "Premium Burgers by MeatBar",
+      "rating": "8.6",
+      "dollarCount": "$$",
+      "link": "/en/isr/tel-aviv/restaurant/meatbar-burger-ibn-gvirol",
+      "backgroundImage": "https://imageproxy.wolt.com/mes-image/bd1e3b84-6a02-4e1d-ba66-390bf11b00dd/3c0f4f18-43da-47f2-ae60-ebbe9f5c1946",
+      "fullDescription": "Premium Burgers by MeatBar",
+      "address": {
+        "name": "אבן גבירול 67, תל אביב",
+        "zip": "6436214 TLV - Herzliya area"
+      },
+      "openingTimes": [
+        {
+          "day": "Monday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Tuesday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Wednesday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Thursday",
+          "time": "12:00–01:00"
+        },
+        {
+          "day": "Friday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Saturday",
+          "time": "12:00–01:00"
+        },
+        {
+          "day": "Sunday",
+          "time": "12:00–24:00"
+        }
+      ],
+      "deliveryTimes": [
+        {
+          "day": "Monday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Tuesday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Wednesday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Thursday",
+          "time": "12:00–01:00"
+        },
+        {
+          "day": "Friday",
+          "time": "12:00–24:00"
+        },
+        {
+          "day": "Saturday",
+          "time": "12:00–01:00"
+        },
+        {
+          "day": "Sunday",
+          "time": "12:00–24:00"
+        }
+      ],
+      "deliveryFeeStructure": [
+        {
+          "text": "Base delivery fee",
+          "spanText": "₪10.00"
+        },
+        {
+          "text": "Small order surcharge limit",
+          "spanText": "₪50.00"
+        },
+        {
+          "text": "Long delivery surcharge limit",
+          "spanText": "1 km"
+        },
+        {
+          "text": "Estimated time until delivery",
+          "spanText": "45 min"
+        }
+      ],
+      "phoneNumber": "+97236505199"
+    },
+    {
+      "name": "PASTA VIA | Ibn Gabirol",
+      "image": "https://imageproxy.wolt.com/venue/5c332e779a4d65000b1a7b02/28b02f80-e0b9-11ea-833a-a6b6833e04fd_2.jpg",
+      "description": "Italian Pasta Deli",
+      "rating": "9.2",
+      "dollarCount": "$$",
+      "link": "/en/isr/tel-aviv/restaurant/pasta-e-via",
+      "backgroundImage": "https://imageproxy.wolt.com/venue/5c332e779a4d65000b1a7b02/7ef98798-4f44-11eb-9267-8a359717c877______________.jpg",
+      "fullDescription": "Italian Pasta Deli",
+      "address": {
+        "name": "אבן גבירול 142",
+        "zip": "6296604 TLV - Herzliya area"
+      },
+      "openingTimes": [
+        {
+          "day": "Monday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Tuesday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Wednesday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Thursday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Friday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Saturday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Sunday",
+          "time": "10:00–23:00"
+        }
+      ],
+      "deliveryTimes": [
+        {
+          "day": "Monday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Tuesday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Wednesday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Thursday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Friday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Saturday",
+          "time": "10:00–23:00"
+        },
+        {
+          "day": "Sunday",
+          "time": "10:00–23:00"
+        }
+      ],
+      "deliveryFeeStructure": [
+        {
+          "text": "Base delivery fee",
+          "spanText": "₪10.00"
+        },
+        {
+          "text": "Small order surcharge limit",
+          "spanText": "₪50.00"
+        },
+        {
+          "text": "Long delivery surcharge limit",
+          "spanText": "1 km"
+        },
+        {
+          "text": "Estimated time until delivery",
+          "spanText": "35 min"
+        }
+      ],
+      "phoneNumber": "+972559994994"
+    }
+  ],
+  "stores": [
+    {
+      "name": "Super Yuda | Ibn Gabirol",
+      "image": "https://imageproxy.wolt.com/assets/673206d2479a971266a6831a",
+      "description": "The Heart of Tel Aviv",
+      "rating": "8.6",
+      "dollarCount": "$$",
+      "link": "/en/isr/tel-aviv/venue/super-yuda-ibn-gabirol",
+      "backgroundImage": "https://imageproxy.wolt.com/assets/6755b53e9cbd6e102050adf7",
+      "fullDescription": "The Heart of Tel Aviv SuperYuda Ltd, 512386350\n\nלתשומת הלב: מחירי המוצרים באתר ויישומון וולט עשויים להיות שונים ממחירים בחנויות.\nהמחיר הקובע הוא המחיר המופיע באתר ויישומון וולט, אף אם מוטבע או מודבק על המוצר מחיר אחר מהמחנות בה מבוצע ליקוט המוצרים למשלוח.",
+      "address": {
+        "name": "אבן גבירול 73 תל אביב",
+        "zip": "6404601 TLV - Herzliya area"
+      },
+      "openingTimes": [
+        {
+          "day": "Monday",
+          "time": "All day"
+        },
+        {
+          "day": "Tuesday",
+          "time": "All day"
+        },
+        {
+          "day": "Wednesday",
+          "time": "All day"
+        },
+        {
+          "day": "Thursday",
+          "time": "All day"
+        },
+        {
+          "day": "Friday",
+          "time": "All day"
+        },
+        {
+          "day": "Saturday",
+          "time": "All day"
+        },
+        {
+          "day": "Sunday",
+          "time": "All day"
+        }
+      ],
+      "deliveryTimes": [
+        {
+          "day": "Monday",
+          "time": "All day"
+        },
+        {
+          "day": "Tuesday",
+          "time": "All day"
+        },
+        {
+          "day": "Wednesday",
+          "time": "All day"
+        },
+        {
+          "day": "Thursday",
+          "time": "All day"
+        },
+        {
+          "day": "Friday",
+          "time": "All day"
+        },
+        {
+          "day": "Saturday",
+          "time": "All day"
+        },
+        {
+          "day": "Sunday",
+          "time": "All day"
+        }
+      ],
+      "deliveryFeeStructure": [
+        {
+          "text": "Base delivery fee",
+          "spanText": "₪10.00"
+        },
+        {
+          "text": "Small order surcharge limit",
+          "spanText": "₪70.00"
+        },
+        {
+          "text": "Long delivery surcharge limit",
+          "spanText": "1 km"
+        },
+        {
+          "text": "Estimated time until delivery",
+          "spanText": "35 min"
+        }
+      ],
+      "phoneNumber": "+972526994060"
+    },
+    {
+      "name": "Wolt Market | Ben Yehuda",
+      "image": "https://imageproxy.wolt.com/assets/673206f2e797795fa3838d8d",
+      "description": "Your supermarket, Wolt style",
+      "rating": "9.2",
+      "dollarCount": "$$",
+      "link": "/en/isr/tel-aviv/venue/wolt-market-ben-yehuda",
+      "backgroundImage": "https://imageproxy.wolt.com/assets/673206f2e797795fa3838d8f",
+      "fullDescription": "Your supermarket, Wolt style",
+      "address": {
+        "name": "בן יהודה 19 תל אביב יפו",
+        "zip": "6380401 TLV - Herzliya area"
+      },
+      "openingTimes": [
+        {
+          "day": "Monday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Tuesday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Wednesday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Thursday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Friday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Saturday",
+          "time": "08:00–24:00"
+        },
+        {
+          "day": "Sunday",
+          "time": "07:00–24:00"
+        }
+      ],
+      "deliveryTimes": [
+        {
+          "day": "Monday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Tuesday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Wednesday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Thursday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Friday",
+          "time": "07:00–24:00"
+        },
+        {
+          "day": "Saturday",
+          "time": "08:00–24:00"
+        },
+        {
+          "day": "Sunday",
+          "time": "07:00–24:00"
+        }
+      ],
+      "deliveryFeeStructure": [
+        {
+          "text": "Base delivery fee",
+          "spanText": "₪10.00"
+        },
+        {
+          "text": "Small order surcharge limit",
+          "spanText": "₪70.00"
+        },
+        {
+          "text": "Long delivery surcharge limit",
+          "spanText": "1 km"
+        },
+        {
+          "text": "Estimated time until delivery",
+          "spanText": "45 min"
+        }
+      ],
+      "phoneNumber": "+972503067865"
+    }
+  ]
+}

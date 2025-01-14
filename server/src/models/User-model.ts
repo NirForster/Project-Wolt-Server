@@ -11,6 +11,7 @@ export interface IUser extends Document {
   locations: {
     type: "Home" | "Work" | "Other";
     address: string;
+    isLast: boolean;
   }[];
   favoritesShops: Types.ObjectId[];
   cart: Types.ObjectId[] | IOrder[];
@@ -72,6 +73,7 @@ const userSchema = new Schema(
             required: true,
           },
           address: { type: String, required: true },
+          isLast: { type: Boolean, default: false },
         },
       ],
       default: [],

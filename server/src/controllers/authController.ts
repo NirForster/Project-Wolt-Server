@@ -1,9 +1,16 @@
 import { Request, Response } from "express";
-import User from "../models/User-model";
+import User, { IUser } from "../models/User-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
 import { RequestWithUserID } from "src/types/expressType";
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
+function getToken(userID: string) {
+  const jwtSecret = process.env.JWT_SECRET as string;
+  return jwt.sign({ userID }, jwtSecret, {
+    expiresIn: "1d",
+  });
+}
 
 //* Sign up with new user
 //! POST http://localhost:3000/api/v1/auth/signup
@@ -47,17 +54,14 @@ const signup = async (req: Request, res: Response) => {
       newUser.lname = lname;
       newUser.save();
     }
-    const jwtSecret = process.env.JWT_SECRET as string;
-    const token = jwt.sign({ userID: newUser._id }, jwtSecret, {
-      expiresIn: "1d",
-    });
+    const token = getToken(newUser.id.toString());
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "strict",
     });
     res.status(201).send({
       status: "Success",
-      user: newUser,
+      user: { ...newUser.toObject(), password: "" },
     });
   } catch (err: any) {
     res.status(500).send({
@@ -79,32 +83,27 @@ const login = async (req: Request, res: Response) => {
       status: "Error",
     });
   }
-  const user = await User.findOne({ email });
+  const user = (await User.findOne({ email })) as IUser;
   if (!user) {
-    return res
-      .status(404)
-      .send({ message: "There is no user with that email", status: "Error" });
+    return res.status(401).send({ message: "Not authorized", status: "Error" });
   }
   try {
     bcrypt.compare(password, user.password, (err: Error, result: boolean) => {
-      const jwtSecret = process.env.JWT_SECRET as string;
-      const token = jwt.sign({ userID: user._id }, jwtSecret, {
-        expiresIn: "1d",
-      });
       if (err) {
         throw err;
       }
       if (result) {
+        const token = getToken(user.id.toString());
         res.cookie("token", token, {
           httpOnly: true,
           sameSite: "strict",
         });
         res.send({
           status: "Success",
-          user,
+          user: { ...user.toObject(), password: "" },
         });
       } else {
-        res.status(401).send({ message: "Invalid password!", status: "Error" });
+        res.status(401).send({ message: "Not authorized", status: "Error" });
       }
     });
   } catch (err: any) {
@@ -113,17 +112,13 @@ const login = async (req: Request, res: Response) => {
       status: "Error",
     });
   }
-}; // Send: 200, 401, 404,  500 ({ message: string, status: "Success" | "Error", user?: User })
+}; // Send: 200, 400, 401, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
 //* Log out from registered user
 //! GET http://localhost:3000/api/v1/auth/logout
 const logout = async (req: Request, res: Response) => {
   res.cookie("token", "", {
-
-
-
     maxAge: 1, // Expires immediately
-
     httpOnly: true,
     sameSite: "strict",
   });
@@ -156,7 +151,7 @@ const getCurrentUser = async (req: RequestWithUserID, res: Response) => {
       status: "Error",
     });
   }
-};
+}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User})
 
 module.exports = {
   signup,
