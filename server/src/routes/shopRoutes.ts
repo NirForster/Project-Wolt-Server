@@ -7,9 +7,12 @@ const {
   getShopLastOrder,
   getAllShops,
   getShopsByCategory,
+  getNewItems,
 } = require("../controllers/shopController.ts");
 
 const router = express.Router();
+
+router.get("/new/new/new", userAuth, getNewItems);
 
 //* Add new review on shop
 //! POST http://localhost:3000/api/v1/shop/:id/review

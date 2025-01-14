@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { RequestWithUserID } from "../types/expressType";
 import Shop, { IShop } from "../models/Shop-model";
-import Item, { IItem } from "../models/Item-model";
+// import Item, { IItem } from "../models/Item-model";
 import User, { IUser } from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
+import Item from "../models/new-items-modal";
 import { Types } from "mongoose";
 import Review from "src/types/reviewType";
 
@@ -167,14 +168,40 @@ const getShopsByCategory = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", shops?: shop[] })
 
+const getNewItems = async (req: RequestWithUserID, res: Response) => {
+  console.log("babababababababbababababa");
+
+  // const userID = req.userID;
+  // if (userID) {
+  try {
+    const items = await Item.findById("6785c6297790e17f962483c5");
+    console.log(items);
+
+    if (items) {
+      res.send({ status: "Success", items });
+    } else {
+      return res
+        .status(404)
+        .send({ status: "Error", message: "No items with that id" });
+    }
+  } catch (err: any) {
+    return res.status(500).send({
+      message: err?.message || "An unknown error occurred",
+      status: "Error",
+    });
+  }
+  // } else {
+  //   return res
+  //     .status(401)
+  //     .send({ message: "User not authenticated", status: "Error" });
+  // }
+};
+
 module.exports = {
   getShopData,
   addNewReview,
   getShopLastOrder,
   getAllShops,
   getShopsByCategory,
+  getNewItems,
 };
-
-// return res
-// .status(401)
-// .send({ message: "User not authenticated", status: "Error" });

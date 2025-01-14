@@ -29,6 +29,8 @@ const BASE_URL = "/api/v1/";
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+app.use(cookieParser());
+
 // Middlewares
 app.use(
   cors({
@@ -37,7 +39,6 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cookieParser());
 
 // ✅ Connect to MongoDB Once
 connectDB()
@@ -46,7 +47,7 @@ connectDB()
       console.log(`✅ Server running on port ${PORT}`);
     });
     // scrapeWoltBusinessData();
-    scrapeWoltMenuData();
+    // scrapeWoltMenuData();
   })
   .catch(console.error);
 

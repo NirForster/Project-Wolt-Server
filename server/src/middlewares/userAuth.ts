@@ -10,8 +10,14 @@ export default async function userAuth(
   next: NextFunction
 ): Promise<void> {
   const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {}; // ✅ Safely parse cookies
+  console.log("req.headers: ", req.headers);
   const token = cookies.token || req.headers.authorization?.split(" ")[1];
+  console.log("cookies", cookies);
+  console.log("token: ", token);
+
   if (!token) {
+    console.log("mamamamamammamamamamamamamammamamamamamamamammamamamamama");
+
     res.status(401).json({
       status: "error",
       message: "Access denied, no token provided",
@@ -23,14 +29,15 @@ export default async function userAuth(
     const jwtSecret = process.env.JWT_SECRET as string;
 
     const decoded = jwt.verify(token, jwtSecret) as { userID: string };
-    const user = await User.findById(decoded.userID);
+    // const user = await User.findById(decoded.userID);
 
-    if (!user) {
-      res.status(404).json("User not found");
-      return;
-    }
+    // if (!user) {
+    //   res.status(404).json("User not found");
+    //   return;
+    // }
 
-    req.userID = user._id as string;
+    req.userID = decoded.userID;
+    console.log("req.userID: ", req.userID);
     next();
   } catch (error: any) {
     if (error.name === "TokenExpiredError") {
