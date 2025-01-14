@@ -1,156 +1,73 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import City from "../models/new-restaurant-model";
+import City from "../models/city-model";
 import Item from "../models/new-items-modal";
 
-const woltURL = "https://wolt.com/en/isr";
-const cityToScrape = "TLV - Herzliya area";
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 /**
- * ✅ Scrape Wolt Menu Data and Save to MongoDB (with City and Nested Data)
+ * ✅ Scrape Wolt Menu Data for Existing Restaurants and Save to MongoDB
  */
 export const scrapeWoltMenuData = async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  await page.goto(woltURL, { waitUntil: "networkidle2" });
 
-  const cityLinks = await page.$$eval(
-    '[data-test-id^="front-city-link-ISR"]',
-    (links) =>
-      links.map((link) => ({
-        city: link.querySelector("span")?.textContent?.trim() ?? "Unknown",
-        url: link.getAttribute("href") ?? "",
-      }))
-  );
-
-  const normalizedCityLinks = cityLinks.map((city) => ({
-    ...city,
-    cityNormalized: city.city.toLowerCase().replace(/\s+/g, ""),
-  }));
-
-  const normalizedTargetCity = cityToScrape.toLowerCase().replace(/\s+/g, "");
-  const targetCity = normalizedCityLinks.find(
-    (city) => city.cityNormalized === normalizedTargetCity
-  );
-
-  if (!targetCity) {
-    console.error("❌ City not found. Exiting...");
+  // ✅ Fetch all stored restaurants from City model
+  const cities = await City.find();
+  if (!cities.length) {
+    console.error("❌ No cities found in the database. Exiting...");
     await browser.close();
     return;
   }
 
-  console.log(`✅ City found: ${targetCity.city}`);
-  await page.goto(`https://wolt.com${targetCity.url}`, {
-    waitUntil: "networkidle2",
-  });
+  for (const city of cities) {
+    console.log(`🔍 Scraping menus for city: ${city.city}`);
 
-  // ✅ Scrape restaurants
-  const restaurants = await scrapeSection(page, "Restaurants");
+    for (const restaurant of city.restaurants) {
+      try {
+        if (!restaurant.link) {
+          console.warn(
+            `⚠️ No link provided for restaurant: ${restaurant.name}. Skipping...`
+          );
+          continue;
+        }
 
-  /**
-   * ✅ Save City and Nested Restaurants
-   */
-  // const cityData = {
-  //   city: cityToScrape,
-  //   restaurants: restaurants.map((r) => ({
-  //     ...r, // ✅ Assigning temporary IDs for new restaurants
-  //     _id: undefined, // Remove _id if not provided
-  //   })),
-  // };
+        console.log(`🔍 Scraping menu for restaurant: ${restaurant.name}`);
 
-  // const existingCity = await City.findOne({ city: cityToScrape });
+        // ✅ Go to the restaurant page
+        await page.goto(`https://wolt.com${restaurant.link}`, {
+          waitUntil: "networkidle2",
+        });
 
-  // if (existingCity) {
-  //   await City.updateOne(
-  //     { city: cityToScrape },
-  //     { $set: { restaurants: cityData.restaurants } }
-  //   );
-  // } else {
-  //   await City.create(cityData);
-  // }
+        const sections = await extractMenuData(
+          page,
+          restaurant.link ?? "",
+          restaurant._id?.toString() || "",
+          restaurant.name || "Unknown Restaurant"
+        );
 
-  console.log(
-    `✅ City and all restaurants for ${cityToScrape} have been saved.`
-  );
-
-  // ✅ Scrape menu for each restaurant
-  for (const restaurant of restaurants) {
-    const existingRestaurant = await City.findOne({
-      city: cityToScrape,
-      "restaurants.name": restaurant.name,
-    }).select("restaurants.$");
-
-    if (!existingRestaurant) continue;
-
-    try {
-      console.log(`🔍 Scraping menu for restaurant: ${restaurant.name}`);
-      const restaurantId = existingRestaurant.restaurants[0]._id.toString();
-      const sections = await extractMenuData(
-        page,
-        restaurant.link ?? "",
-        restaurantId,
-        restaurant.name
-      );
-
-      await Item.updateOne(
-        { restaurant: restaurantId },
-        {
-          $set: {
-            restaurant: restaurantId,
-            restaurantName: restaurant.name,
-            sections,
+        await Item.updateOne(
+          { restaurant: restaurant._id },
+          {
+            $set: {
+              restaurant: restaurant._id,
+              restaurantName: restaurant.name,
+              sections,
+            },
           },
-        },
-        { upsert: true }
-      );
+          { upsert: true }
+        );
 
-      console.log(`✅ Menu items saved for ${restaurant.name}`);
-    } catch (error) {
-      console.error(`❌ Error scraping menu for ${restaurant.name}:`, error);
+        console.log(`✅ Menu items saved for ${restaurant.name}`);
+      } catch (error) {
+        console.error(`❌ Error scraping menu for ${restaurant.name}:`, error);
+      }
     }
   }
 
   await browser.close();
   console.log("✅ Menu scraping completed successfully!");
-};
-
-/**
- * ✅ Scrape Restaurant Links for a Section
- */
-const scrapeSection = async (page: Page, sectionName: string) => {
-  await page.$$eval(
-    '[data-active="false"].snbpb50 span',
-    (tabs, section) => {
-      tabs.forEach((tab) => {
-        if (tab.textContent?.includes(section)) {
-          (tab.closest("a") as HTMLElement)?.click();
-        }
-      });
-    },
-    sectionName
-  );
-
-  await delay(3000);
-  await page.waitForSelector('[data-test-id="VenueVerticalListGrid"]');
-
-  return await page.$$eval(
-    ".sq0n3gz.cb-elevated.cb_elevation_elevationXsmall_equ2.a164dpdw.r1bc29i8",
-    (cards) =>
-      cards.map((card) => ({
-        name: card.querySelector(".dllhz82")?.textContent?.trim() ?? "",
-        image: card.querySelector("img")?.getAttribute("src") ?? "",
-        description: card.querySelector(".d14x35kv")?.textContent?.trim() ?? "",
-        rating:
-          card.querySelector(".fhkxgqi")?.textContent?.trim() ?? "No Rating",
-        dollarCount:
-          card
-            .querySelector(".fhkxgqi span:first-child")
-            ?.textContent?.trim() ?? "",
-        link: card.querySelector("a")?.getAttribute("href") ?? "",
-      }))
-  );
 };
 
 /**
@@ -164,6 +81,12 @@ const extractMenuData = async (
 ) => {
   await page.goto(`https://wolt.com${link}`, { waitUntil: "networkidle2" });
   await delay(2000);
+
+  const initialModalCloseButton = await page.$('button[aria-label="Close"]');
+  if (initialModalCloseButton) {
+    await initialModalCloseButton.click();
+    await delay(1000);
+  }
 
   const sections = await page.$$('div[data-test-id="MenuSection"]');
   const menuSections: any[] = [];
@@ -182,6 +105,20 @@ const extractMenuData = async (
     const menuItems = await section.$$("div.d1wyvslh");
 
     for (const menuItem of menuItems) {
+      const statusText = await menuItem
+        .$eval(".cb_typographyClassName_bodyBase_b1fq", (el) =>
+          el.textContent?.trim()
+        )
+        .catch(() => "");
+
+      const isUnavailable = statusText?.includes("Not available");
+      const isPopular = statusText?.includes("Popular");
+
+      if (isUnavailable) {
+        console.warn("⚠️ Item is unavailable, skipping...");
+        continue;
+      }
+
       await menuItem.click();
       await page.waitForSelector('[data-test-id="product-modal"]').catch(() => {
         console.warn("❌ Modal did not open properly. Skipping item.");
@@ -237,6 +174,7 @@ const extractMenuData = async (
         image: itemImage,
         price: itemPrice,
         description: itemDescription,
+        isPopular,
         formData,
       });
 
