@@ -1,20 +1,22 @@
 import mongoose from "mongoose";
 const { Schema, model, Types } = mongoose;
 
+// Option Schema for Form Data
 const formOptionSchema = new Schema({
   optionLabel: String,
   optionPrice: String,
 });
 
+// Form Data Schema
 const formDataSchema = new Schema({
   title: String,
   description: String,
-  type: String,
+  type: String, // radio or checkbox
   options: [formOptionSchema],
 });
 
+// Item Schema inside Section
 const itemSchema = new Schema({
-  restaurant: { type: Types.ObjectId, ref: "Restaurant" }, // ✅ Reference to the Restaurant
   name: String,
   image: String,
   price: String,
@@ -23,5 +25,19 @@ const itemSchema = new Schema({
   formData: [formDataSchema],
 });
 
-const Item = model("Item", itemSchema);
+// Section Schema with Items
+const sectionSchema = new Schema({
+  sectionTitle: String,
+  sectionDescription: String,
+  items: [itemSchema],
+});
+
+// Main Model Schema
+const newItemSchema = new Schema({
+  restaurant: { type: Types.ObjectId, ref: "Restaurant" },
+  // restaurantName: String, // ✅ Added restaurant name here
+  sections: [sectionSchema],
+});
+
+const Item = model("newItem", newItemSchema);
 export default Item;

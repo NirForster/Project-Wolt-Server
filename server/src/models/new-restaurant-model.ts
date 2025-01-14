@@ -1,48 +1,27 @@
 import mongoose from "mongoose";
+const { Schema, model } = mongoose;
 
-const deliveryFeeStructureSchema = new mongoose.Schema({
+const deliveryFeeStructureSchema = new Schema({
   text: String,
   spanText: String,
 });
 
-const openingTimesSchema = new mongoose.Schema({
-  day: String,
-  time: String,
-});
-
-const addressSchema = new mongoose.Schema({
+const addressSchema = new Schema({
   name: String,
   zip: String,
 });
 
-const formOptionSchema = new mongoose.Schema({
-  optionLabel: String,
-  optionPrice: String,
+const openingTimesSchema = new Schema({
+  day: String,
+  time: String,
 });
 
-const formDataSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  type: String,
-  options: [formOptionSchema],
+const deliveryTimesSchema = new Schema({
+  day: String,
+  time: String,
 });
 
-const itemSchema = new mongoose.Schema({
-  name: String,
-  image: String,
-  price: String,
-  description: String,
-  isPopular: Boolean,
-  formData: [formDataSchema],
-});
-
-const menuSectionSchema = new mongoose.Schema({
-  sectionTitle: String,
-  sectionDescription: String,
-  items: [itemSchema],
-});
-
-const restaurantSchema = new mongoose.Schema({
+const newRestaurantSchema = new Schema({
   name: String,
   image: String,
   description: String,
@@ -53,12 +32,11 @@ const restaurantSchema = new mongoose.Schema({
   fullDescription: String,
   city: String,
   address: addressSchema,
-  openingTimes: [openingTimesSchema],
-  deliveryTimes: [openingTimesSchema],
+  openingTimes: [openingTimesSchema], // ✅ Added Opening Times
+  deliveryTimes: [deliveryTimesSchema], // ✅ Added Delivery Times
   deliveryFeeStructure: [deliveryFeeStructureSchema],
   phoneNumber: String,
-  menu: [menuSectionSchema], // ✅ Added Menu Section
 });
 
-const Restaurant = mongoose.model("Restaurant", restaurantSchema);
+const Restaurant = model("newRestaurant", newRestaurantSchema);
 export default Restaurant;
