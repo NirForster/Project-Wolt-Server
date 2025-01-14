@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import Restaurant from "../models/new-restaurant-model";
+import City from "../models/new-restaurant-model";
 import Item from "../models/new-items-modal";
 
 const woltURL = "https://wolt.com/en/isr";
@@ -9,7 +9,7 @@ const cityToScrape = "TLV - Herzliya area";
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 /**
- * ✅ Scrape Wolt Menu Data and Print Results Before Saving to MongoDB
+ * ✅ Scrape Wolt Menu Data and Save to MongoDB (with City and Nested Data)
  */
 export const scrapeWoltMenuData = async () => {
   const browser = await puppeteer.launch({ headless: false });
@@ -46,39 +46,69 @@ export const scrapeWoltMenuData = async () => {
     waitUntil: "networkidle2",
   });
 
-  /**
-   * ✅ Fetch Restaurants from MongoDB for Menu Scraping
-   */
-  const restaurants = await Restaurant.find();
-  if (!restaurants.length) {
-    console.error("❌ No restaurants found in the database.");
-    await browser.close();
-    return;
-  }
+  // ✅ Scrape restaurants
+  const restaurants = await scrapeSection(page, "Restaurants");
 
+  /**
+   * ✅ Save City and Nested Restaurants
+   */
+  // const cityData = {
+  //   city: cityToScrape,
+  //   restaurants: restaurants.map((r) => ({
+  //     ...r, // ✅ Assigning temporary IDs for new restaurants
+  //     _id: undefined, // Remove _id if not provided
+  //   })),
+  // };
+
+  // const existingCity = await City.findOne({ city: cityToScrape });
+
+  // if (existingCity) {
+  //   await City.updateOne(
+  //     { city: cityToScrape },
+  //     { $set: { restaurants: cityData.restaurants } }
+  //   );
+  // } else {
+  //   await City.create(cityData);
+  // }
+
+  console.log(
+    `✅ City and all restaurants for ${cityToScrape} have been saved.`
+  );
+
+  // ✅ Scrape menu for each restaurant
   for (const restaurant of restaurants) {
+    const existingRestaurant = await City.findOne({
+      city: cityToScrape,
+      "restaurants.name": restaurant.name,
+    }).select("restaurants.$");
+
+    if (!existingRestaurant) continue;
+
     try {
       console.log(`🔍 Scraping menu for restaurant: ${restaurant.name}`);
+      const restaurantId = existingRestaurant.restaurants[0]._id.toString();
       const sections = await extractMenuData(
         page,
         restaurant.link ?? "",
-        restaurant._id.toString()
+        restaurantId,
+        restaurant.name
       );
 
-      // ✅ Print the full scraped data to the console
-      console.log("🚀 Scraped Menu Data: ", JSON.stringify(sections, null, 2));
-
-      // ✅ Save grouped data with forms to MongoDB
       await Item.updateOne(
-        { restaurant: restaurant._id },
-        { $set: { restaurant: restaurant._id, sections } },
+        { restaurant: restaurantId },
+        {
+          $set: {
+            restaurant: restaurantId,
+            restaurantName: restaurant.name,
+            sections,
+          },
+        },
         { upsert: true }
       );
-      console.log(
-        `✅ Menu sections and items with forms saved for ${restaurant.name}`
-      );
+
+      console.log(`✅ Menu items saved for ${restaurant.name}`);
     } catch (error) {
-      console.error(`❌ Error scraping menu for ${restaurant.name}`, error);
+      console.error(`❌ Error scraping menu for ${restaurant.name}:`, error);
     }
   }
 
@@ -87,23 +117,56 @@ export const scrapeWoltMenuData = async () => {
 };
 
 /**
- * ✅ Extract Menu Data Grouped by Sections with Form Data
+ * ✅ Scrape Restaurant Links for a Section
+ */
+const scrapeSection = async (page: Page, sectionName: string) => {
+  await page.$$eval(
+    '[data-active="false"].snbpb50 span',
+    (tabs, section) => {
+      tabs.forEach((tab) => {
+        if (tab.textContent?.includes(section)) {
+          (tab.closest("a") as HTMLElement)?.click();
+        }
+      });
+    },
+    sectionName
+  );
+
+  await delay(3000);
+  await page.waitForSelector('[data-test-id="VenueVerticalListGrid"]');
+
+  return await page.$$eval(
+    ".sq0n3gz.cb-elevated.cb_elevation_elevationXsmall_equ2.a164dpdw.r1bc29i8",
+    (cards) =>
+      cards.map((card) => ({
+        name: card.querySelector(".dllhz82")?.textContent?.trim() ?? "",
+        image: card.querySelector("img")?.getAttribute("src") ?? "",
+        description: card.querySelector(".d14x35kv")?.textContent?.trim() ?? "",
+        rating:
+          card.querySelector(".fhkxgqi")?.textContent?.trim() ?? "No Rating",
+        dollarCount:
+          card
+            .querySelector(".fhkxgqi span:first-child")
+            ?.textContent?.trim() ?? "",
+        link: card.querySelector("a")?.getAttribute("href") ?? "",
+      }))
+  );
+};
+
+/**
+ * ✅ Extract Menu Data with Sections and Items
  */
 const extractMenuData = async (
   page: Page,
   link: string,
-  restaurantId: string
+  restaurantId: string,
+  restaurantName: string
 ) => {
   await page.goto(`https://wolt.com${link}`, { waitUntil: "networkidle2" });
   await delay(2000);
 
   const sections = await page.$$('div[data-test-id="MenuSection"]');
-  const sectionData: any[] = []; // ✅ Holds grouped sections and items
-
-  const initialModalCloseButton = await page.$('button[aria-label="Close"]');
-  if (initialModalCloseButton) {
-    await initialModalCloseButton.click();
-  }
+  const menuSections: any[] = [];
 
   for (const section of sections) {
     const sectionTitle = await section.$eval(
@@ -116,24 +179,9 @@ const extractMenuData = async (
       .catch(() => "");
 
     const items = [];
-
     const menuItems = await section.$$("div.d1wyvslh");
+
     for (const menuItem of menuItems) {
-      const statusText = await menuItem
-        .$eval(".cb_typographyClassName_bodyBase_b1fq", (el) =>
-          el.textContent?.trim()
-        )
-        .catch(() => "");
-
-      const isUnavailable = statusText?.includes("Not available") ?? false;
-      const isPopular = statusText?.includes("Popular") ?? false;
-
-      if (isUnavailable) {
-        console.warn("⚠️ Item is unavailable, skipping...");
-        continue;
-      }
-
-      delay(3000);
       await menuItem.click();
       await page.waitForSelector('[data-test-id="product-modal"]').catch(() => {
         console.warn("❌ Modal did not open properly. Skipping item.");
@@ -151,16 +199,11 @@ const extractMenuData = async (
         .trim();
       const itemDescription = $$("#product-description").text().trim();
 
-      // ✅ Extract Form Data for Each Item
+      // ✅ Extracting Form Data
       const formData: any[] = [];
       $$("fieldset[data-test-id='product-option-group']").each((_, field) => {
         const optionTitle = $$(field)
           .find('[data-test-id="product-option-group-name"]')
-          .text()
-          .trim();
-
-        const optionDescription = $$(field)
-          .find('p[class*="oh0kvro"]')
           .text()
           .trim();
 
@@ -185,11 +228,6 @@ const extractMenuData = async (
 
         formData.push({
           title: optionTitle,
-          description: optionDescription,
-          type:
-            $$(field).find("input").attr("type") === "radio"
-              ? "radio"
-              : "checkbox",
           options,
         });
       });
@@ -199,7 +237,6 @@ const extractMenuData = async (
         image: itemImage,
         price: itemPrice,
         description: itemDescription,
-        isPopular,
         formData,
       });
 
@@ -207,17 +244,17 @@ const extractMenuData = async (
         'button[data-test-id="modal-close-button"]'
       );
       if (closeModal) await closeModal.click();
-      await delay(1000);
+      await delay(500);
     }
 
-    sectionData.push({
+    menuSections.push({
       sectionTitle,
       sectionDescription,
       items,
     });
   }
 
-  return sectionData; // ✅ Return sections with forms grouped
+  return menuSections;
 };
 
 export default scrapeWoltMenuData;

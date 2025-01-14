@@ -67,14 +67,15 @@ export const scrapeWoltBusinessData = async () => {
       return await page.$$eval(
         ".sq0n3gz.cb-elevated.cb_elevation_elevationXsmall_equ2.a164dpdw.r1bc29i8",
         (cards) =>
-          cards.slice(0, 10).map((card) => ({
+          cards.slice(0, 5).map((card) => ({
             name: card.querySelector(".dllhz82")?.textContent?.trim() ?? "",
             image: card.querySelector("img")?.getAttribute("src") ?? "",
             description:
               card.querySelector(".d14x35kv")?.textContent?.trim() ?? "",
             rating:
-              card.querySelector(".fhkxgqi")?.textContent?.trim() ??
-              "No Rating",
+              card
+                .querySelector(".fa9s092:nth-child(3) .fhkxgqi")
+                ?.textContent?.trim() ?? "No Rating",
             dollarCount:
               card
                 .querySelector(".fhkxgqi span:first-child")
@@ -178,6 +179,7 @@ export const scrapeWoltBusinessData = async () => {
       const restaurantData = {
         ...restaurant,
         ...detailedData,
+        city: cityToScrape,
         address: detailedData.address,
         openingTimes: detailedData.openingTimes,
         deliveryTimes: detailedData.deliveryTimes,
@@ -185,8 +187,13 @@ export const scrapeWoltBusinessData = async () => {
         phoneNumber: detailedData.phoneNumber,
       };
 
+      const citySchema = {
+        city: cityToScrape,
+        restaurants: [restaurantData],
+      };
+
       try {
-        await Restaurant.create(restaurantData); // ✅ Save to MongoDB
+        await Restaurant.create(citySchema); // ✅ Save to MongoDB
         console.log(`✅ Saved: ${restaurant.name}`);
       } catch (error) {
         console.error(`❌ Error saving ${restaurant.name}:`, error);

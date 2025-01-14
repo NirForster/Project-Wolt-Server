@@ -1,27 +1,32 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
+// Delivery Fee Structure Schema
 const deliveryFeeStructureSchema = new Schema({
   text: String,
   spanText: String,
 });
 
+// Address Schema
 const addressSchema = new Schema({
   name: String,
   zip: String,
 });
 
+// Opening Times Schema
 const openingTimesSchema = new Schema({
   day: String,
   time: String,
 });
 
+// Delivery Times Schema
 const deliveryTimesSchema = new Schema({
   day: String,
   time: String,
 });
 
-const newRestaurantSchema = new Schema({
+// Restaurant Schema
+const restaurantSchema = new Schema({
   name: String,
   image: String,
   description: String,
@@ -30,13 +35,18 @@ const newRestaurantSchema = new Schema({
   link: String,
   backgroundImage: String,
   fullDescription: String,
-  city: String,
   address: addressSchema,
-  openingTimes: [openingTimesSchema], // ✅ Added Opening Times
-  deliveryTimes: [deliveryTimesSchema], // ✅ Added Delivery Times
+  openingTimes: [openingTimesSchema],
+  deliveryTimes: [deliveryTimesSchema],
   deliveryFeeStructure: [deliveryFeeStructureSchema],
   phoneNumber: String,
 });
 
-const Restaurant = model("newRestaurant", newRestaurantSchema);
-export default Restaurant;
+// **City Schema holding multiple Restaurants**
+const citySchema = new Schema({
+  city: String,
+  restaurants: [restaurantSchema], // ✅ Embedded restaurants array
+});
+
+const City = model("City", citySchema);
+export default City;

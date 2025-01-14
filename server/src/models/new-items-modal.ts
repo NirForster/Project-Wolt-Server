@@ -32,10 +32,10 @@ const sectionSchema = new Schema({
   items: [itemSchema],
 });
 
-// Main Model Schema
+// Main Model Schema with Restaurant Name as a String (not ref)
 const newItemSchema = new Schema({
   restaurant: { type: Types.ObjectId, ref: "Restaurant" },
-  // restaurantName: String, // ✅ Added restaurant name here
+  restaurantName: String, // ✅ Restaurant name as a string, not a reference
   sections: [sectionSchema],
 });
 

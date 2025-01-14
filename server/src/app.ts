@@ -19,7 +19,7 @@ const ordersRoutes = require("./routes/ordersRoutes.ts");
 
 // Web Scrapers
 // import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
-// import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
+import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
 
 // Environment variables
 dotenv.config();
@@ -46,7 +46,7 @@ connectDB()
       console.log(`✅ Server running on port ${PORT}`);
     });
     // scrapeWoltBusinessData();
-    // scrapeWoltMenuData();
+    scrapeWoltMenuData();
   })
   .catch(console.error);
 
