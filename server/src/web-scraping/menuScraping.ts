@@ -144,6 +144,16 @@ const extractMenuData = async (
           .text()
           .trim();
 
+        const optionDescription = $$(field)
+          .find('p[class*="oh0kvro"]')
+          .text()
+          .trim();
+
+        const type =
+          $$(field).find("input").attr("type") === "radio"
+            ? "radio"
+            : "checkbox";
+
         const options = $$(field)
           .find("input")
           .map((_, input) => ({
@@ -165,6 +175,8 @@ const extractMenuData = async (
 
         formData.push({
           title: optionTitle,
+          description: optionDescription,
+          type, // ✅ Now included in the data
           options,
         });
       });

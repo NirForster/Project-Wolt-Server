@@ -20,7 +20,7 @@ const ordersRoutes = require("./routes/ordersRoutes.ts");
 // Web Scrapers
 // import { scrapeWoltCities } from "./web-scraping/cityScraper";
 // import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
-import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
+// import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
 
 // Environment variables
 dotenv.config();
@@ -48,7 +48,7 @@ connectDB()
     });
     // scrapeWoltCities();
     // scrapeWoltBusinessData();
-    scrapeWoltMenuData();
+    // scrapeWoltMenuData();
   })
   .catch(console.error);
 
