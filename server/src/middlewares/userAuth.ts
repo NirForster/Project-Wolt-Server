@@ -12,8 +12,8 @@ export default async function userAuth(
   const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {}; // ✅ Safely parse cookies
   const token = cookies.token || req.headers.authorization?.split(" ")[1];
   if (!token) {
-    res.status(401).json({
-      status: "error",
+    res.status(401).send({
+      status: "Error",
       message: "Access denied, no token provided",
     });
     return;
@@ -22,21 +22,37 @@ export default async function userAuth(
   try {
     const jwtSecret = process.env.JWT_SECRET as string;
 
-    const decoded = jwt.verify(token, jwtSecret) as { userID: string };
-    const user = await User.findById(decoded.userID);
-
-    if (!user) {
-      res.status(404).json("User not found");
+    if (!jwtSecret) {
+      res.status(500).send({
+        status: "Error",
+        message: "Server configuration error: Missing JWT secret",
+      });
       return;
     }
 
-    req.userID = user._id as string;
+    const decoded = jwt.verify(token, jwtSecret) as { userID: string };
+
+    req.userID = decoded.userID as string;
     next();
-  } catch (error: any) {
-    if (error.name === "TokenExpiredError") {
-      res.status(401).json({ status: "error", message: "Token expired" });
+  } catch (err: any) {
+    if (err.name === "TokenExpiredError") {
+      res.status(401).send({
+        status: "Error",
+        message: "Token expired",
+      });
+      return;
+    } else if (err.name === "JsonWebTokenError") {
+      res.status(401).send({
+        status: "Error",
+        message: "Invalid token",
+      });
+      return;
     } else {
-      res.status(401).json({ status: "error", message: "Invalid token" });
+      // General fallback for unexpected errors
+      res.status(500).send({
+        status: "Error",
+        message: err.message || "An error occurred during authentication",
+      });
     }
   }
-} // Send: 401, 404
+} // Send: 401 500

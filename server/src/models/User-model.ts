@@ -1,7 +1,9 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 import { IOrder } from "./Order-model";
+import { IRestaurant } from "./new-restaurant-model";
 
 export interface IUser extends Document {
+  _id: Types.ObjectId;
   email: string;
   password: string;
   fname: string;
@@ -13,7 +15,7 @@ export interface IUser extends Document {
     address: string;
     isLast: boolean;
   }[];
-  favoritesShops: Types.ObjectId[];
+  favoritesShops: Types.ObjectId[] | IRestaurant[];
   cart: Types.ObjectId[] | IOrder[];
   lastOrders: Types.ObjectId[] | IOrder[]; // Virtual property
   fullname: string;
@@ -82,7 +84,7 @@ const userSchema = new Schema(
     //! User activity / history
     favoritesShops: {
       type: [Schema.Types.ObjectId],
-      ref: "Shop",
+      ref: "Restaurant",
       default: [],
     }, //* list of all the user favorites shops
 

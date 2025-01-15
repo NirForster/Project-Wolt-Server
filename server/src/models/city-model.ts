@@ -1,20 +1,53 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
+import { IRestaurant } from "./new-restaurant-model";
 const { Schema, model } = mongoose;
 
-const restaurantSummarySchema = new Schema({
-  name: String,
-  link: String,
-  image: String,
-  description: String,
-  rating: String,
-  dollarCount: String,
-});
+export interface ICity extends Document {
+  _id: Types.ObjectId;
+  city: string;
+  restaurants: RestaurantType[];
+  shops: PlaceToBuyFrom[];
+}
 
-const citySchema = new Schema({
-  city: String,
-  restaurants: [restaurantSummarySchema],
-  stores: [restaurantSummarySchema],
-});
+interface PlaceToBuyFrom {
+  name: string;
+  link: string;
+  image: string;
+  description: string;
+  rating: number;
+  dollarCount: "$" | "$$" | "$$$" | "$$$$";
+}
 
-const City = model("City", citySchema);
-export default City;
+interface RestaurantType extends PlaceToBuyFrom {
+  restaurant: Types.ObjectId | IRestaurant;
+}
+
+const restaurantSummarySchema = new Schema(
+  {
+    name: { type: String },
+    link: { type: String },
+    image: { type: String },
+    description: { type: String },
+    rating: { type: Number },
+    dollarCount: { type: String },
+    restaurant: { type: Schema.Types.ObjectId, ref: "Restaurant" },
+  },
+  {
+    toJSON: { virtuals: true }, // Include virtuals in JSON output
+    toObject: { virtuals: true }, // Include virtuals in Object output
+  }
+);
+
+const citySchema = new Schema(
+  {
+    city: { type: String },
+    restaurants: [restaurantSummarySchema],
+    stores: [restaurantSummarySchema],
+  },
+  {
+    toJSON: { virtuals: true }, // Include virtuals in JSON output
+    toObject: { virtuals: true }, // Include virtuals in Object output
+  }
+);
+
+export default model<ICity>("City", citySchema);

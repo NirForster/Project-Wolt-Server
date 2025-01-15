@@ -20,6 +20,7 @@ router.use(userAuth); // Send: 401, 404
 //* get all the user's locations
 //! GET http://localhost:3000/api/v1/user/locations
 router.get("/locations", getLocations); // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", locations?: {type: "Home" | "Work" | "Other", address: string, isLast: boolean }[] })
+
 //* add new location to the user locations
 //! PUT http://localhost:3000/api/v1/user/locations/add
 router.put("/locations/add", addNewLocation); // Send: 200, 400, 401, 404, 500 ({ message: string, status: "Success" | "Error" })

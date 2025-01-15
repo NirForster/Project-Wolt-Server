@@ -6,7 +6,7 @@ const {
   addNewReview,
   getShopLastOrder,
   getAllShops,
-  getShopsByCategory,
+  // getShopsByCategory,
 } = require("../controllers/shopController.ts");
 
 const router = express.Router();
@@ -23,12 +23,12 @@ router.get("/:id/last-order", userAuth, getShopLastOrder); // Send: 200, 204, 40
 //! GET http://localhost:3000/api/v1/shop/all
 router.get("/all", getAllShops); // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops?: Shop[] })
 
-//* Get all the shops in a category
-//! GET http://localhost:3000/api/v1/shop/category/:category
-router.get("/category/:category", getShopsByCategory); // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", shops?: shop[] })
+// //* Get all the shops in a category
+// //! GET http://localhost:3000/api/v1/shop/category/:category
+// router.get("/category/:category", getShopsByCategory); // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", shops?: shop[] })
 
 //* Get the data of the given store
 //! GET http://localhost:3000/api/v1/shop/:id
-router.get("/:id", getShopData); // Send: 201, 400, 403, 404 500 ({ message?: string, status: "Success" | "Error", shop?: Shop })
+router.get("/:id", getShopData); // Send: 201, 400, 403, 404 500 ({ message?: string, status: "Success" | "Error", shop?: Restaurant, menu?: NewItem })
 
 module.exports = router;
