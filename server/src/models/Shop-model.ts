@@ -1,7 +1,7 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 import LocationType from "../types/location-type";
 import Review from "../types/reviewType";
-import { IItem } from "./new-items-modal";
+import { IItem } from "./Item-model";
 
 export interface IShop extends Document {
   phone: string;

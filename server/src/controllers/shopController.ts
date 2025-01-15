@@ -5,6 +5,8 @@ import User from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
 import { Types } from "mongoose";
 import Review from "src/types/reviewType";
+import NewItem from "../models/new-items-modal";
+import Restaurant from "../models/new-restaurant-model";
 
 //* Get the data of the given store
 //! GET http://localhost:3000/api/v1/shop/:id
@@ -13,15 +15,17 @@ const getShopData = async (req: Request, res: Response) => {
     const shopId = req.params.id;
     console.log(shopId);
 
-    const shop = await Shop.findById(shopId).populate("menu");
+    const shop = await Restaurant.findById(shopId);
+    const menu = await NewItem.findOne({ restaurant: shopId });
     console.log("shop is: ", shop);
+    console.log("menu is: ", menu);
 
     if (!shop) {
       return res
         .status(404)
         .send({ status: "Error", message: "There is no shop with that id" });
     }
-    return res.send({ status: "Success", shop });
+    return res.send({ status: "Success", shop, menu });
   } catch (err: any) {
     console.log(err);
 
@@ -30,7 +34,7 @@ const getShopData = async (req: Request, res: Response) => {
       status: "Error",
     });
   }
-}; // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", shop?: Shop })
+}; // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", shop?: Restaurant, menu?: NewItem })
 
 //* Adding new review on shop
 //! POST http://localhost:3000/api/v1/shop/:id/review
@@ -99,7 +103,7 @@ const getShopLastOrder = async (req: RequestWithUserID, res: Response) => {
     const shopID = req.params.id;
 
     try {
-      const shop = await Shop.findById(shopID);
+      const shop = await Shop.findById(shopID).populate("menu");
 
       if (!shop) {
         return res
@@ -134,52 +138,50 @@ const getShopLastOrder = async (req: RequestWithUserID, res: Response) => {
 
 //* Get all the shops
 //! GET http://localhost:3000/api/v1/shop/all
-const getAllShops = async (req: RequestWithUserID, res: Response) => {
+const getAllShops = async (req: Request, res: Response) => {
   try {
-    res.send({ status: "Success", shops: await Shop.find() });
+    res.send({ status: "Success", shops: await Restaurant.find() });
   } catch (err: any) {
     return res.status(500).send({
       message: err.message || "An unknown error occurred",
       status: "Error",
     });
   }
-}; // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops?: Shop[] })
+}; // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops?: Restaurant[] })
 
-//* Get all the shops in a category
-//! GET http://localhost:3000/api/v1/shop/category/:category
-const getShopsByCategory = async (req: RequestWithUserID, res: Response) => {
-  const { category } = req.params;
-  if (category) {
-    try {
-      const shops = await Shop.find({ categories: category });
+// //* Get all the shops in a category
+// //! GET http://localhost:3000/api/v1/shop/category/:category
+// const getShopsByCategory = async (req: RequestWithUserID, res: Response) => {
+//   const { category } = req.params;
+//   if (category) {
+//     try {
+//       const shops = await Shop.find({ categories: category });
 
-      if (shops.length === 0) {
-        return res.status(404).send({
-          status: "Error",
-          message: `No shops found for the category: ${category}`,
-        });
-      }
+//       if (shops.length === 0) {
+//         return res.status(404).send({
+//           status: "Error",
+//           message: `No shops found for the category: ${category}`,
+//         });
+//       }
 
-      return res.send({ status: "Success", shops });
-    } catch (err: any) {
-      return res.status(500).send({
-        message: err.message || "An unknown error occurred",
-        status: "Error",
-      });
-    }
-  } else {
-    res.status(400).send({ status: "Error", message: "No category was given" });
-  }
-}; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", shops?: shop[] })
+//       return res.send({ status: "Success", shops });
+//     } catch (err: any) {
+//       console.error(err);
+
+//       return res.status(500).send({
+//         message: err.message || "An unknown error occurred",
+//         status: "Error",
+//       });
+//     }
+//   } else {
+//     res.status(400).send({ status: "Error", message: "No category was given" });
+//   }
+// }; // Send: 200, 400, 404, 500 ({ message?: string, status: "Success" | "Error", shops?: shop[] })
 
 module.exports = {
   getShopData,
   addNewReview,
   getShopLastOrder,
   getAllShops,
-  getShopsByCategory,
+  // getShopsByCategory,
 };
-
-// return res
-// .status(401)
-// .send({ message: "User not authenticated", status: "Error" });
