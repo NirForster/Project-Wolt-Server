@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import { RequestWithUserID } from "../types/expressType";
 import Shop, { IShop } from "../models/Shop-model";
-import Item, { IItem } from "../models/Item-model";
-import User, { IUser } from "../models/User-model";
+import User from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
 import { Types } from "mongoose";
 import Review from "src/types/reviewType";
@@ -12,7 +11,11 @@ import Review from "src/types/reviewType";
 const getShopData = async (req: Request, res: Response) => {
   try {
     const shopId = req.params.id;
+    console.log(shopId);
+
     const shop = await Shop.findById(shopId).populate("menu");
+    console.log("shop is: ", shop);
+
     if (!shop) {
       return res
         .status(404)
@@ -20,6 +23,8 @@ const getShopData = async (req: Request, res: Response) => {
     }
     return res.send({ status: "Success", shop });
   } catch (err: any) {
+    console.log(err);
+
     return res.status(500).send({
       message: err.message || "An unknown error occurred",
       status: "Error",

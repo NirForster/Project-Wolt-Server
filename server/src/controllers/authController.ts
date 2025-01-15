@@ -1,10 +1,18 @@
+// Libraries
 import { Request, Response } from "express";
-import User, { IUser } from "../models/User-model";
-import { emailValidate, phoneValidate } from "../utils/dataValidate";
-import { RequestWithUserID } from "src/types/expressType";
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// Request type
+import { RequestWithUserID } from "src/types/expressType";
+
+// Models
+import User, { IUser } from "../models/User-model";
+
+// Handler functions
+import { emailValidate, phoneValidate } from "../utils/dataValidate";
+
+// Generic function
 function getToken(userID: string) {
   const jwtSecret = process.env.JWT_SECRET as string;
   return jwt.sign({ userID }, jwtSecret, {
@@ -48,7 +56,7 @@ const signup = async (req: Request, res: Response) => {
       email,
       password: hashedPassword,
       fname,
-      phone,
+      phone: `0${phone}`,
     });
     if (lname) {
       newUser.lname = lname;
@@ -144,14 +152,14 @@ const getCurrentUser = async (req: RequestWithUserID, res: Response) => {
         .status(404)
         .send({ message: "User not found", status: "Error" });
     }
-    res.status(200).send({ status: "Success", user });
+    res.send({ status: "Success", user });
   } catch (error: any) {
     res.status(500).send({
       message: error.message || "An error occurred while fetching the user",
       status: "Error",
     });
   }
-}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User})
+}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
 module.exports = {
   signup,

@@ -4,7 +4,7 @@ export function emailValidate(email: string) {
 
 export function phoneValidate(phone: string) {
   const DIGITS = "1234567890";
-  if (phone.length !== 10) {
+  if (phone.length !== 9) {
     return false;
   }
   return phone.split("").every((char) => {

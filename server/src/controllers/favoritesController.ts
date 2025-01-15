@@ -1,5 +1,11 @@
+// Libraries
 import { Response } from "express";
+import { Types } from "mongoose";
+
+// Request type
 import { RequestWithUserID } from "src/types/expressType";
+
+// Models
 import User, { IUser } from "../models/User-model";
 
 //* Get all the user's favorites shops (populated together)
@@ -29,7 +35,7 @@ const getUserFavoritesShops = async (req: RequestWithUserID, res: Response) => {
       .status(401)
       .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error",  favoritesShops?: Shop[] })
+}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error",  favoritesShops?: Restaurant[] })
 
 //* Add new shop to the user favorites
 //! PUT http://localhost:3000/api/v1/favorites/add
@@ -89,9 +95,12 @@ const removeFromFavorites = async (req: RequestWithUserID, res: Response) => {
         return shop.toString() === shopID.toString();
       });
       if (isIn) {
-        user.favoritesShops = user.favoritesShops.filter((shop) => {
-          return shop.toString() !== shopID;
-        });
+        user.favoritesShops = (user.favoritesShops as Types.ObjectId[]).filter(
+          (restaurant) => {
+            const restaurantId = restaurant as Types.ObjectId;
+            return restaurantId.toString() !== shopID.toString();
+          }
+        );
         user.save();
         return res.send({
           status: "Success",

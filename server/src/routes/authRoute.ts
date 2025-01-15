@@ -1,5 +1,10 @@
+// Libraries
 import express from "express";
+
+// Middlewares
 import userAuth from "../middlewares/userAuth";
+
+// Functions
 const {
   signup,
   login,
@@ -11,7 +16,7 @@ const router = express.Router();
 
 //* Fetch the current logged-in user
 //! GET http://localhost:3000/api/v1/auth/me
-router.get("/me", userAuth, getCurrentUser); // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User})
+router.get("/me", userAuth, getCurrentUser); // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
 //* Sign up with new user
 //! POST http://localhost:3000/api/v1/auth/signup
