@@ -1,6 +1,7 @@
 import mongoose, { Types } from "mongoose";
 import { IUser } from "./User-model";
 import { IOrder } from "./Order-model";
+import Review from "../types/reviewType";
 const { Schema, model } = mongoose;
 
 export interface IRestaurant extends Document {
@@ -20,12 +21,7 @@ export interface IRestaurant extends Document {
   deliveryFee: number;
   minTotal: number;
   deliveryTime: number;
-  reviews: {
-    user: Types.ObjectId | IUser;
-    rating: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-    comment?: string;
-    createdAt: Date;
-  }[];
+  reviews: Review[];
   // Virtual properties
   rating: number;
   order: Types.ObjectId[] | IOrder[];

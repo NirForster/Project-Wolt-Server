@@ -2,6 +2,7 @@ import mongoose, { Document, Schema, Types } from "mongoose";
 
 import { IRestaurant } from "./new-restaurant-model";
 import { IUser } from "./User-model";
+import { IOrderItem } from "./Order-item-model";
 import { IItem } from "./new-items-modal";
 
 export interface IOrder extends Document {
@@ -10,7 +11,7 @@ export interface IOrder extends Document {
   shop: Types.ObjectId | IRestaurant;
   createdAt: Date;
   deliveringTime?: number;
-  items: Types.ObjectId[] | IItem[];
+  items: Types.ObjectId[] | IOrderItem[];
   hasSent: boolean;
   totalPrice: number; // Virtual property
 }
@@ -19,7 +20,7 @@ const orderSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
 
-    restaurant: {
+    shop: {
       type: Schema.Types.ObjectId,
       ref: "Restaurant",
       required: true,
@@ -34,36 +35,7 @@ const orderSchema = new Schema(
       type: Number,
     },
 
-    items: {
-      type: [
-        {
-          name: { type: String, required: true }, // Item name
-          image: { type: String, required: true }, // Item image
-          price: { type: String, required: true }, // Item price
-          description: { type: String }, // Optional description
-          isPopular: { type: Boolean, default: false }, // Popularity flag
-          formData: [
-            {
-              title: { type: String },
-              description: { type: String },
-              type: {
-                type: String,
-                required: true,
-                enum: ["radio", "checkbox"], // Only allow "radio" or "checkbox"
-              },
-              options: [
-                {
-                  optionLabel: { type: String, required: true }, // Label for the option
-                  optionPrice: { type: String, required: true }, // Price for the option
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      required: true,
-      default: [],
-    },
+    items: { type: [Schema.Types.ObjectId], ref: "OrderItem", default: [] },
 
     hasSent: { type: Boolean, default: false },
   },
@@ -73,26 +45,25 @@ const orderSchema = new Schema(
   }
 );
 
-orderSchema.virtual("totalPrice").get(function () {
-  const itemsAmount = this.items.length;
-
-  if (itemsAmount > 0) {
-    return this.items.reduce((sum: number, currentItem: any) => {
-      const currentPrice = currentItem.price;
-
-      // Extract the numeric part of the price string
-      const numericPrice = parseFloat(currentPrice.replace(/[^\d.-]/g, "")); // Remove "₪" and any non-numeric characters
-      return numericPrice + sum;
+orderSchema.virtual("totalPrice").get(async function () {
+  const id = this._id;
+  const thisOrder = (await mongoose
+    .model("Order")
+    .findById(id)
+    .populate("items")) as IOrder;
+  const items = thisOrder.items as IOrderItem[];
+  if (items.length > 0) {
+    return items.reduce((sum, item) => {
+      return item ? item.totalPrice + sum : 0;
     }, 0);
   }
-
   return 0;
 });
 
 orderSchema.pre("save", async function (next) {
   const allOrdersOfShop = await mongoose
     .model("Order")
-    .find({ restaurant: this.restaurant }, "deliveringTime"); // Retrieving all that restaurant's orders
+    .find({ shop: this.shop }, "deliveringTime"); // Retrieving all that restaurant's orders
 
   const totalDeliveryTime = allOrdersOfShop.reduce((sum, order) => {
     if (order.hasSent) {
@@ -106,7 +77,7 @@ orderSchema.pre("save", async function (next) {
   try {
     await mongoose
       .model("Restaurant")
-      .findByIdAndUpdate(this.restaurant, { avgDeliveryTime });
+      .findByIdAndUpdate(this.shop, { avgDeliveryTime });
     next();
   } catch (err: any) {
     next(err);

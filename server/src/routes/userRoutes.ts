@@ -1,6 +1,10 @@
+// Libraries
 import express from "express";
+
+// Middlewares
 import userAuth from "../middlewares/userAuth";
 
+// Functions
 const {
   deleteUser,
   updateUser,
@@ -15,7 +19,7 @@ const {
 const router = express.Router();
 
 //* Middleware to check the user authentication using JWT
-router.use(userAuth); // Send: 401, 404
+router.use(userAuth); // Send: 401, 500 ({ message: string, status: "Error"})
 
 //* get all the user's locations
 //! GET http://localhost:3000/api/v1/user/locations

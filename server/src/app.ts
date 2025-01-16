@@ -25,7 +25,7 @@ const ordersRoutes = require("./routes/ordersRoutes.ts");
 
 // App variables
 dotenv.config();
-const BASE_URL = "/api/v1/";
+const BASE_URL = "";
 const PORT = process.env.PORT || 3000;
 const app = express();
 
