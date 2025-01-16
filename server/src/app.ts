@@ -47,16 +47,22 @@ connectDB()
     });
     // scrapeWoltCities();
     // scrapeWoltBusinessData();
-    // scrapeWoltMenuDatWOla();
+    // scrapeWoltMenuData();
   })
   .catch(console.error);
 
-app.use(`${BASE_URL}auth`, authRoutes);
+// app.use(`${BASE_URL}auth`, authRoutes);
 
-app.use(`${BASE_URL}user`, userRoutes);
+// app.use(`${BASE_URL}user`, userRoutes);
 
-app.use(`${BASE_URL}favorites`, favoritesRoutes);
+// app.use(`${BASE_URL}favorites`, favoritesRoutes);
 
-app.use(`${BASE_URL}shop`, shopRoutes);
+// app.use(`${BASE_URL}shop`, shopRoutes);
 
-app.use(`${BASE_URL}orders`, ordersRoutes);
+// app.use(`${BASE_URL}orders`, ordersRoutes);
+
+app.use(`/auth`, authRoutes);
+app.use(`/user`, userRoutes);
+app.use(`/favorites`, favoritesRoutes);
+app.use(`/shop`, shopRoutes);
+app.use(`/orders`, ordersRoutes);
