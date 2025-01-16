@@ -1,9 +1,16 @@
+// Libraries
 import { Response } from "express";
-import User, { IUser } from "../models/User-model";
-import { emailValidate, phoneValidate } from "../utils/dataValidate";
+const bcrypt = require("bcrypt");
+
+// Request type
 import { RequestWithUserID } from "src/types/expressType";
 
-const bcrypt = require("bcrypt");
+// Models
+import User, { IUser } from "../models/User-model";
+import OrderItem, { IOrderItem } from "../models/Order-item-model";
+
+// Handler functions
+import { emailValidate, phoneValidate } from "../utils/dataValidate";
 
 //* Delete a registered user
 //! DELETE http://localhost:3000/api/v1/user/:id
@@ -138,14 +145,19 @@ const getUserData = async (req: RequestWithUserID, res: Response) => {
 //* get the orders in the users cart
 //! GET http://localhost:3000/api/v1/user/cart
 const getCart = async (req: RequestWithUserID, res: Response) => {
+  // const baba = OrderItem;
   const userID = req.userID;
   if (userID) {
     try {
       const user = (await User.findById(userID).populate({
         path: "cart",
         populate: [
-          { path: "shop", select: "name photo description" },
-          { path: "items.product" },
+          {
+            path: "shop",
+            model: "Restaurant",
+            select: "-deliveryFeeStructure -deliveryTimes -openingTimes",
+          }, // Populate shop details
+          { path: "items", model: "OrderItem" }, // Populate items array
         ],
       })) as IUser;
       if (!user) {

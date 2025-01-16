@@ -1,12 +1,18 @@
+// Libraries
 import { Request, Response } from "express";
+import { Types } from "mongoose";
+
+// Request type
 import { RequestWithUserID } from "../types/expressType";
-import Shop, { IShop } from "../models/Shop-model";
+
+// Models
 import User from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
-import { Types } from "mongoose";
-import Review from "src/types/reviewType";
 import NewItem from "../models/new-items-modal";
-import Restaurant from "../models/new-restaurant-model";
+import Restaurant, { IRestaurant } from "../models/new-restaurant-model";
+
+// Other types
+import Review from "../types/reviewType";
 
 //* Get the data of the given store
 //! GET http://localhost:3000/api/v1/shop/:id
@@ -46,13 +52,14 @@ const addNewReview = async (req: RequestWithUserID, res: Response) => {
         path: "lastOrders",
         select: "shop",
       });
-      if (!user) {
+      const shopID = req.params.id;
+      const shop = await Restaurant.findById(shopID);
+      if (!user || !shop) {
         return res.status(404).send({
           status: "Error",
-          message: `There is no user with that id`,
+          message: `There is no ${user ? "shop" : "user"} with that id`,
         });
       }
-      const shopID = req.params.id;
       const isShopInUsersOrders = user.lastOrders.some((order) => {
         const currentOrder = order as IOrder;
         return currentOrder.shop.toString() === shopID;
@@ -63,7 +70,7 @@ const addNewReview = async (req: RequestWithUserID, res: Response) => {
           message: "User must first order from that shop before adding reviews",
         });
       }
-      const shop = (await Shop.findById(shopID)) as IShop;
+
       const { rating, comment } = req.body;
       if (!rating || rating > 10 || rating < 1) {
         return res.status(400).send({
@@ -92,7 +99,7 @@ const addNewReview = async (req: RequestWithUserID, res: Response) => {
       .status(401)
       .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 201, 400, 401, 403, 404 500 ({ message: string, status: "Success" | "Error" })
+}; // Send: 201, 400, 401, 403, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 //* Get the last order the user made from this shop
 //! GET http://localhost:3000/api/v1/shop/:id/last-order
@@ -103,26 +110,10 @@ const getShopLastOrder = async (req: RequestWithUserID, res: Response) => {
     const shopID = req.params.id;
 
     try {
-      const shop = await Shop.findById(shopID).populate("menu");
-
-      if (!shop) {
-        return res
-          .status(404)
-          .send({ status: "Error", message: "There is no shop with that id" });
-      }
-      const orders = (await Order.find({
-        user: userID,
-        shop: shopID,
-      })
-        .sort({ date: -1 })
-        .populate({
-          path: "items.product",
-          model: "Item",
-        })) as IOrder[];
-      if (orders.length === 0) {
-        return res.status(204).send();
-      }
-      res.send({ status: "Success", order: orders[0] });
+      const orders = await Order.find({ shop: shopID, user: userID }).populate(
+        "items"
+      );
+      return res.send({ status: "Success", orders });
     } catch (err: any) {
       return res.status(500).send({
         message: err.message || "An unknown error occurred",
@@ -134,7 +125,7 @@ const getShopLastOrder = async (req: RequestWithUserID, res: Response) => {
       .status(401)
       .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 200, 204, 401 404, 500 ({ message?: string, status?: "Success" | "Error", order?: Order })
+}; // Send: 200, 401, 500 ({ message?: string, status?: "Success" | "Error", order?: Order[] })
 
 //* Get all the shops
 //! GET http://localhost:3000/api/v1/shop/all

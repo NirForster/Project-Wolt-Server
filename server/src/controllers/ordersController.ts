@@ -8,47 +8,100 @@ import { RequestWithUserID } from "../types/expressType";
 // Models
 import User, { IUser } from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
-import { IShop } from "../models/Shop-model";
-import Item, { IItem } from "../models/Item-model";
-import { IRestaurant } from "src/models/new-restaurant-model";
+import { IRestaurant } from "../models/new-restaurant-model";
+import OrderItem, { IOrderItem } from "../models/Order-item-model";
+
+// New types
+interface RequestWithOrderData extends RequestWithUserID {
+  body: {
+    shopID: string;
+    menuID: string;
+    itemName: string;
+    itemImg: string;
+    itemDesc?: string;
+    price: number;
+    quantity: number;
+    sectionTitle: string;
+    extras: {
+      added: string;
+      quantity: number;
+    }[];
+  };
+}
 
 // Handler functions
 async function newOrderHandle(
-  user: IUser,
-  userID: string,
+  cart: Types.ObjectId[] | IOrder[],
+  user: string,
   shop: string,
-  product: string,
+  menu: string,
+  name: string,
+  image: string,
+  description: string = "",
+  sectionTitle: string,
   quantity: number,
-  pricePerUnit: number
+  pricePerUnit: number,
+  extras: {
+    added: string;
+    quantity: number;
+  }[]
 ) {
   const newOrder = await Order.create({
-    user: userID,
+    user,
     shop,
-    items: { product, quantity, pricePerUnit },
   }); // Creating new order
-
+  const newOrderItem = await OrderItem.create({
+    order: newOrder._id,
+    menu,
+    item: {
+      name,
+      image,
+      description,
+    },
+    sectionTitle,
+    quantity,
+    pricePerUnit,
+    extras,
+  });
+  newOrder.items.push(newOrderItem.id);
+  await newOrder.save();
   const newCart = [
     newOrder._id as Types.ObjectId,
-    ...user.cart.map((order) => {
+    ...cart.map((order) => {
       return order._id as Types.ObjectId;
-    }), // Creating new cart full off orders, including the current new one, so the user could  just save this array as his cart
+    }), // Creating new cart full off orders, including the current new one, so the user could just save this array as his cart
   ];
   return newCart;
 }
 
-function newItemHandler(
-  product: Types.ObjectId,
+async function newItemHandler(
+  order: string,
+  menu: string,
+  name: string,
+  image: string,
+  description: string = "",
+  sectionTitle: string,
   quantity: number,
-  pricePerUnit: number
+  pricePerUnit: number,
+  extras: {
+    added: string;
+    quantity: number;
+  }[]
 ) {
-  return {
-    product,
+  const newOrderItem = await OrderItem.create({
+    order,
+    menu,
+    item: { name, image, description },
+    sectionTitle,
     quantity,
     pricePerUnit,
-  };
+    extras,
+  });
+  return newOrderItem._id;
 }
 
 async function deleteOrderHandler(user: IUser, currentOrder: IOrder) {
+  const orderID = currentOrder._id;
   const newCart = [
     ...user.cart
       .map((order) => {
@@ -60,7 +113,8 @@ async function deleteOrderHandler(user: IUser, currentOrder: IOrder) {
   ];
   user.cart = newCart; // Setting the new cart
   user.save();
-  await Order.findByIdAndDelete(currentOrder._id); // Delete the order
+  await OrderItem.deleteMany({ order: orderID }); // Delete all the OrderItem-s that belongs to this order
+  await currentOrder.deleteOne(); // Delete the order
 }
 
 //* Get the user's last orders
@@ -71,7 +125,13 @@ const getUserLastOrders = async (req: RequestWithUserID, res: Response) => {
     try {
       const user = (await User.findById(userID).populate({
         path: "lastOrders",
-        populate: [{ path: "shop" }],
+        populate: [
+          { path: "items" },
+          {
+            path: "shop",
+            select: "-deliveryFeeStructure -deliveryTimes -openingTimes",
+          },
+        ],
       })) as IUser;
 
       if (!user) {
@@ -79,25 +139,8 @@ const getUserLastOrders = async (req: RequestWithUserID, res: Response) => {
           .status(404)
           .send({ status: "Error", message: "There is no user with that id" });
       }
-      const lastOrders = user.lastOrders.map((order) => {
-        const currentOrder = order as IOrder;
-        const shop = currentOrder.shop as IRestaurant;
 
-        const result = {
-          _id: currentOrder._id,
-          shop: {
-            name: shop.name,
-            photo: shop.image,
-            description: shop.description,
-            rating: shop.rating,
-            _id: shop._id,
-          },
-          items: currentOrder.items,
-        };
-        return result;
-      });
-
-      return res.send({ status: "Success", orders: lastOrders });
+      return res.send({ status: "Success", orders: user.lastOrders });
     } catch (err: any) {
       return res.status(500).send({
         message: err?.message || "An unknown error occurred",
@@ -109,112 +152,198 @@ const getUserLastOrders = async (req: RequestWithUserID, res: Response) => {
       .status(401)
       .send({ message: "User not authenticated", status: "Error" });
   }
-}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", orders?: Order })
+}; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", orders?: Order[] })
 
 //* Updating the user's cart
 //! PUT http://localhost:3000/api/v1/orders/
-const editOrder = async (req: RequestWithUserID, res: Response) => {
-  // const userID = req.userID;
-  // if (userID) {
-  //   const { itemName, sectionName, quantity } = req.body;
-  //   if (quantity < 0) {
-  //     return res
-  //       .status(400)
-  //       .send({ status: "Error", message: "Quantity must be not negative" });
-  //   }
-  //   try {
-  //     const user = await User.findById(userID).populate("cart");
-  //     if (!user) {
-  //       return res.status(404).send({
-  //         status: "Error",
-  //         message: `There is no user with that id`,
-  //       });
-  //     }
-  //     // From here I know I have all the data and it is valid
-  //     const shopID = item.shop.toString();
-  //     let orderIndex = user.cart.findIndex((order) => {
-  //       const currentOrder = order as IOrder;
-  //       return currentOrder.shop.toString() === shopID.toString();
-  //     }); // orderIndex will save the index of the order: if its -1, it means the user is creating new order from new shop; otherwise (any whole number greater than -1), he is updating an existing order
-  //     if (orderIndex === -1) {
-  //       // new order ⬇️
-  //       if (quantity === 0) {
-  //         return res.status(400).send({
-  //           status: "Error",
-  //           message: "Quantity of items must be above 0 , if its new order",
-  //         });
-  //       }
-  //       user.cart = await newOrderHandle(
-  //         user,
-  //         userID,
-  //         shopID,
-  //         itemID,
-  //         quantity,
-  //         item.currentPrice
-  //       );
-  //       // new order ⬆️
-  //       user.save();
-  //     } else {
-  //       // existing order ⬇️
-  //       const currentOrder = user.cart[orderIndex] as IOrder;
-  //       const itemIndex = currentOrder.items.findIndex((item) => {
-  //         return item.product.toString() === itemID;
-  //       }); // itemIndex will save the index of the item inside the order array: if its -1, it means the user are adding new item to the order; other wise (any whole number greater than -1), the user is changing the quantity of an item in the order
-  //       if (itemIndex === -1) {
-  //         // new item in existing order ⬇️
-  //         if (quantity === 0) {
-  //           return res.status(400).send({
-  //             status: "Error",
-  //             message: "Quantity of items must be above 0 , if its new item",
-  //           });
-  //         }
-  //         currentOrder.items.push(
-  //           newItemHandler(itemID, quantity, item.currentPrice)
-  //         );
-  //         currentOrder.save();
-  //         // new item in existing order ⬆️
-  //       } else {
-  //         // updating quantity of item in an existing order ⬇️
-  //         if (quantity === 0) {
-  //           // remove the item from the order ⬇️
-  //           const newItems = currentOrder.items.filter((item) => {
-  //             return item.product.toString() !== itemID.toString();
-  //           });
-  //           if (newItems.length === 0) {
-  //             // Deleting the order ⬇️
-  //             deleteOrderHandler(user, currentOrder);
-  //             // Deleting the order ⬆️
-  //           } else {
-  //             currentOrder.items = newItems;
-  //             currentOrder.save();
-  //           }
-  //           // remove the item from the order ⬆️
-  //         } else {
-  //           // update the item's quantity ⬇️
-  //           currentOrder.items[itemIndex].quantity = quantity;
-  //           currentOrder.save();
-  //           // update the item's quantity ⬆️
-  //         }
-  //         // updating quantity of item in an existing order ⬆️
-  //       }
-  //       // existing order ⬆️
-  //     }
-  //     res.send({
-  //       status: "Success",
-  //       message: "Order was successfully updated",
-  //     });
-  //   } catch (err: any) {
-  //     res.status(500).send({
-  //       message: err?.message || "An unknown error occurred",
-  //       status: "Error",
-  //     });
-  //   }
-  // } else {
-  //   return res
-  //     .status(401)
-  //     .send({ message: "User not authenticated", status: "Error" });
-  // }
-}; // Send: 200, 400, 401, 404, 500 ({ message: string, status: "Success" | "Error "})
+const editOrder = async (req: RequestWithOrderData, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    const {
+      shopID,
+      menuID,
+      itemName,
+      itemImg,
+      itemDesc,
+      quantity,
+      price,
+      sectionTitle,
+      extras,
+    } = req.body;
+    if (
+      !shopID ||
+      !menuID ||
+      !itemName ||
+      !itemImg ||
+      quantity == null ||
+      price == null ||
+      !sectionTitle
+    ) {
+      return res
+        .status(400)
+        .send({ status: "Error", message: "Some fields are missing!" });
+    }
+    const newQuantity = +quantity;
+    if (newQuantity < 0) {
+      return res
+        .status(400)
+        .send({ status: "Error", message: "Quantity must be not negative" });
+    }
+    try {
+      const user = await User.findById(userID).populate("cart");
+      if (!user) {
+        return res.status(404).send({
+          status: "Error",
+          message: `There is no user with that id`,
+        });
+      }
+      // From here I know I have all the data and it is valid
+      let orderIndex = user.cart.findIndex((order) => {
+        const currentOrder = order as IOrder;
+        return currentOrder.shop.toString() === shopID;
+      }); // orderIndex will save the index of the order: if its -1, it means the user is creating new order from new shop; otherwise (any whole number greater than -1), he is updating an existing order
+      if (orderIndex === -1) {
+        // new order ⬇️
+        if (quantity === 0) {
+          return res.status(400).send({
+            status: "Error",
+            message: "Quantity of items must be above 0 , if its new order",
+          });
+        }
+        user.cart = await newOrderHandle(
+          user.cart,
+          userID,
+          shopID,
+          menuID,
+          itemName,
+          itemImg,
+          itemDesc,
+          sectionTitle,
+          quantity,
+          price,
+          extras
+        );
+        // new order ⬆️
+        user.save();
+        return res.status(201).send({
+          status: "Success",
+          message: "New order was created with that item",
+        });
+      } else {
+        {
+          // existing order ⬇️
+          const currentOrder = await (user.cart[orderIndex] as IOrder).populate(
+            "items"
+          );
+          const itemIndex = currentOrder.items.findIndex((item) => {
+            const currentItem = item as IOrderItem;
+            if (currentItem.sectionTitle !== sectionTitle) {
+              return false;
+            }
+            const itemInfo = currentItem.item;
+            if (itemInfo.name !== itemName) {
+              return false;
+            }
+            return true;
+          }); // itemIndex will save the index of the item inside the order's items array: if its -1, it means the user are adding new item to the order; other wise (any whole number greater than -1), the user is changing the quantity of an item in the order
+          if (itemIndex === -1) {
+            // new item in existing order ⬇️
+            if (quantity === 0) {
+              return res.status(400).send({
+                status: "Error",
+                message: "Quantity of items must be above 0 , if its new item",
+              });
+            }
+            currentOrder.items = currentOrder.items.map((item) => {
+              return item._id as Types.ObjectId;
+            });
+            currentOrder.items.push(
+              await newItemHandler(
+                currentOrder._id.toString(),
+                menuID,
+                itemName,
+                itemImg,
+                itemDesc,
+                sectionTitle,
+                quantity,
+                price,
+                extras
+              )
+            );
+            currentOrder.save();
+            return res.status(201).send({
+              status: "Success",
+              message: "New item was added to an existing order",
+            });
+            // new item in existing order ⬆️
+          } else {
+            // updating quantity of item in an existing order ⬇️
+            if (quantity === 0) {
+              // remove the item from the order ⬇️
+              const newItems = currentOrder.items
+                .filter((item) => {
+                  const currentItem = item as IOrderItem;
+                  if (
+                    sectionTitle === currentItem.sectionTitle &&
+                    itemName === currentItem.item.name
+                  ) {
+                    return false;
+                  }
+                  return true;
+                })
+                .map((item) => {
+                  const currentItem = item as IOrderItem;
+                  return currentItem._id;
+                });
+              if (newItems.length === 0) {
+                // Deleting the order ⬇️
+                deleteOrderHandler(user, currentOrder);
+                return res.send({
+                  status: "Success",
+                  message:
+                    "Order was deleted as you gave to the only item in the order quantity 0",
+                });
+                // Deleting the order ⬆️
+              } else {
+                currentOrder.items = newItems;
+                currentOrder.save();
+                await OrderItem.deleteMany({
+                  sectionTitle,
+                  "item.name": itemName,
+                });
+                return res.send({
+                  status: "Success",
+                  message: "Item was removed from the order",
+                });
+              }
+              // remove the item from the order ⬆️
+            } else {
+              // update the item's quantity ⬇️
+              (currentOrder.items[itemIndex] as IOrderItem).quantity = quantity;
+              (currentOrder.items[itemIndex] as IOrderItem).save();
+              return res.send({
+                status: "Success",
+                message: "Item quantity was updated",
+              });
+              // update the item's quantity ⬆️
+            }
+            // updating quantity of item in an existing order ⬆️
+          }
+          // existing order ⬆️
+        }
+      }
+    } catch (err: any) {
+      res.status(500).send({
+        message: err.message || "An unknown error occurred",
+        status: "Error",
+      });
+    }
+  } else {
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
+  }
+}; // Send: 200, 201, 400, 401, 404, 500 ({ message: string, status: "Success" | "Error" })
 
 //* "Send" the user orders to the shops
 //! GET http://localhost:3000/api/v1/orders/send
@@ -268,7 +397,13 @@ const GetOrderData = async (req: RequestWithUserID, res: Response) => {
   if (userID) {
     try {
       const orderID = req.params.id;
-      const order = (await Order.findById(orderID)) as IOrder;
+      const order = (await Order.findById(orderID).populate([
+        {
+          path: "shop",
+          select: "-deliveryFeeStructure -deliveryTimes -openingTimes",
+        },
+        { path: "items" },
+      ])) as IOrder;
       if (!order) {
         return res
           .status(404)
