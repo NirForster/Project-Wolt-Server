@@ -19,7 +19,7 @@ export interface IItem {
   price: string;
   description?: string;
   isPopular: boolean;
-  formData?: IFormData;
+  formData?: IFormData[];
 }
 
 interface IFormData {

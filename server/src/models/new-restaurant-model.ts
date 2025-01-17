@@ -23,7 +23,7 @@ export interface IRestaurant extends Document {
   deliveryTime: number;
   reviews: Review[];
   // Virtual properties
-  rating: number;
+  rating: string;
   order: Types.ObjectId[] | IOrder[];
 }
 
@@ -139,10 +139,10 @@ restaurantSchema.virtual("rating").get(function () {
       const totalRating = this.reviews.reduce((sum, currentReview) => {
         return sum + currentReview.rating;
       }, 0);
-      return parseFloat((totalRating / reviewsAmount).toFixed(1));
+      return `${(totalRating / reviewsAmount).toFixed(1)}`;
     }
   }
-  return 0;
+  return "0";
 });
 
 restaurantSchema.virtual("orders", {
