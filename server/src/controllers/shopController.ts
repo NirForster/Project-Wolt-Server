@@ -8,8 +8,8 @@ import { RequestWithUserID } from "../types/expressType";
 // Models
 import User from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
-import NewItem from "../models/new-items-modal";
-import Restaurant, { IRestaurant } from "../models/new-restaurant-model";
+import NewItem from "../models/items-modal";
+import Restaurant, { IRestaurant } from "../models/restaurant-model";
 // import City from "../models/city-model";
 
 // Other types

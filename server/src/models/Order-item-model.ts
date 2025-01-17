@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-import { IItem, IMenu } from "./new-items-modal";
+import { IItem, IMenu } from "./items-modal";
 import { IOrder } from "./Order-model";
 
 export interface IOrderItem extends Document {

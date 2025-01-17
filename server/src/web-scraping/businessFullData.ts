@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import Restaurant from "../models/new-restaurant-model";
+import Restaurant from "../models/restaurant-model";
 import City from "../models/city-model";
 
 const woltURL = "https://wolt.com/en/isr";

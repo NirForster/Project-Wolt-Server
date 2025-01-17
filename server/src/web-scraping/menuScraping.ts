@@ -2,7 +2,7 @@ import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
 import City from "../models/city-model";
-import Item from "../models/new-items-modal";
+import Item from "../models/items-modal";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 

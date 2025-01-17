@@ -1,5 +1,5 @@
 import mongoose, { Types } from "mongoose";
-import { IRestaurant } from "./new-restaurant-model";
+import { IRestaurant } from "./restaurant-model";
 const { Schema, model } = mongoose;
 
 export interface IMenu {

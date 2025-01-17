@@ -17,7 +17,6 @@ const favoritesRoutes = require("./routes/favoritesRoutes.ts");
 const ordersRoutes = require("./routes/ordersRoutes.ts");
 
 // Web Scrapers
-// import { scrapeWoltCities } from "./web-scraping/cityScraper";
 // import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
 // import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
 
@@ -43,7 +42,6 @@ connectDB()
     app.listen(PORT, () => {
       console.log(`✅ Server running on port ${PORT}`);
     });
-    // scrapeWoltCities();
     // scrapeWoltBusinessData();
     // scrapeWoltMenuData();
   })

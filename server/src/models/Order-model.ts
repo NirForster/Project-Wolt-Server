@@ -1,9 +1,9 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-import { IRestaurant } from "./new-restaurant-model";
+import { IRestaurant } from "./restaurant-model";
 import { IUser } from "./User-model";
 import { IOrderItem } from "./Order-item-model";
-import { IItem } from "./new-items-modal";
+import { IItem } from "./items-modal";
 
 export interface IOrder extends Document {
   _id: Types.ObjectId;
