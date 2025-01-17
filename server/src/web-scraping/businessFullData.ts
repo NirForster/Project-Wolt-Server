@@ -51,6 +51,7 @@ export const scrapeWoltBusinessData = async () => {
  * ✅ Extract Basic Restaurant and Store Links
  */
 const scrapeSection = async (page: Page, sectionName: string) => {
+  // Click the tab with the matching section name
   await page.$$eval(
     '[data-active="false"].snbpb50 span',
     (tabs, section) => {
@@ -63,24 +64,74 @@ const scrapeSection = async (page: Page, sectionName: string) => {
     sectionName
   );
 
+  // Wait for the section content to load
   await delay(3000);
   await page.waitForSelector('[data-test-id="VenueVerticalListGrid"]');
 
-  return await page.$$eval(
+  // Scrape the data from the loaded section
+  const scrapedData = await page.$$eval(
     ".sq0n3gz.cb-elevated.cb_elevation_elevationXsmall_equ2.a164dpdw.r1bc29i8",
     (cards) =>
-      cards.slice(0, 5).map((card) => ({
-        name: card.querySelector(".dllhz82")?.textContent?.trim() ?? "",
-        link: card.querySelector("a")?.getAttribute("href") ?? "",
-        image: card.querySelector("img")?.getAttribute("src") ?? "",
-        description: card.querySelector(".d14x35kv")?.textContent?.trim() ?? "",
-        rating: card.querySelector(".fhkxgqi")?.textContent?.trim() ?? "N/A",
-        dollarCount:
-          card
-            .querySelector(".fhkxgqi span:first-child")
-            ?.textContent?.trim() ?? "N/A",
-      }))
+      cards.slice(0, 20).map((card) => {
+        // Extract delivery time range
+        const deliveryTimeText =
+          card.querySelector(".b15bvov8.b1qdz9qo")?.textContent?.trim() ?? "";
+        const deliveryTimeRange = deliveryTimeText.match(/(\d+)-(\d+)/);
+
+        // Extract rating and dollar count
+        const ratingElement = card.querySelectorAll(".fhkxgqi");
+        const lastElementIndex = ratingElement.length - 1;
+        const secondLastElementIndex = ratingElement.length - 2;
+
+        // Use fallback logic
+        let rating =
+          ratingElement[lastElementIndex]?.textContent?.trim() ?? "N/A";
+        let dollarCount =
+          ratingElement[secondLastElementIndex]
+            ?.querySelector("span")
+            ?.textContent?.trim() ?? "N/A";
+
+        // If rating contains a dollar sign, swap values
+        if (rating.includes("$")) {
+          const temp = rating;
+          rating = dollarCount;
+          dollarCount = temp;
+        }
+
+        // Ensure dollar count is a valid format
+        const validDollarCounts = ["$", "$$", "$$$", "$$$$"];
+        if (!validDollarCounts.includes(dollarCount)) {
+          dollarCount = "N/A";
+        }
+
+        // Ensure rating is a valid number
+        if (isNaN(Number(rating))) {
+          rating = "N/A";
+        }
+
+        return {
+          name: card.querySelector(".dllhz82")?.textContent?.trim() ?? "",
+          link: card.querySelector("a")?.getAttribute("href") ?? "",
+          image: card.querySelector("img")?.getAttribute("src") ?? "",
+          description:
+            card.querySelector(".d14x35kv")?.textContent?.trim() ?? "",
+          estimatedDeliveryTime: deliveryTimeRange
+            ? {
+                min: parseInt(deliveryTimeRange[1], 10),
+                max: parseInt(deliveryTimeRange[2], 10),
+              }
+            : { min: null, max: null }, // Default to null if not found
+          rating: Number(rating) || null,
+          dollarCount,
+        };
+      })
   );
+
+  // Log the scraped data
+  console.log("Scraped Data:", JSON.stringify(scrapedData, null, 2));
+
+  // Return the scraped data
+  return scrapedData;
 };
 
 /**
@@ -162,3 +213,6 @@ const extractDetailedData = async (page: Page, link: string) => {
 };
 
 export default scrapeWoltBusinessData;
+
+// <div class="f1mj84to"><span class="fa9s092"><span class="f1v0c64o fhkxgqi">₪0.00</span></span><span class="fa9s092"><span class="fhkxgqi"><span>$$</span><span class="v1ad8h3f">$$</span></span></span><span class="fa9s092"><span class="fhkxgqi">8.2</span></span></div>
+// <div class="f1mj84to"><span class="fa9s092"><span class="f1v0c64o fhkxgqi">₪0.00</span></span><span class="fa9s092"><span class="fhkxgqi"><span>$$</span><span class="v1ad8h3f">$$</span></span></span><span class="fa9s092"><span class="fhkxgqi">8.6</span></span></div>

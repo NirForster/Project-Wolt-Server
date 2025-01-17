@@ -21,8 +21,6 @@ const ordersRoutes = require("./routes/ordersRoutes.ts");
 // import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
 // import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
 
-// Environment variables
-
 // App variables
 dotenv.config();
 const BASE_URL = "";

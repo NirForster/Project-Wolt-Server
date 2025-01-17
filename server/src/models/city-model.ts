@@ -14,6 +14,7 @@ interface PlaceToBuyFrom {
   link: string;
   image: string;
   description: string;
+  estimatedDeliveryTime: { min: number; max: number }; // Change from `number` to an object
   rating: number;
   dollarCount: "$" | "$$" | "$$$" | "$$$$";
 }
@@ -28,6 +29,10 @@ const restaurantSummarySchema = new Schema(
     link: { type: String },
     image: { type: String },
     description: { type: String },
+    estimatedDeliveryTime: {
+      min: { type: Number, required: true },
+      max: { type: Number, required: true },
+    }, // Updated to store a range
     rating: { type: Number },
     dollarCount: { type: String },
     restaurant: { type: Schema.Types.ObjectId, ref: "Restaurant" },

@@ -9,6 +9,7 @@ export interface IRestaurant extends Document {
   name: string;
   image: string;
   description?: string;
+  estimatedDeliveryTime: { min: number; max: number }; // Change from `number` to an object
   dollarCount: "$" | "$$" | "$$$" | "$$$$";
   link?: string;
   backgroundImage: string;
@@ -18,7 +19,6 @@ export interface IRestaurant extends Document {
   deliveryTimes: TimeType[];
   deliveryFeeStructure: { text: string; spanText: string }[];
   phoneNumber: string;
-  deliveryFee: number;
   minTotal: number;
   deliveryTime: number;
   reviews: Review[];
@@ -61,6 +61,10 @@ const restaurantSchema = new Schema(
     name: { type: String, required: true, unique: true },
     image: { type: String, required: true },
     description: { type: String },
+    estimatedDeliveryTime: {
+      min: { type: Number, required: true },
+      max: { type: Number, required: true },
+    },
     dollarCount: {
       type: String,
       enum: ["$", "$$", "$$$", "$$$$"],
@@ -96,10 +100,10 @@ const restaurantSchema = new Schema(
         },
       ],
     },
-    phoneNumber: { type: String, required: true, unique: true },
-    deliveryFee: { type: Number, required: true },
+    phoneNumber: { type: String, required: true },
     minTotal: { type: Number, required: true },
     deliveryTime: { type: Number, required: true },
+    rating: { type: Number },
     reviews: {
       type: [
         {
@@ -108,12 +112,12 @@ const restaurantSchema = new Schema(
             ref: "User",
             required: true,
           },
-          rating: {
-            type: Number,
-            required: true,
-            min: 1,
-            max: 10,
-          },
+          // rating: {
+          //   type: Number,
+          //   required: true,
+          //   min: 1,
+          //   max: 10,
+          // },
           comment: {
             type: String,
           },
@@ -132,18 +136,18 @@ const restaurantSchema = new Schema(
   }
 );
 
-restaurantSchema.virtual("rating").get(function () {
-  if (this && this.reviews) {
-    const reviewsAmount = this.reviews.length;
-    if (reviewsAmount > 0) {
-      const totalRating = this.reviews.reduce((sum, currentReview) => {
-        return sum + currentReview.rating;
-      }, 0);
-      return parseFloat((totalRating / reviewsAmount).toFixed(1));
-    }
-  }
-  return 0;
-});
+// restaurantSchema.virtual("rating").get(function () {
+//   if (this && this.reviews) {
+//     const reviewsAmount = this.reviews.length;
+//     if (reviewsAmount > 0) {
+//       const totalRating = this.reviews.reduce((sum, currentReview) => {
+//         return sum + currentReview.rating;
+//       }, 0);
+//       return parseFloat((totalRating / reviewsAmount).toFixed(1));
+//     }
+//   }
+//   return 0;
+// });
 
 restaurantSchema.virtual("orders", {
   ref: "Order",
