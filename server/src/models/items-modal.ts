@@ -1,10 +1,10 @@
 import mongoose, { Types } from "mongoose";
-import { IRestaurant } from "./restaurant-model";
+import { IBusiness } from "./Business-model";
 const { Schema, model } = mongoose;
 
 export interface IMenu {
   _id: Types.ObjectId;
-  restaurant: Types.ObjectId | IRestaurant;
+  restaurant: Types.ObjectId | IBusiness;
   restaurantName: string;
   sections: {
     sectionTitle: string;
@@ -43,12 +43,12 @@ const formDataSchema = new Schema({
     type: String,
     required: true,
     enum: ["radio", "checkbox"],
-  }, // radio or checkbox
+  },
   options: [formOptionSchema],
 });
 
 // Item Schema inside Section
-const itemSchema = new Schema({
+const menuItemSchema = new Schema({
   name: { type: String },
   image: { type: String },
   price: { type: String },
@@ -58,18 +58,18 @@ const itemSchema = new Schema({
 });
 
 // Section Schema with Items
-const sectionSchema = new Schema({
+const menuSectionSchema = new Schema({
   sectionTitle: { type: String },
   sectionDescription: { type: String },
-  items: [itemSchema],
+  items: [menuItemSchema],
 });
 
 // Main Model Schema with Restaurant Name as a String (not ref)
-const newItemSchema = new Schema(
+const menuSchema = new Schema(
   {
-    restaurant: { type: Types.ObjectId, ref: "Restaurant" },
-    restaurantName: { type: String }, // ✅ Restaurant name as a string, not a reference
-    sections: [sectionSchema],
+    business: { type: Types.ObjectId, ref: "Business" },
+    businessName: { type: String },
+    sections: [menuSectionSchema],
   },
   {
     toJSON: { virtuals: true }, // Include virtuals in JSON output
@@ -77,5 +77,5 @@ const newItemSchema = new Schema(
   }
 );
 
-const Item = model("newItem", newItemSchema);
+const Item = model("items", menuSchema);
 export default Item;

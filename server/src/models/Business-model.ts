@@ -4,25 +4,24 @@ import { IOrder } from "./Order-model";
 import Review from "../types/reviewType";
 const { Schema, model } = mongoose;
 
-export interface IRestaurant extends Document {
+export interface IBusiness extends Document {
   _id: Types.ObjectId;
+  type: "restaurant" | "store"; // Differentiates between stores and restaurants
   name: string;
-  image: string;
   description?: string;
-  estimatedDeliveryTime: { min: number; max: number }; // Change from `number` to an object
-  dollarCount: "$" | "$$" | "$$$" | "$$$$";
-  link?: string;
-  backgroundImage: string;
-  fullDescription?: string;
+  coverImage: string;
+
+  // "more info" card data:
+  businessDescription?: string;
   address: { name: string; zip: string };
   openingTimes: TimeType[];
   deliveryTimes: TimeType[];
   deliveryFeeStructure: { text: string; spanText: string }[];
   phoneNumber: string;
-  minTotal: number;
-  deliveryTime: number;
+  website: string;
+
+  // virtuals
   reviews: Review[];
-  // Virtual properties
   rating: number;
   order: Types.ObjectId[] | IOrder[];
 }
@@ -56,23 +55,15 @@ const TimeSchema = new Schema({
   time: { type: String, required: true },
 });
 
-const restaurantSchema = new Schema(
+const businessSchema = new Schema(
   {
+    type: { type: String, enum: ["restaurant", "store"], required: true },
     name: { type: String, required: true, unique: true },
-    image: { type: String, required: true },
     description: { type: String },
-    estimatedDeliveryTime: {
-      min: { type: Number, required: true },
-      max: { type: Number, required: true },
-    },
-    dollarCount: {
-      type: String,
-      enum: ["$", "$$", "$$$", "$$$$"],
-      default: "$$",
-    },
-    link: { type: String },
-    backgroundImage: { type: String, required: true },
-    fullDescription: { type: String },
+    coverImage: { type: String, required: true },
+
+    // "more info" card data:
+    businessDescription: { type: String },
     address: {
       type: {
         name: { type: String, required: true },
@@ -101,8 +92,9 @@ const restaurantSchema = new Schema(
       ],
     },
     phoneNumber: { type: String, required: true },
-    minTotal: { type: Number, required: true },
-    deliveryTime: { type: Number, required: true },
+    website: { type: String },
+
+    // virtuals:
     rating: { type: Number },
     reviews: {
       type: [
@@ -112,12 +104,6 @@ const restaurantSchema = new Schema(
             ref: "User",
             required: true,
           },
-          // rating: {
-          //   type: Number,
-          //   required: true,
-          //   min: 1,
-          //   max: 10,
-          // },
           comment: {
             type: String,
           },
@@ -131,29 +117,16 @@ const restaurantSchema = new Schema(
     },
   },
   {
-    toJSON: { virtuals: true }, // Include virtuals in JSON output
-    toObject: { virtuals: true }, // Include virtuals in Object output
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 
-// restaurantSchema.virtual("rating").get(function () {
-//   if (this && this.reviews) {
-//     const reviewsAmount = this.reviews.length;
-//     if (reviewsAmount > 0) {
-//       const totalRating = this.reviews.reduce((sum, currentReview) => {
-//         return sum + currentReview.rating;
-//       }, 0);
-//       return `${(totalRating / reviewsAmount).toFixed(1)}`;
-//     }
-//   }
-//   return "0";
-// });
-
-restaurantSchema.virtual("orders", {
+businessSchema.virtual("orders", {
   ref: "Order",
   localField: "_id",
   foreignField: "restaurant",
   options: { sort: { createdAt: -1 }, match: { hasSent: true } },
 });
 
-export default model<IRestaurant>("Restaurant", restaurantSchema);
+export default model<IBusiness>("Business", businessSchema);

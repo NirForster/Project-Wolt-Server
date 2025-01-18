@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import Restaurant from "../models/restaurant-model";
+import Business from "../models/Business-model";
 import City from "../models/city-model";
 
 const woltURL = "https://wolt.com/en/isr";
@@ -21,23 +21,63 @@ export const scrapeWoltBusinessData = async () => {
     const restaurants = await scrapeSection(page, "Restaurants");
     const stores = await scrapeSection(page, "Stores");
 
+    // Log the scraped data for debugging
+    console.log(
+      "Restaurants Scraped Data:",
+      JSON.stringify(restaurants, null, 2)
+    );
+    console.log("Stores Scraped Data:", JSON.stringify(stores, null, 2));
+
     // ✅ Save Basic City Information with Restaurants & Stores
     await City.updateOne(
       { city: cityToScrape },
-      { $set: { city: cityToScrape, restaurants, stores } },
+      {
+        $set: {
+          city: cityToScrape,
+          restaurants: restaurants.map((r) => ({
+            name: r.name,
+            link: r.link,
+            image: r.image,
+            description: r.description,
+            estimatedDeliveryTime: r.estimatedDeliveryTime,
+            rating: r.rating,
+            dollarCount: r.dollarCount,
+            label: r.label,
+          })),
+          stores: stores.map((s) => ({
+            name: s.name,
+            link: s.link,
+            image: s.image,
+            description: s.description,
+            estimatedDeliveryTime: s.estimatedDeliveryTime,
+            rating: s.rating,
+            dollarCount: s.dollarCount,
+            label: s.label,
+          })),
+        },
+      },
       { upsert: true }
-    );
+    )
+      .then(() => console.log("Data saved successfully."))
+      .catch((err) => console.error("Error saving data:", err));
 
-    // ✅ Scrape Detailed Data for Each Restaurant and Save
-    for (const restaurant of restaurants) {
-      console.log(`🔍 Extracting detailed data for: ${restaurant.name}`);
-      const detailedData = await extractDetailedData(page, restaurant.link);
-      await Restaurant.updateOne(
-        { name: restaurant.name },
-        { $set: { ...restaurant, ...detailedData } },
+    // ✅ Scrape Detailed Data for Each Business and Save
+    for (const business of [...restaurants, ...stores]) {
+      console.log(`🔍 Extracting detailed data for: ${business.name}`);
+      const detailedData = await extractDetailedData(page, business.link);
+      // Ensure `type` is set explicitly and not overwritten
+      const businessData = {
+        ...business,
+        type: business.type, // Set type explicitly from the scraped data
+        ...detailedData,
+      };
+
+      await Business.updateOne(
+        { name: business.name },
+        { $set: businessData },
         { upsert: true }
       );
-      console.log(`✅ Saved detailed data for: ${restaurant.name}`);
+      console.log(`✅ Saved detailed data for: ${business.name}`);
     }
 
     await browser.close();
@@ -51,6 +91,8 @@ export const scrapeWoltBusinessData = async () => {
  * ✅ Extract Basic Restaurant and Store Links
  */
 const scrapeSection = async (page: Page, sectionName: string) => {
+  const businessType = sectionName === "Restaurants" ? "restaurant" : "store";
+
   // Click the tab with the matching section name
   await page.$$eval(
     '[data-active="false"].snbpb50 span',
@@ -71,7 +113,7 @@ const scrapeSection = async (page: Page, sectionName: string) => {
   // Scrape the data from the loaded section
   const scrapedData = await page.$$eval(
     ".sq0n3gz.cb-elevated.cb_elevation_elevationXsmall_equ2.a164dpdw.r1bc29i8",
-    (cards) =>
+    (cards, type) =>
       cards.slice(0, 20).map((card) => {
         // Extract delivery time range
         const deliveryTimeText =
@@ -109,7 +151,13 @@ const scrapeSection = async (page: Page, sectionName: string) => {
           rating = "N/A";
         }
 
+        // Extract the labels (e.g., "0₪ delivery fee", "Supermarket")
+        const labels = card.querySelectorAll(".cb_Tag_Label_lmag");
+        const deliveryFee = labels[0]?.textContent?.trim() ?? null;
+        const storeType = labels[1]?.textContent?.trim() ?? "N/A"; // Store type is the second label
+
         return {
+          type, // Use the passed `businessType`
           name: card.querySelector(".dllhz82")?.textContent?.trim() ?? "",
           link: card.querySelector("a")?.getAttribute("href") ?? "",
           image: card.querySelector("img")?.getAttribute("src") ?? "",
@@ -123,12 +171,11 @@ const scrapeSection = async (page: Page, sectionName: string) => {
             : { min: null, max: null }, // Default to null if not found
           rating: Number(rating) || null,
           dollarCount,
+          label: { deliveryFee, storeType },
         };
-      })
+      }),
+    businessType // Pass `businessType` as the second argument
   );
-
-  // Log the scraped data
-  console.log("Scraped Data:", JSON.stringify(scrapedData, null, 2));
 
   // Return the scraped data
   return scrapedData;
@@ -159,9 +206,9 @@ const extractDetailedData = async (page: Page, link: string) => {
   const $ = cheerio.load(pageContent);
 
   // ✅ Data Extraction with Fallbacks
-  const backgroundImage =
+  const coverImage =
     $(".itul5qe .i1wyuf56.r1j6es2w img").attr("src") || "No Image";
-  const fullDescription =
+  const businessDescription =
     $("p.v13orw9u").text().trim() || "No description available";
 
   const addressElement = $(".rhmhbf p");
@@ -201,18 +248,29 @@ const extractDetailedData = async (page: Page, link: string) => {
       .trim()
       .match(/(\+?\d{10,15})/)?.[0] ?? "";
 
-  return {
-    backgroundImage,
-    fullDescription,
+  const website = $("a.s1y70h65").text().trim();
+
+  console.log("Detailed Restaurant Information: ", {
+    coverImage,
+    businessDescription,
     address,
     openingTimes,
     deliveryTimes,
     deliveryFeeStructure,
     phoneNumber,
+    website,
+  });
+
+  return {
+    coverImage,
+    businessDescription,
+    address,
+    openingTimes,
+    deliveryTimes,
+    deliveryFeeStructure,
+    phoneNumber,
+    website,
   };
 };
 
 export default scrapeWoltBusinessData;
-
-// <div class="f1mj84to"><span class="fa9s092"><span class="f1v0c64o fhkxgqi">₪0.00</span></span><span class="fa9s092"><span class="fhkxgqi"><span>$$</span><span class="v1ad8h3f">$$</span></span></span><span class="fa9s092"><span class="fhkxgqi">8.2</span></span></div>
-// <div class="f1mj84to"><span class="fa9s092"><span class="f1v0c64o fhkxgqi">₪0.00</span></span><span class="fa9s092"><span class="fhkxgqi"><span>$$</span><span class="v1ad8h3f">$$</span></span></span><span class="fa9s092"><span class="fhkxgqi">8.6</span></span></div>

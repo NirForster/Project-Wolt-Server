@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-import { IRestaurant } from "./restaurant-model";
+import { IBusiness } from "./Business-model";
 import { IUser } from "./User-model";
 import { IOrderItem } from "./Order-item-model";
 import { IItem } from "./items-modal";
@@ -8,7 +8,7 @@ import { IItem } from "./items-modal";
 export interface IOrder extends Document {
   _id: Types.ObjectId;
   user: Types.ObjectId | IUser;
-  shop: Types.ObjectId | IRestaurant;
+  shop: Types.ObjectId | IBusiness;
   createdAt: Date;
   deliveringTime?: number;
   items: Types.ObjectId[] | IOrderItem[];

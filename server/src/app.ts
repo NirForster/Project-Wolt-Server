@@ -13,12 +13,13 @@ const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/authRoute.ts");
 const userRoutes = require("./routes/userRoutes.ts");
 const shopRoutes = require("./routes/shopRoutes.ts");
+import businessRoutes from "./routes/businessRoute";
 const favoritesRoutes = require("./routes/favoritesRoutes.ts");
 const ordersRoutes = require("./routes/ordersRoutes.ts");
 
 // Web Scrapers
 // import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
-// import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
+import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
 
 // App variables
 dotenv.config();
@@ -43,7 +44,7 @@ connectDB()
       console.log(`✅ Server running on port ${PORT}`);
     });
     // scrapeWoltBusinessData();
-    // scrapeWoltMenuData();
+    scrapeWoltMenuData();
   })
   .catch(console.error);
 
@@ -61,4 +62,5 @@ app.use(`/auth`, authRoutes);
 app.use(`/user`, userRoutes);
 app.use(`/favorites`, favoritesRoutes);
 app.use(`/shop`, shopRoutes);
+app.use(`/business`, businessRoutes);
 app.use(`/orders`, ordersRoutes);

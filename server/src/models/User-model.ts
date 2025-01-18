@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 import { IOrder } from "./Order-model";
-import { IRestaurant } from "./restaurant-model";
+import { IBusiness } from "./Business-model";
 
 export interface IUser extends Document {
   _id: Types.ObjectId;
@@ -15,7 +15,7 @@ export interface IUser extends Document {
     address: string;
     isLast: boolean;
   }[];
-  favoritesShops: Types.ObjectId[] | IRestaurant[];
+  favoritesShops: Types.ObjectId[] | IBusiness[];
   cart: Types.ObjectId[] | IOrder[];
   lastOrders: Types.ObjectId[] | IOrder[]; // Virtual property
   fullname: string;

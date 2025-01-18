@@ -3,17 +3,18 @@ import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
 import City from "../models/city-model";
 import Item from "../models/items-modal";
+import { PlaceSummary } from "../models/city-model";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 /**
- * ✅ Scrape Wolt Menu Data for Existing Restaurants and Save to MongoDB
+ * ✅ Scrape Wolt Menu Data for Restaurants and Stores
  */
 export const scrapeWoltMenuData = async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
-  // ✅ Fetch all stored restaurants from City model
+  // ✅ Fetch all stored cities from City model
   const cities = await City.find();
   if (!cities.length) {
     console.error("❌ No cities found in the database. Exiting...");
@@ -24,48 +25,59 @@ export const scrapeWoltMenuData = async () => {
   for (const city of cities) {
     console.log(`🔍 Scraping menus for city: ${city.city}`);
 
-    for (const restaurant of city.restaurants) {
-      try {
-        if (!restaurant.link) {
-          console.warn(
-            `⚠️ No link provided for restaurant: ${restaurant.name}. Skipping...`
+    // Scrape menus for restaurants and stores
+    for (const businessType of ["restaurants", "stores"] as const) {
+      const businesses = city[businessType] as PlaceSummary[]; // Explicitly cast
+
+      if (!Array.isArray(businesses)) {
+        console.warn(
+          `⚠️ No ${businessType} found in city: ${city.city}. Skipping...`
+        );
+        continue;
+      }
+
+      for (const business of businesses) {
+        try {
+          if (!business.link) {
+            console.warn(
+              `⚠️ No link provided for ${businessType.slice(0, -1)}: ${
+                business.name
+              }. Skipping...`
+            );
+            continue;
+          }
+
+          console.log(
+            `🔍 Scraping menu for ${businessType.slice(0, -1)}: ${
+              business.name
+            }`
           );
-          continue;
-        }
 
-        console.log(`🔍 Scraping menu for restaurant: ${restaurant.name}`);
+          await page.goto(`https://wolt.com${business.link}`, {
+            waitUntil: "networkidle2",
+          });
 
-        // ✅ Go to the restaurant page
-        await page.goto(`https://wolt.com${restaurant.link}`, {
-          waitUntil: "networkidle2",
-        });
+          const sections = await extractMenuData(page, business.link);
 
-        const sections = await extractMenuData(
-          page,
-          restaurant.link ?? "",
-          restaurant._id?.toString() || "",
-          restaurant.name || "Unknown Restaurant"
-        );
-
-        await Item.updateOne(
-          { restaurant: restaurant._id },
-          {
-            $set: {
-              restaurant: restaurant._id,
-              restaurantName: restaurant.name,
-              sections,
+          await Item.updateOne(
+            { business: business._id },
+            {
+              $set: {
+                business: business._id,
+                businessName: business.name,
+                sections,
+              },
             },
-          },
-          { upsert: true }
-        );
+            { upsert: true }
+          );
 
-        console.log(`✅ Menu items saved for ${restaurant.name}`);
-      } catch (error) {
-        console.error(`❌ Error scraping menu for ${restaurant.name}:`, error);
+          console.log(`✅ Menu items saved for ${business.name}`);
+        } catch (error) {
+          console.error(`❌ Error scraping menu for ${business.name}:`, error);
+        }
       }
     }
   }
-
   await browser.close();
   console.log("✅ Menu scraping completed successfully!");
 };
@@ -75,9 +87,9 @@ export const scrapeWoltMenuData = async () => {
  */
 const extractMenuData = async (
   page: Page,
-  link: string,
-  restaurantId: string,
-  restaurantName: string
+  link: string
+  // businessId: string,
+  // businessName: string
 ) => {
   await page.goto(`https://wolt.com${link}`, { waitUntil: "networkidle2" });
   await delay(2000);
@@ -120,10 +132,25 @@ const extractMenuData = async (
       }
 
       await menuItem.click();
-      await page.waitForSelector('[data-test-id="product-modal"]').catch(() => {
-        console.warn("❌ Modal did not open properly. Skipping item.");
-        return;
-      });
+      // Check if the correct modal opens
+      let modalSelector = '[data-test-id="product-modal"]';
+      const isCorrectModal = await page
+        .waitForSelector(modalSelector, { timeout: 2000 })
+        .then(() => true)
+        .catch(() => false);
+
+      if (!isCorrectModal) {
+        // Close the incorrect modal and retry
+        console.warn("❌ Incorrect modal opened. Attempting to close...");
+        const wrongModalCloseButton = await page.$(
+          ".cbc_IconButton_bg_7cfd4, .cbc_IconButton_iconContainer_7cfd4"
+        );
+        if (wrongModalCloseButton) {
+          await wrongModalCloseButton.click();
+          await delay(500); // Allow time for the modal to close
+        }
+        continue; // Retry the next item
+      }
 
       const modalContent = await page.content();
       const $$ = cheerio.load(modalContent);

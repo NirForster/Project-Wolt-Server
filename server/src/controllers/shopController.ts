@@ -9,7 +9,7 @@ import { RequestWithUserID } from "../types/expressType";
 import User from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
 import NewItem from "../models/items-modal";
-import Restaurant, { IRestaurant } from "../models/restaurant-model";
+import Business, { IBusiness } from "../models/Business-model";
 // import City from "../models/city-model";
 
 // Other types
@@ -22,8 +22,8 @@ const getShopData = async (req: Request, res: Response) => {
     const shopId = req.params.id;
     console.log(shopId);
 
-    const shop = await Restaurant.findById(shopId);
-    const menu = await NewItem.findOne({ restaurant: shopId });
+    const shop = await Business.findById(shopId);
+    const menu = await NewItem.findOne({ Business: shopId });
     console.log("shop is: ", shop);
     console.log("menu is: ", menu);
 
@@ -41,7 +41,7 @@ const getShopData = async (req: Request, res: Response) => {
       status: "Error",
     });
   }
-}; // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", shop?: Restaurant, menu?: NewItem })
+}; // Send: 200, 404, 500 ({ message?: string, status: "Success" | "Error", shop?: Business, menu?: NewItem })
 
 //* Adding new review on shop
 //! POST http://localhost:3000/api/v1/shop/:id/review
@@ -54,7 +54,7 @@ const addNewReview = async (req: RequestWithUserID, res: Response) => {
         select: "shop",
       });
       const shopID = req.params.id;
-      const shop = await Restaurant.findById(shopID);
+      const shop = await Business.findById(shopID);
       if (!user || !shop) {
         return res.status(404).send({
           status: "Error",
@@ -132,14 +132,14 @@ const getShopLastOrder = async (req: RequestWithUserID, res: Response) => {
 //! GET http://localhost:3000/api/v1/shop/all
 const getAllShops = async (req: Request, res: Response) => {
   try {
-    res.send({ status: "Success", shops: await Restaurant.find() });
+    res.send({ status: "Success", shops: await Business.find() });
   } catch (err: any) {
     return res.status(500).send({
       message: err.message || "An unknown error occurred",
       status: "Error",
     });
   }
-}; // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops?: Restaurant[] })
+}; // Send: 200, 500 ({ message?: string, status: "Success" | "Error", shops?: Business[] })
 
 // //* Get all the shops in a category
 // //! GET http://localhost:3000/api/v1/shop/category/:category
