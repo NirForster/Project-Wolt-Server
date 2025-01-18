@@ -44,7 +44,7 @@ connectDB()
       console.log(`✅ Server running on port ${PORT}`);
     });
     // scrapeWoltBusinessData();
-    scrapeWoltMenuData();
+    // scrapeWoltMenuData();
   })
   .catch(console.error);
 
