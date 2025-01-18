@@ -15,10 +15,7 @@ export interface IOrderItem extends Document {
   sectionTitle: String;
   pricePerUnit: number;
   quantity: number;
-  extras: {
-    added: string;
-    quantity: number;
-  }[];
+  extras: string[];
   totalPrice: number; // Virtual
 }
 
@@ -41,12 +38,7 @@ const OrderItemSchema = new Schema(
     quantity: { type: Number, default: 1 },
 
     extras: {
-      type: [
-        {
-          added: { type: String, required: true },
-          quantity: { type: Number, default: 1 },
-        },
-      ],
+      type: [String],
       default: [],
     },
   },

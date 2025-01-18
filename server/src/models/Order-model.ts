@@ -22,7 +22,7 @@ const orderSchema = new Schema(
 
     shop: {
       type: Schema.Types.ObjectId,
-      ref: "Restaurant",
+      ref: "Business",
       required: true,
     },
 
@@ -76,7 +76,7 @@ orderSchema.pre("save", async function (next) {
 
   try {
     await mongoose
-      .model("Restaurant")
+      .model("Business")
       .findByIdAndUpdate(this.shop, { avgDeliveryTime });
     next();
   } catch (err: any) {
