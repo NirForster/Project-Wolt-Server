@@ -6,6 +6,7 @@ const { Schema, model } = mongoose;
 
 export interface IBusiness extends Document {
   _id: Types.ObjectId;
+  city?: string;
   type: "restaurant" | "store"; // Differentiates between stores and restaurants
   name: string;
   description?: string;
@@ -59,6 +60,7 @@ const businessSchema = new Schema(
   {
     type: { type: String, enum: ["restaurant", "store"], required: true },
     name: { type: String, required: true, unique: true },
+    city: { type: String, default: null },
     description: { type: String },
     coverImage: { type: String, required: true },
 

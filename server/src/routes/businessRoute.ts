@@ -3,25 +3,21 @@ import {
   getAllBusinesses,
   getBusinessDetails,
   getMenu,
-  getRestaurantsSummaryByCity,
-  getStoresSummaryByCity,
+  getBusinessesByCity,
 } from "../controllers/businessController";
 
 const router = express.Router();
 
-// Route to fetch all businesses (stores or restaurants)
-router.get("/", getAllBusinesses); // Query param: ?type=store or ?type=restaurant
+// Get all businesses (filtered by type: "store" or "restaurant")
+router.get("/", getAllBusinesses);
 
-// Route to fetch business details by ID
+// Get businesses in a specific city (filtered by type: "restaurants" or "stores")
+router.get("/cities/:cityName/:type", getBusinessesByCity);
+
+// Get full details of a specific business by ID
 router.get("/:id", getBusinessDetails);
 
-// Route to fetch menu for a specific business
-router.get("/:businessId/menu", getMenu);
-
-// Route to fetch restaurants summary data for a specific city
-router.get("/cities/:cityName/restaurants", getRestaurantsSummaryByCity);
-
-// Route to fetch stores summary data for a specific city
-router.get("/cities/:cityName/stores", getStoresSummaryByCity);
+// Get menu for a specific business
+router.get("/:id/menu", getMenu);
 
 export default router;

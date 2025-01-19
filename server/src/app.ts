@@ -6,24 +6,27 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-// import { Request, Response } from "express";
-// const mongoose = require("mongoose");
 
 // Routes
-const authRoutes = require("./routes/authRoute.ts");
-const userRoutes = require("./routes/userRoutes.ts");
-const shopRoutes = require("./routes/shopRoutes.ts");
+const authRoutes = require("./routes/authRoute");
+const userRoutes = require("./routes/userRoutes");
+const shopRoutes = require("./routes/shopRoutes");
+const favoritesRoutes = require("./routes/favoritesRoutes");
+const ordersRoutes = require("./routes/ordersRoutes");
+
 import businessRoutes from "./routes/businessRoute";
-const favoritesRoutes = require("./routes/favoritesRoutes.ts");
-const ordersRoutes = require("./routes/ordersRoutes.ts");
+import cityRouter from "./routes/cityRoute";
+
+// import businessRoutes from "./routes/businessRoute";
 
 // Web Scrapers
 // import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
-import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
+// import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
+// import { scrapeWoltBusinessData } from "./scripts/scrapeWoltBusinessData";
 
-// App variables
+// environment variables
 dotenv.config();
-const BASE_URL = "";
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -31,36 +34,28 @@ const app = express();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Specify the allowed origin
-    credentials: true, // Allow credentials (cookies, headers)
+    origin: "http://localhost:5173",
+    credentials: true,
   })
 );
 app.use(express.json());
 
-// ✅ Connect to MongoDB Once
+// ✅ Connect to MongoDB
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`✅ Server running on port ${PORT}`);
     });
     // scrapeWoltBusinessData();
-    scrapeWoltMenuData();
+    // scrapeWoltBusinessData();
+    // scrapeWoltMenuData();
   })
-  .catch(console.error);
+  .catch((error) => console.error("❌ MongoDB Connection Failed:", error));
 
-// app.use(`${BASE_URL}auth`, authRoutes);
-
-// app.use(`${BASE_URL}user`, userRoutes);
-
-// app.use(`${BASE_URL}favorites`, favoritesRoutes);
-
-// app.use(`${BASE_URL}shop`, shopRoutes);
-
-// app.use(`${BASE_URL}orders`, ordersRoutes);
-
-app.use(`/auth`, authRoutes);
-app.use(`/user`, userRoutes);
-app.use(`/favorites`, favoritesRoutes);
-app.use(`/shop`, shopRoutes);
-app.use(`/business`, businessRoutes);
-app.use(`/orders`, ordersRoutes);
+app.use("/auth", authRoutes);
+app.use("/user", userRoutes);
+app.use("/favorites", favoritesRoutes);
+app.use("/shop", shopRoutes);
+app.use("/orders", ordersRoutes);
+app.use("/business", businessRoutes);
+app.use("/cities", cityRouter);
