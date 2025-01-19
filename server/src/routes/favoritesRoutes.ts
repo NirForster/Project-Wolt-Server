@@ -9,12 +9,15 @@ const {
   getUserFavoritesShops,
   addToFavorites,
   removeFromFavorites,
+  isInFavorites,
 } = require("../controllers/favoritesController");
 
 const router = express.Router();
 
 //* Middleware to check the user authentication using JWT
 router.use(userAuth); // Send: 401, 500 ({ message: string, status: "Error" })
+
+router.get("/:id", isInFavorites);
 
 //* Get all the user's favorites shops (populated together)
 //! GET http://localhost:3000/api/v1/favorites
