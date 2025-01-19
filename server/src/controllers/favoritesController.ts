@@ -83,6 +83,7 @@ const addToFavorites = async (req: RequestWithUserID, res: Response) => {
           .status(404)
           .send({ status: "Error", message: "There is no user with that ID" });
       }
+      console.log("hi from add");
       const { shopID } = req.body;
       const alreadyIn = user.favoritesShops.some((shop) => {
         return shop.toString() === shopID.toString();
@@ -115,6 +116,8 @@ const addToFavorites = async (req: RequestWithUserID, res: Response) => {
 //* Remove a shop from the user favorites
 //! PUT http://localhost:3000/api/v1/favorites/remove
 const removeFromFavorites = async (req: RequestWithUserID, res: Response) => {
+  console.log("hi from remove");
+
   const userID = req.userID;
   if (userID) {
     try {
