@@ -78,7 +78,7 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
         }
         if (phone) {
           if (phoneValidate(phone)) {
-            user.phone = phone;
+            user.phone = `0${phone}`;
           } else {
             return res.status(400).send({
               status: "Error",
