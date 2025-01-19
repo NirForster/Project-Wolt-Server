@@ -8,7 +8,7 @@ import { RequestWithUserID } from "../types/expressType";
 // Models
 import User from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
-import NewItem from "../models/items-modal";
+import Menu from "../models/items-modal";
 import Business, { IBusiness } from "../models/new-Business-model";
 // import City from "../models/city-model";
 
@@ -19,24 +19,26 @@ import Review from "../types/reviewType";
 //! GET http://localhost:3000/api/v1/shop/:id
 const getShopData = async (req: Request, res: Response) => {
   try {
+    console.log("my name is babab");
+
     const shopId = req.params.id;
     console.log(shopId);
 
-    const shop = await Business.findById(shopId);
-    // const menu = NewItem.findOne({ business: shopId });
+    const shop = Business.findById(shopId);
+    const menu = Menu.findOne({ business: shopId });
     // const menu =  await NewItem.findOne({ businessName: shop.name });
-    // const results = await Promise.all([shop, menu]);
+    const results = await Promise.all([shop, menu]);
     // console.log("shop is: ", results[0]);
     // console.log("menu is: ", results[1]);
 
-    // if (!results[0]) {
-    if (!shop) {
+    if (!results[0] || !results[1]) {
+      // if (!shop) {
       return res
         .status(404)
         .send({ status: "Error", message: "There is no shop with that id" });
     }
-    const menu = await NewItem.findOne({ businessName: shop.name });
-    // return res.send({ status: "Success", shop: results[0], menu: results[1] });
+    // const menu = await NewItem.findOne({ businessName: shop.name });
+    return res.send({ status: "Success", shop: results[0], menu: results[1] });
     return res.send({ status: "Success", shop, menu });
   } catch (err: any) {
     console.log(err);
