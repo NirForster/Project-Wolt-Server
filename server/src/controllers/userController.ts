@@ -7,7 +7,6 @@ import { RequestWithUserID } from "src/types/expressType";
 
 // Models
 import User, { IUser } from "../models/User-model";
-import BusinessModel from "src/models/Business-model";
 import OrderItem, { IOrderItem } from "../models/Order-item-model";
 
 // Handler functions
