@@ -7,6 +7,7 @@ import { RequestWithUserID } from "src/types/expressType";
 
 // Models
 import User, { IUser } from "../models/User-model";
+import BusinessModel from "src/models/Business-model";
 import OrderItem, { IOrderItem } from "../models/Order-item-model";
 
 // Handler functions
@@ -77,7 +78,7 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
         }
         if (phone) {
           if (phoneValidate(phone)) {
-            user.phone = phone;
+            user.phone = `0${phone}`;
           } else {
             return res.status(400).send({
               status: "Error",
@@ -154,7 +155,7 @@ const getCart = async (req: RequestWithUserID, res: Response) => {
         populate: [
           {
             path: "shop",
-            model: "Restaurant",
+            model: "Business",
             select: "-deliveryFeeStructure -deliveryTimes -openingTimes",
           }, // Populate shop details
           { path: "items", model: "OrderItem" }, // Populate items array

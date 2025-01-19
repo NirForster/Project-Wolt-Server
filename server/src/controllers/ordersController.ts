@@ -22,10 +22,7 @@ interface RequestWithOrderData extends RequestWithUserID {
     price: number;
     quantity: number;
     sectionTitle: string;
-    extras: {
-      added: string;
-      quantity: number;
-    }[];
+    extras: string[];
   };
 }
 
@@ -41,37 +38,39 @@ async function newOrderHandle(
   sectionTitle: string,
   quantity: number,
   pricePerUnit: number,
-  extras: {
-    added: string;
-    quantity: number;
-  }[]
+  extras: string[]
 ) {
-  const newOrder = await Order.create({
-    user,
-    shop,
-  }); // Creating new order
-  const newOrderItem = await OrderItem.create({
-    order: newOrder._id,
-    menu,
-    item: {
-      name,
-      image,
-      description,
-    },
-    sectionTitle,
-    quantity,
-    pricePerUnit,
-    extras,
-  });
-  newOrder.items.push(newOrderItem.id);
-  await newOrder.save();
-  const newCart = [
-    newOrder._id as Types.ObjectId,
-    ...cart.map((order) => {
-      return order._id as Types.ObjectId;
-    }), // Creating new cart full off orders, including the current new one, so the user could just save this array as his cart
-  ];
-  return newCart;
+  try {
+    const newOrder = await Order.create({
+      user,
+      shop,
+    }); // Creating new order
+    const newOrderItem = await OrderItem.create({
+      order: newOrder._id,
+      menu,
+      item: {
+        name,
+        image,
+        description,
+      },
+      sectionTitle,
+      quantity,
+      pricePerUnit,
+      extras,
+    });
+    newOrder.items.push(newOrderItem.id);
+    await newOrder.save();
+    const newCart = [
+      newOrder._id as Types.ObjectId,
+      ...cart.map((order) => {
+        return order._id as Types.ObjectId;
+      }), // Creating new cart full off orders, including the current new one, so the user could just save this array as his cart
+    ];
+    return newCart;
+  } catch (err: any) {
+    console.log("my name is baba");
+    console.log(err.message);
+  }
 }
 
 async function newItemHandler(
@@ -83,10 +82,7 @@ async function newItemHandler(
   sectionTitle: string,
   quantity: number,
   pricePerUnit: number,
-  extras: {
-    added: string;
-    quantity: number;
-  }[]
+  extras: string[]
 ) {
   const newOrderItem = await OrderItem.create({
     order,
@@ -210,19 +206,20 @@ const editOrder = async (req: RequestWithOrderData, res: Response) => {
             message: "Quantity of items must be above 0 , if its new order",
           });
         }
-        user.cart = await newOrderHandle(
-          user.cart,
-          userID,
-          shopID,
-          menuID,
-          itemName,
-          itemImg,
-          itemDesc,
-          sectionTitle,
-          quantity,
-          price,
-          extras
-        );
+        user.cart =
+          (await newOrderHandle(
+            user.cart,
+            userID,
+            shopID,
+            menuID,
+            itemName,
+            itemImg,
+            itemDesc,
+            sectionTitle,
+            quantity,
+            price,
+            extras
+          )) || [];
         // new order ⬆️
         user.save();
         return res.status(201).send({

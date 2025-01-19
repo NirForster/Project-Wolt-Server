@@ -23,15 +23,20 @@ const getShopData = async (req: Request, res: Response) => {
     console.log(shopId);
 
     const shop = await Business.findById(shopId);
-    const menu = await NewItem.findOne({ Business: shopId });
-    console.log("shop is: ", shop);
-    console.log("menu is: ", menu);
+    // const menu = NewItem.findOne({ business: shopId });
+    // const menu =  await NewItem.findOne({ businessName: shop.name });
+    // const results = await Promise.all([shop, menu]);
+    // console.log("shop is: ", results[0]);
+    // console.log("menu is: ", results[1]);
 
+    // if (!results[0]) {
     if (!shop) {
       return res
         .status(404)
         .send({ status: "Error", message: "There is no shop with that id" });
     }
+    const menu = await NewItem.findOne({ businessName: shop.name });
+    // return res.send({ status: "Success", shop: results[0], menu: results[1] });
     return res.send({ status: "Success", shop, menu });
   } catch (err: any) {
     console.log(err);

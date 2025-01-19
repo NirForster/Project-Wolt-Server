@@ -9,9 +9,12 @@ import { RequestWithUserID } from "src/types/expressType";
 import User, { IUser } from "../models/User-model";
 
 //* Get all the user's favorites shops (populated together)
-//! GET http://localhost:3000/api/v1/favorites
+//! GET http://localhost:3000/favorites
 const getUserFavoritesShops = async (req: RequestWithUserID, res: Response) => {
+  console.log("baba");
   const userID = req.userID;
+  console.log("baba");
+
   if (userID) {
     try {
       const user = await User.findById(userID).populate("favoritesShops");
@@ -37,6 +40,37 @@ const getUserFavoritesShops = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error",  favoritesShops?: Restaurant[] })
 
+const isInFavorites = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+
+  if (!userID) {
+    return res
+      .status(401)
+      .send({ status: "Error", message: "User not authenticated" });
+  }
+  console.log("baba babab");
+  try {
+    const user = await User.findById(userID);
+    const { shopID } = req.body;
+    if (!user) {
+      return res
+        .status(404)
+        .send({ status: "Error", message: "There is no user with that ID" });
+    }
+    res.send({
+      status: "Success",
+      message: user.favoritesShops.some((shop) => {
+        return shop.toString() === shopID;
+      }),
+    });
+  } catch (err: any) {
+    return res.status(500).send({
+      message: err.message || "An unknown error occurred",
+      status: "Error",
+    });
+  }
+};
+
 //* Add new shop to the user favorites
 //! PUT http://localhost:3000/api/v1/favorites/add
 const addToFavorites = async (req: RequestWithUserID, res: Response) => {
@@ -49,6 +83,7 @@ const addToFavorites = async (req: RequestWithUserID, res: Response) => {
           .status(404)
           .send({ status: "Error", message: "There is no user with that ID" });
       }
+      console.log("hi from add");
       const { shopID } = req.body;
       const alreadyIn = user.favoritesShops.some((shop) => {
         return shop.toString() === shopID.toString();
@@ -81,6 +116,8 @@ const addToFavorites = async (req: RequestWithUserID, res: Response) => {
 //* Remove a shop from the user favorites
 //! PUT http://localhost:3000/api/v1/favorites/remove
 const removeFromFavorites = async (req: RequestWithUserID, res: Response) => {
+  console.log("hi from remove");
+
   const userID = req.userID;
   if (userID) {
     try {
@@ -128,4 +165,5 @@ module.exports = {
   getUserFavoritesShops,
   addToFavorites,
   removeFromFavorites,
+  isInFavorites,
 };

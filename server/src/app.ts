@@ -16,9 +16,8 @@ const ordersRoutes = require("./routes/ordersRoutes");
 import businessRoutes from "./routes/businessRoute";
 
 // Web Scrapers
-// import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
+// import { scrapeWoltBusinessData } from "./web-scraping/scrapeWoltBusinessData";
 // import { scrapeWoltMenuData } from "./web-scraping/menuScraping";
-// import { scrapeWoltBusinessData } from "./scripts/scrapeWoltBusinessData";
 
 // environment variables
 dotenv.config();
@@ -42,7 +41,6 @@ connectDB()
     app.listen(PORT, () => {
       console.log(`✅ Server running on port ${PORT}`);
     });
-    // scrapeWoltBusinessData();
     // scrapeWoltBusinessData();
     // scrapeWoltMenuData();
   })

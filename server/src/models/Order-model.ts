@@ -11,9 +11,9 @@ export interface IOrder extends Document {
   shop: Types.ObjectId | IBusiness;
   createdAt: Date;
   deliveringTime?: number;
-  items: Types.ObjectId[] | IOrderItem[];
+  items: (Types.ObjectId | IOrderItem)[];
   hasSent: boolean;
-  totalPrice: number; // Virtual property
+  totalPrice: number;
 }
 
 const orderSchema = new Schema(
@@ -22,7 +22,7 @@ const orderSchema = new Schema(
 
     shop: {
       type: Schema.Types.ObjectId,
-      ref: "Restaurant",
+      ref: "Business",
       required: true,
     },
 
@@ -38,6 +38,8 @@ const orderSchema = new Schema(
     items: { type: [Schema.Types.ObjectId], ref: "OrderItem", default: [] },
 
     hasSent: { type: Boolean, default: false },
+
+    totalPrice: { type: Number, default: 0 },
   },
   {
     toJSON: { virtuals: true }, // Include virtuals in JSON output
@@ -45,43 +47,59 @@ const orderSchema = new Schema(
   }
 );
 
-orderSchema.virtual("totalPrice").get(async function () {
+// orderSchema.virtual("totalPrice").get(async function () {
+//   const id = this._id;
+//   const thisOrder = (await mongoose
+//     .model("Order")
+//     .findById(id)
+//     .populate("items")) as IOrder;
+//   const items = thisOrder.items as IOrderItem[];
+//   if (items.length > 0) {
+//     return items.reduce((sum, item) => {
+//       return item ? item.totalPrice + sum : 0;
+//     }, 0);
+//   }
+//   return 0;
+// });
+
+orderSchema.post("save", async function () {
+  // const allOrdersOfShop = await mongoose
+  //   .model("Order")
+  //   .find({ shop: this.shop }, "deliveringTime"); // Retrieving all that restaurant's orders
+
+  // const totalDeliveryTime = allOrdersOfShop.reduce((sum, order) => {
+  //   if (order.hasSent) {
+  //     return sum + order.deliveringTime;
+  //   }
+  //   return sum;
+  // }, this.deliveringTime || 0); // Calculating the total delivery time
+
+  // const avgDeliveryTime = totalDeliveryTime / (allOrdersOfShop.length + 1); // Calculating the avg delivering time
+
+  // try {
+  //   await mongoose
+  //     .model("Business")
+  //     .findByIdAndUpdate(this.shop, { avgDeliveryTime });
+  //   } catch (err: any) {
+  //     return next(err);
+  //   }
+
   const id = this._id;
   const thisOrder = (await mongoose
     .model("Order")
     .findById(id)
     .populate("items")) as IOrder;
   const items = thisOrder.items as IOrderItem[];
+  // await this.populate("items");
+  // const items = this.items as IOrderItem[];
+  let totalPrice = 0;
   if (items.length > 0) {
-    return items.reduce((sum, item) => {
+    totalPrice = items.reduce((sum, item) => {
+      const currentItem = item as IOrderItem;
       return item ? item.totalPrice + sum : 0;
     }, 0);
   }
-  return 0;
-});
-
-orderSchema.pre("save", async function (next) {
-  const allOrdersOfShop = await mongoose
-    .model("Order")
-    .find({ shop: this.shop }, "deliveringTime"); // Retrieving all that restaurant's orders
-
-  const totalDeliveryTime = allOrdersOfShop.reduce((sum, order) => {
-    if (order.hasSent) {
-      return sum + order.deliveringTime;
-    }
-    return sum;
-  }, this.deliveringTime || 0); // Calculating the total delivery time
-
-  const avgDeliveryTime = totalDeliveryTime / (allOrdersOfShop.length + 1); // Calculating the avg delivering time
-
-  try {
-    await mongoose
-      .model("Restaurant")
-      .findByIdAndUpdate(this.shop, { avgDeliveryTime });
-    next();
-  } catch (err: any) {
-    next(err);
-  }
+  await mongoose.model("Order").findByIdAndUpdate(id, { totalPrice });
 }); // Update the restaurant's avg delivery time
 
 export default mongoose.model<IOrder>("Order", orderSchema);
