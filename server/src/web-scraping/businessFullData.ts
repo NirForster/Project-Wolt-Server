@@ -1,8 +1,8 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import Business from "../models/Business-model";
-import City from "../models/city-model";
+import Business from "../old/Business-model";
+import City from "../old/city-model";
 
 const woltURL = "https://wolt.com/en/isr";
 const cityToScrape = "TLV - Herzliya area";

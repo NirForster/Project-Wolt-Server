@@ -1,11 +1,12 @@
 import mongoose, { Types } from "mongoose";
-import { IBusiness } from "./Business-model";
+import { IBusiness } from "./new-Business-model";
 const { Schema, model } = mongoose;
 
+// Interfaces
 export interface IMenu {
   _id: Types.ObjectId;
-  restaurant: Types.ObjectId | IBusiness;
-  restaurantName: string;
+  business: Types.ObjectId | IBusiness; // Reference the new business model
+  businessName: string;
   sections: {
     sectionTitle: string;
     sectionDescription?: string;
@@ -64,11 +65,11 @@ const menuSectionSchema = new Schema({
   items: [menuItemSchema],
 });
 
-// Main Model Schema with Restaurant Name as a String (not ref)
+// Main Menu Schema with Business Reference
 const menuSchema = new Schema(
   {
-    business: { type: Types.ObjectId, ref: "Business" },
-    businessName: { type: String },
+    business: { type: Types.ObjectId, ref: "newBusiness", required: true }, // Reference the new business model
+    businessName: { type: String, required: true },
     sections: [menuSectionSchema],
   },
   {
@@ -77,5 +78,4 @@ const menuSchema = new Schema(
   }
 );
 
-const Item = model("items", menuSchema);
-export default Item;
+export default model<IMenu>("Menu", menuSchema);

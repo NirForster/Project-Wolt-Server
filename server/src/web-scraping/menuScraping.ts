@@ -1,9 +1,9 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import City from "../models/city-model";
+import City from "../models/new-city-model";
 import Item from "../models/items-modal";
-import { PlaceSummary } from "../models/city-model";
+import Business from "../models/new-Business-model";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -23,58 +23,43 @@ export const scrapeWoltMenuData = async () => {
   }
 
   for (const city of cities) {
-    console.log(`🔍 Scraping menus for city: ${city.city}`);
+    console.log(`🔍 Scraping menus for city: ${city.name}`);
 
-    // Scrape menus for restaurants and stores
-    for (const businessType of ["restaurants", "stores"] as const) {
-      const businesses = city[businessType] as PlaceSummary[]; // Explicitly cast
-
-      if (!Array.isArray(businesses)) {
-        console.warn(
-          `⚠️ No ${businessType} found in city: ${city.city}. Skipping...`
-        );
-        continue;
-      }
-
-      for (const business of businesses) {
-        try {
-          if (!business.link) {
-            console.warn(
-              `⚠️ No link provided for ${businessType.slice(0, -1)}: ${
-                business.name
-              }. Skipping...`
-            );
-            continue;
-          }
-
-          console.log(
-            `🔍 Scraping menu for ${businessType.slice(0, -1)}: ${
-              business.name
-            }`
+    for (const businessRef of city.businesses) {
+      try {
+        const business = await Business.findById(businessRef.id);
+        if (!business) {
+          console.warn(
+            `⚠️ Business with ID ${businessRef.id} not found. Skipping...`
           );
-
-          await page.goto(`https://wolt.com${business.link}`, {
-            waitUntil: "networkidle2",
-          });
-
-          const sections = await extractMenuData(page, business.link);
-
-          await Item.updateOne(
-            { business: business._id },
-            {
-              $set: {
-                business: business._id,
-                businessName: business.name,
-                sections,
-              },
-            },
-            { upsert: true }
-          );
-
-          console.log(`✅ Menu items saved for ${business.name}`);
-        } catch (error) {
-          console.error(`❌ Error scraping menu for ${business.name}:`, error);
+          continue;
         }
+
+        console.log(`🔍 Scraping menu for business: ${business.summary.name}`);
+        await page.goto(`https://wolt.com${business.summary.link}`, {
+          waitUntil: "networkidle2",
+        });
+
+        const sections = await extractMenuData(page, business.summary.link);
+
+        await Item.updateOne(
+          { business: business._id },
+          {
+            $set: {
+              business: business._id,
+              businessName: business.summary.name,
+              sections,
+            },
+          },
+          { upsert: true }
+        );
+
+        console.log(`✅ Menu items saved for ${business.summary.name}`);
+      } catch (error) {
+        console.error(
+          `❌ Error scraping menu for business ID ${businessRef.id}:`,
+          error
+        );
       }
     }
   }
@@ -85,12 +70,7 @@ export const scrapeWoltMenuData = async () => {
 /**
  * ✅ Extract Menu Data with Sections and Items
  */
-const extractMenuData = async (
-  page: Page,
-  link: string
-  // businessId: string,
-  // businessName: string
-) => {
+const extractMenuData = async (page: Page, link: string) => {
   await page.goto(`https://wolt.com${link}`, { waitUntil: "networkidle2" });
   await delay(2000);
 
@@ -117,14 +97,11 @@ const extractMenuData = async (
     const menuItems = await section.$$("div.d1wyvslh");
 
     for (const menuItem of menuItems) {
-      const statusText = await menuItem
+      const isUnavailable = await menuItem
         .$eval(".cb_typographyClassName_bodyBase_b1fq", (el) =>
-          el.textContent?.trim()
+          el.textContent?.includes("Not available")
         )
-        .catch(() => "");
-
-      const isUnavailable = statusText?.includes("Not available");
-      const isPopular = statusText?.includes("Popular");
+        .catch(() => false);
 
       if (isUnavailable) {
         console.warn("⚠️ Item is unavailable, skipping...");
@@ -132,24 +109,22 @@ const extractMenuData = async (
       }
 
       await menuItem.click();
-      // Check if the correct modal opens
-      let modalSelector = '[data-test-id="product-modal"]';
+
       const isCorrectModal = await page
-        .waitForSelector(modalSelector, { timeout: 2000 })
+        .waitForSelector('[data-test-id="product-modal"]', { timeout: 2000 })
         .then(() => true)
         .catch(() => false);
 
       if (!isCorrectModal) {
-        // Close the incorrect modal and retry
         console.warn("❌ Incorrect modal opened. Attempting to close...");
         const wrongModalCloseButton = await page.$(
           ".cbc_IconButton_bg_7cfd4, .cbc_IconButton_iconContainer_7cfd4"
         );
         if (wrongModalCloseButton) {
           await wrongModalCloseButton.click();
-          await delay(500); // Allow time for the modal to close
+          await delay(500);
         }
-        continue; // Retry the next item
+        continue;
       }
 
       const modalContent = await page.content();
@@ -163,7 +138,6 @@ const extractMenuData = async (
         .trim();
       const itemDescription = $$("#product-description").text().trim();
 
-      // ✅ Extracting Form Data
       const formData: any[] = [];
       $$("fieldset[data-test-id='product-option-group']").each((_, field) => {
         const optionTitle = $$(field)
@@ -203,7 +177,7 @@ const extractMenuData = async (
         formData.push({
           title: optionTitle,
           description: optionDescription,
-          type, // ✅ Now included in the data
+          type,
           options,
         });
       });
@@ -213,7 +187,9 @@ const extractMenuData = async (
         image: itemImage,
         price: itemPrice,
         description: itemDescription,
-        isPopular,
+        isPopular: !!(await menuItem
+          .$eval(".popular-class", () => true)
+          .catch(() => false)),
         formData,
       });
 

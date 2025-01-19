@@ -13,11 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const shopRoutes = require("./routes/shopRoutes");
 const favoritesRoutes = require("./routes/favoritesRoutes");
 const ordersRoutes = require("./routes/ordersRoutes");
-
 import businessRoutes from "./routes/businessRoute";
-import cityRouter from "./routes/cityRoute";
-
-// import businessRoutes from "./routes/businessRoute";
 
 // Web Scrapers
 // import { scrapeWoltBusinessData } from "./web-scraping/businessFullData";
@@ -58,4 +54,3 @@ app.use("/favorites", favoritesRoutes);
 app.use("/shop", shopRoutes);
 app.use("/orders", ordersRoutes);
 app.use("/business", businessRoutes);
-app.use("/cities", cityRouter);
