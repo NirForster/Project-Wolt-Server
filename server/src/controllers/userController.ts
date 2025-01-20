@@ -149,17 +149,20 @@ const getCart = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
     try {
+      console.log("my name");
+
       const user = (await User.findById(userID).populate({
         path: "cart",
         populate: [
           {
             path: "shop",
-            model: "Business",
+            model: "newBusiness",
             select: "-deliveryFeeStructure -deliveryTimes -openingTimes",
           }, // Populate shop details
           { path: "items", model: "OrderItem" }, // Populate items array
         ],
       })) as IUser;
+      console.log("is jeff");
       if (!user) {
         return res
           .status(404)
