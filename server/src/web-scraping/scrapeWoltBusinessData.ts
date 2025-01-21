@@ -4,6 +4,30 @@ import * as cheerio from "cheerio";
 import newBusiness from "../models/new-Business-model";
 import newCity from "../models/new-city-model";
 
+const cities = [
+  "Afula & Emek Yizrael area",
+  "Ashdod and Lachish Area",
+  "Ashkelon",
+  "Beer Sheva",
+  "Eilat",
+  "Haifa & HaKrayot",
+  "Hasharon area",
+  "Jerusalem",
+  "Karmiel area",
+  "Kiryat Shmona area",
+  "Mevaseret Zion Area",
+  "Modi'in",
+  "Nazareth - Nof Hagalil area",
+  "Netanya area",
+  "Netivot - Sderot area",
+  "Pardes Hanna - Hadera area",
+  "Petah Tikva - Bik’at Ono",
+  "Rishon Lezion & Hashfela",
+  "Rosh Pinna - Zefat area",
+  "TLV - Herzliya area",
+  "Yokneam - Tivon area",
+];
+
 const woltURL = "https://wolt.com/en/isr";
 const cityToScrape = "TLV - Herzliya area";
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
@@ -98,7 +122,7 @@ const scrapeSection = async (page: Page, sectionName: string) => {
   const scrapedData = await page.$$eval(
     ".sq0n3gz.cb-elevated.cb_elevation_elevationXsmall_equ2.a164dpdw.r1bc29i8",
     (cards, type) =>
-      cards.slice(0, 20).map((card) => {
+      cards.slice(0, 50).map((card) => {
         const deliveryTimeText =
           card.querySelector(".b15bvov8.b1qdz9qo")?.textContent?.trim() ?? "";
         const deliveryTimeRange = deliveryTimeText.match(/(\d+)-(\d+)/);
