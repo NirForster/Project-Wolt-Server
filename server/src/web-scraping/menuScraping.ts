@@ -1,66 +1,56 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import City from "../models/new-city-model";
+// import City from "../models/new-city-model";
 import Item from "../models/items-modal";
 import Business from "../models/new-Business-model";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 /**
- * ✅ Scrape Wolt Menu Data for Restaurants and Stores
+ * ✅ Scrape Wolt Menu Data for Businesses
  */
 export const scrapeWoltMenuData = async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
-  // ✅ Fetch all stored cities from City model
-  const cities = await City.find();
-  if (!cities.length) {
-    console.error("❌ No cities found in the database. Exiting...");
+  // ✅ Fetch all businesses from the Business model
+  const businesses = await Business.find({
+    _id: { $nin: await Item.distinct("business") },
+  });
+  if (!businesses.length) {
+    console.error("❌ ❌ No businesses without menus found. Exiting...");
     await browser.close();
     return;
   }
 
-  for (const city of cities) {
-    console.log(`🔍 Scraping menus for city: ${city.name}`);
+  for (const business of businesses) {
+    try {
+      console.log(`🔍 Scraping menu for business: ${business.summary.name}`);
+      await page.goto(`https://wolt.com${business.summary.link}`, {
+        waitUntil: "networkidle2",
+      });
 
-    for (const businessRef of city.businesses) {
-      try {
-        const business = await Business.findById(businessRef.id);
-        if (!business) {
-          console.warn(
-            `⚠️ Business with ID ${businessRef.id} not found. Skipping...`
-          );
-          continue;
-        }
+      const sections = await extractMenuData(page, business.summary.link);
 
-        console.log(`🔍 Scraping menu for business: ${business.summary.name}`);
-        await page.goto(`https://wolt.com${business.summary.link}`, {
-          waitUntil: "networkidle2",
-        });
-
-        const sections = await extractMenuData(page, business.summary.link);
-
-        await Item.updateOne(
-          { business: business._id },
-          {
-            $set: {
-              business: business._id,
-              businessName: business.summary.name,
-              sections,
-            },
+      await Item.updateOne(
+        { business: business._id },
+        {
+          $set: {
+            business: business._id,
+            businessName: business.summary.name,
+            sections,
           },
-          { upsert: true }
-        );
+        },
+        { upsert: true }
+      );
 
-        console.log(`✅ Menu items saved for ${business.summary.name}`);
-      } catch (error) {
-        console.error(
-          `❌ Error scraping menu for business ID ${businessRef.id}:`,
-          error
-        );
-      }
+      console.log(`✅ Menu items saved for ${business.summary.name}`);
+    } catch (error) {
+      console.error(
+        `❌ Error scraping menu for business ${business.summary.name}:`,
+        error
+      );
     }
   }
   await browser.close();
