@@ -34,6 +34,7 @@ export interface BusinessAdditionalInfo {
 export interface IBusiness extends Document {
   summary: BusinessSummary; // Summary information
   additionalInfo: BusinessAdditionalInfo; // Additional details
+  categories: string[]; // Categories for the business
   reviews: Review[]; // Virtuals
   rating: number;
   orders: Types.ObjectId[] | IOrder[];
@@ -84,13 +85,13 @@ const businessSchema = new Schema(
       image: { type: String, required: true },
       shortDescription: { type: String, required: true },
       estimatedDeliveryTime: {
-        min: { type: Number, required: true },
-        max: { type: Number, required: true },
+        min: { type: Number, required: false },
+        max: { type: Number, required: false },
       },
-      rating: { type: Number, required: true },
+      rating: { type: Number, default: null, required: false },
       dollarCount: { type: String, enum: ["$", "$$", "$$$", "$$$$"] },
       label: {
-        deliveryFee: { type: String, required: true },
+        deliveryFee: { type: String, required: false },
         storeType: { type: String, required: true },
       },
     },
@@ -109,9 +110,10 @@ const businessSchema = new Schema(
           spanText: { type: String, required: true },
         },
       ],
-      phoneNumber: { type: String, required: true },
+      phoneNumber: { type: String },
       website: { type: String },
     },
+    categories: [{ type: String }],
   },
   {
     toJSON: { virtuals: true },
@@ -132,4 +134,4 @@ businessSchema.virtual("orders", {
   foreignField: "business",
 });
 
-export default model<IBusiness>("newBusiness", businessSchema);
+export default model<IBusiness>("Business", businessSchema);

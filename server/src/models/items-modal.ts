@@ -1,5 +1,5 @@
 import mongoose, { Types } from "mongoose";
-import { IBusiness } from "./new-Business-model";
+import { IBusiness } from "./new-business-model";
 const { Schema, model } = mongoose;
 
 // Interfaces

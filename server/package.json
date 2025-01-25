@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server/src/app.ts",
     "dev": "nodemon --exec ts-node src/app.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "check-unscraped": "ts-node src/scripts/checkUnscrapedBusinesses.ts",
+    "scrapeCategories": "ts-node src/scripts/scrapeCategories.ts"
   },
   "keywords": [],
   "author": "",

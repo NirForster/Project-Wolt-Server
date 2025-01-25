@@ -1,7 +1,6 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-// import City from "../models/new-city-model";
 import Item from "../models/items-modal";
 import Business from "../models/new-Business-model";
 
@@ -98,23 +97,60 @@ const extractMenuData = async (page: Page, link: string) => {
         continue;
       }
 
-      await menuItem.click();
+      let retries = 0;
+      const MAX_RETRIES = 3; // Maximum retry limit
+      let isCorrectModal = false;
 
-      const isCorrectModal = await page
-        .waitForSelector('[data-test-id="product-modal"]', { timeout: 2000 })
-        .then(() => true)
-        .catch(() => false);
+      while (retries < MAX_RETRIES && !isCorrectModal) {
+        console.log(`🔄 Attempting to click item (Retry ${retries + 1})`);
+
+        try {
+          // Scroll the item into view and click
+          await menuItem.evaluate((el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "center" })
+          );
+          await delay(500);
+          await menuItem.click();
+          await delay(500);
+
+          // Check if the correct modal is opened
+          isCorrectModal = await page
+            .waitForSelector('[data-test-id="product-modal"]', {
+              timeout: 2000,
+            })
+            .then(() => true)
+            .catch(() => false);
+
+          if (!isCorrectModal) {
+            console.warn("❌ Incorrect modal opened. Attempting to close...");
+
+            // Close the wrong modal by clicking the overlay
+            const modalOverlay = await page.$(".cb_ModalBase_Backdrop_bdcc");
+            if (modalOverlay) {
+              await modalOverlay.click();
+              await delay(500);
+            } else {
+              console.warn("⚠️ Modal overlay not found. Skipping retry...");
+              break; // Exit retry if overlay cannot be found
+            }
+          }
+        } catch (error) {
+          console.error(
+            `❌ Error clicking the item or handling modal (Retry ${
+              retries + 1
+            }):`,
+            error
+          );
+        }
+
+        retries++;
+      }
 
       if (!isCorrectModal) {
-        console.warn("❌ Incorrect modal opened. Attempting to close...");
-        const wrongModalCloseButton = await page.$(
-          ".cbc_IconButton_bg_7cfd4, .cbc_IconButton_iconContainer_7cfd4"
+        console.error(
+          "❌ Failed to open correct modal after retries. Skipping item..."
         );
-        if (wrongModalCloseButton) {
-          await wrongModalCloseButton.click();
-          await delay(500);
-        }
-        continue;
+        continue; // Move to the next item
       }
 
       const modalContent = await page.content();
