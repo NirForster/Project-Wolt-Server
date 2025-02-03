@@ -2,6 +2,7 @@
 import { Request, Response } from "express";
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 
 // Request type
 import { RequestWithUserID } from "src/types/expressType";
@@ -13,22 +14,30 @@ import User, { IUser } from "../models/User-model";
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
 
 // Generic function
-function getToken(userID: string) {
+function getToken(userID: string, expiresIn: string = "1d") {
   const jwtSecret = process.env.JWT_SECRET as string;
   return jwt.sign({ userID }, jwtSecret, {
-    expiresIn: "1d",
+    expiresIn,
   });
+}
+
+function getDecoded(token: string) {
+  const jwtSecret = process.env.JWT_SECRET as string;
+  if (!jwtSecret) {
+    return "";
+  }
+  const decoded = jwt.verify(token, jwtSecret) as { userID: string };
+  return decoded.userID;
 }
 
 //* Sign up with new user
 //! POST http://localhost:3000/api/v1/auth/signup
 const signup = async (req: Request, res: Response) => {
-  const { email, password, fname, lname, phone } = req.body;
-  if (!email || !password || !fname || !phone) {
+  const { email, fname, lname, phone } = req.body;
+  if (!email || !fname || !phone) {
     return res.status(400).send({
-      message: `Some fields (${email ? "" : " email "}${
-        password ? "" : " password "
-      }${fname ? "" : " first name "}${phone ? "" : " phone "}) are missing!`,
+      message: `Some fields (${email ? "" : " email "}
+      ${fname ? "" : " first name "}${phone ? "" : " phone "}) are missing!`,
       status: "Error",
     });
   }
@@ -44,17 +53,11 @@ const signup = async (req: Request, res: Response) => {
       status: "Error",
     });
   }
-  if (password.length < 5) {
-    return res.status(400).send({
-      message: "Password must contain at least 5 letters (minimum)",
-      status: "Error",
-    });
-  }
+
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({
       email,
-      password: hashedPassword,
+      // password: hashedPassword,
       fname,
       phone: `0${phone}`,
     });
@@ -82,37 +85,37 @@ const signup = async (req: Request, res: Response) => {
 //* Log in with registered user
 //! POST http://localhost:3000/api/v1/auth/login
 const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
+  console.log(req.body);
+
+  const { token } = req.body;
+  if (!token) {
+    res.status(404).send({ status: "Error", message: "No token was supplied" });
+  }
+  const email = getDecoded(token);
+  if (!email) {
     return res.status(400).send({
-      message: `Some fields (${email ? "" : " email "}${
-        password ? "" : " password "
-      }) are missing!`,
+      message: `missing email field`,
       status: "Error",
     });
   }
+  console.log(email);
+
   const user = (await User.findOne({ email })) as IUser;
   if (!user) {
-    return res.status(401).send({ message: "Not authorized", status: "Error" });
+    return res
+      .status(400)
+      .send({ message: "There is no user with that email", status: "Error" });
   }
+
   try {
-    bcrypt.compare(password, user.password, (err: Error, result: boolean) => {
-      if (err) {
-        throw err;
-      }
-      if (result) {
-        const token = getToken(user.id.toString());
-        res.cookie("token", token, {
-          httpOnly: true,
-          sameSite: "strict",
-        });
-        res.send({
-          status: "Success",
-          user: { ...user.toObject(), password: "" },
-        });
-      } else {
-        res.status(401).send({ message: "Not authorized", status: "Error" });
-      }
+    const token = getToken(user.id.toString());
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "strict",
+    });
+    res.send({
+      status: "Success",
+      user,
     });
   } catch (err: any) {
     res.status(500).send({
@@ -161,9 +164,58 @@ const getCurrentUser = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
+const sendEmail = async (req: Request, res: Response) => {
+  const BASE_URL = "http://localhost:5173";
+  const { email, lastURL } = req.body;
+  try {
+    const token = getToken(email, "15m");
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "wolt8767@gmail.com", // Replace with your Gmail
+        pass: "nvlv ffxt hfdm jxxo", // Replace with your App Password
+      },
+    });
+    const isNewUser = await User.exists({ email: email });
+
+    let htmlBuild = "";
+    const signupURL = `${BASE_URL}${lastURL}?email=${email}`;
+    const loginURL = `${BASE_URL}/login?token=${token}&lasturl=${encodeURIComponent(
+      lastURL
+    )}`;
+    if (!isNewUser) {
+      htmlBuild = `
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around border-top: 2px solid #039DE0;">
+        <img src="../assets/photos/wolt-logo.png" alt="wolt logo"/>
+        <p>היי, גם אנחנו רעבים אז נעשה את זה קצר: לחיצה אחת על הכפתור למטה וכבר יהיה לך חשבון ב-Wolt</p>
+        <a styles="height: 50px; width: 140px; background-color: #039DE0; color: white" href="${signupURL}">Create new profile in Wolt</a>
+        </div>`;
+    } else {
+      htmlBuild = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around border-top: 2px solid #039DE0;">
+        <img src="../assets/photos/wolt-logo.png" alt="wolt logo"/>
+        <p>היי, גם אנחנו רעבים אז נעשה את זה קצר: כדי להיכנס לאפליקציה צריך ללחוץ על הכפתור. משלוח Wolt שמח! משלוח Wolt שמח!</p>
+        <a styles="height: 50px; width: 140px; background-color: #039DE0; color: white" href="${loginURL}">Enter your profile</a>
+      </div>`;
+    }
+    const mailOptions = {
+      from: "wolt8767@gmail.com",
+      to: email,
+      subject: isNewUser ? "Happy to see you" : "Enter your Wolt account",
+      html: htmlBuild,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.send({ message: "Email sent", status: "Success" });
+  } catch (err: any) {
+    res.status(500).send({ message: "Email was not sent", status: "Error" });
+  }
+};
+
 module.exports = {
   signup,
   login,
   logout,
   getCurrentUser,
+  sendEmail,
 };

@@ -5,7 +5,7 @@ import { IBusiness } from "./new-Business-model";
 export interface IUser extends Document {
   _id: Types.ObjectId;
   email: string;
-  password: string;
+  // password: string;
   fname: string;
   lname: string;
   phone: string;
@@ -31,14 +31,14 @@ const userSchema = new Schema(
       match: [/.+@.+\..+/, "Invalid email format"],
     }, //* the "email" value will be the user's unique username
 
-    password: {
-      type: String,
-      required: [
-        true,
-        "Password is a required field in order to create new user",
-      ],
-      minLength: "5",
-    },
+    // password: {
+    //   type: String,
+    //   required: [
+    //     true,
+    //     "Password is a required field in order to create new user",
+    //   ],
+    //   minLength: "5",
+    // },
 
     //! User data
     fname: {
