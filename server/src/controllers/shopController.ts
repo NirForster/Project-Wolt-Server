@@ -9,7 +9,7 @@ import { RequestWithUserID } from "../types/expressType";
 import User from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
 import Menu from "../models/items-modal";
-import Business, { IBusiness } from "../models/new-Business-model";
+import Business, { IBusiness } from "../models/new-business-model";
 // import City from "../models/city-model";
 
 // Other types

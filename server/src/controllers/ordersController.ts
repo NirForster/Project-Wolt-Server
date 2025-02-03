@@ -8,7 +8,7 @@ import { RequestWithUserID } from "../types/expressType";
 // Models
 import User, { IUser } from "../models/User-model";
 import Order, { IOrder } from "../models/Order-model";
-import { IBusiness } from "../models/new-Business-model";
+import { IBusiness } from "../models/new-business-model";
 import OrderItem, { IOrderItem } from "../models/Order-item-model";
 
 // New types

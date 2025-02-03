@@ -134,4 +134,4 @@ businessSchema.virtual("orders", {
   foreignField: "business",
 });
 
-export default model<IBusiness>("Business", businessSchema);
+export default model<IBusiness>("newBusiness", businessSchema);

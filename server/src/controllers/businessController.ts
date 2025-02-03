@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
-// import Business from "../models/Business-model";
-import Business from "../models/new-Business-model";
+import newBusiness from "../models/new-business-model";
 import Item from "../models/items-modal";
-// import City from "../models/city-model";
 import City from "../models/new-city-model";
 
 /**
@@ -20,7 +18,7 @@ export const getAllBusinesses = async (
       return;
     }
 
-    const businesses = await Business.find({ type }).lean();
+    const businesses = await newBusiness.find({ type }).lean();
     const mappedBusinesses = businesses.map((business) => ({
       ...business,
       id: business._id.toString(),
@@ -65,10 +63,12 @@ export const getBusinessesByCity = async (
 
     // Filter businesses by type
     const businessIds = city.businesses.map((b) => b.id);
-    const businesses = await Business.find({
-      _id: { $in: businessIds },
-      "summary.type": type.slice(0, -1), // Convert 'restaurants' to 'restaurant'
-    }).lean();
+    const businesses = await newBusiness
+      .find({
+        _id: { $in: businessIds },
+        "summary.type": type.slice(0, -1), // Convert 'restaurants' to 'restaurant'
+      })
+      .lean();
 
     const mappedBusinesses = businesses.map((business) => ({
       ...business.summary,
@@ -92,7 +92,7 @@ export const getBusinessDetails = async (
 ): Promise<void> => {
   try {
     const { id } = req.params;
-    const business = await Business.findById(id);
+    const business = await newBusiness.findById(id);
 
     if (!business) {
       res.status(404).json({ error: "Business not found" });
@@ -124,5 +124,73 @@ export const getMenu = async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     console.error("Error fetching menu:", error);
     res.status(500).json({ error: "Failed to fetch menu" });
+  }
+};
+
+/**
+ * Fetch businesses grouped by categories for a specific city and type
+ * @route GET /business/cities/:city/:type/categories
+ */
+export const getBusinessesByCategories = async (
+  req: Request<{ city: string; type: string }>,
+  res: Response
+): Promise<void> => {
+  try {
+    const { city, type } = req.params;
+
+    // Validate `type`
+    if (type !== "restaurant" && type !== "store") {
+      res
+        .status(400)
+        .json({ error: "Invalid type. Use 'restaurant' or 'store'." });
+      return;
+    }
+
+    // Fetch city data
+    const cityData = await City.findOne({ name: city }).lean();
+
+    if (!cityData || !cityData.businesses || cityData.businesses.length === 0) {
+      console.error("City data not found or empty:", { city });
+      res.status(404).json({
+        message: `No businesses found for city: ${city} and type: ${type}`,
+      });
+      return;
+    }
+
+    // Extract business IDs from city data
+    const businessIds = cityData.businesses.map((b) => b.id);
+
+    // Fetch businesses matching the IDs and type in a single query
+    const businesses = await newBusiness
+      .find({
+        _id: { $in: businessIds },
+        "summary.type": type,
+      })
+      .lean();
+
+    if (!businesses || businesses.length === 0) {
+      console.error("No businesses found:", { businessIds, type });
+      res.status(404).json({
+        message: `No businesses found for city: ${city} and type: ${type}`,
+      });
+      return;
+    }
+
+    // Group businesses by category
+    const groupedBusinesses = businesses.reduce(
+      (acc: Record<string, any[]>, business) => {
+        business.categories.forEach((category: string) => {
+          if (!acc[category]) acc[category] = [];
+          acc[category].push(business);
+        });
+        return acc;
+      },
+      {}
+    );
+
+    res.status(200).json(groupedBusinesses);
+  } catch (error) {
+    console.error("Error fetching businesses by categories:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };

@@ -4,6 +4,7 @@ import {
   getBusinessDetails,
   getMenu,
   getBusinessesByCity,
+  getBusinessesByCategories,
 } from "../controllers/businessController";
 
 const router = express.Router();
@@ -19,5 +20,8 @@ router.get("/:id", getBusinessDetails);
 
 // Get menu for a specific business
 router.get("/:id/menu", getMenu);
+
+//Get Businesses by city and type
+router.get("/cities/:city/:type/categories", getBusinessesByCategories);
 
 export default router;

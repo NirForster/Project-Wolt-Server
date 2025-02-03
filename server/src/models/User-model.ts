@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 import { IOrder } from "./Order-model";
-import { IBusiness } from "./new-Business-model";
+import { IBusiness } from "./new-business-model";
 
 export interface IUser extends Document {
   _id: Types.ObjectId;
