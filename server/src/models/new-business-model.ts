@@ -116,6 +116,7 @@ const businessSchema = new Schema(
     categories: [{ type: String }],
   },
   {
+    timestamps: true,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   }
