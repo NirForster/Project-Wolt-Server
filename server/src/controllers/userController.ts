@@ -53,7 +53,7 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
       const user = await User.findById(id);
 
       if (user) {
-        const { email, password, fname, lname, photo, phone } = req.body;
+        const { email, fname, lname, photo, phone } = req.body;
         if (email) {
           if (emailValidate(email)) {
             user.email = email;
@@ -64,17 +64,17 @@ const updateUser = async (req: RequestWithUserID, res: Response) => {
             });
           }
         }
-        if (password) {
-          if (password.length >= 5) {
-            const hashedPassword = await bcrypt.hash(password, 10);
-            user.password = hashedPassword;
-          } else {
-            return res.status(400).send({
-              status: "Error",
-              message: "Password must contain at least 5 letters (minimum)",
-            });
-          }
-        }
+        // if (password) {
+        //   if (password.length >= 5) {
+        //     const hashedPassword = await bcrypt.hash(password, 10);
+        //     user.password = hashedPassword;
+        //   } else {
+        //     return res.status(400).send({
+        //       status: "Error",
+        //       message: "Password must contain at least 5 letters (minimum)",
+        //     });
+        //   }
+        // }
         if (phone) {
           if (phoneValidate(phone)) {
             user.phone = `0${phone}`;
