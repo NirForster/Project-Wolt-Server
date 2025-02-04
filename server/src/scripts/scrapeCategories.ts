@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import mongoose from "mongoose";
-import Business from "../models/new-business-model"; // Replace with your actual model path
+import Business from "../models/new-business-model";
 import dotenv from "dotenv";
 
 dotenv.config(); // Load environment variables from .env file

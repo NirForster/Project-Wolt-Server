@@ -1,7 +1,7 @@
 import connectDB from "../utils/db"; // Adjust the path as needed
 import mongoose from "mongoose";
 import Item from "../models/items-modal";
-import Business from "../models/new-Business-model";
+import Business from "../models/new-business-model";
 const dotenv = require("dotenv");
 
 dotenv.config();

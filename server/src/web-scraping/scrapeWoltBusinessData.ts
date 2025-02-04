@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import type { Page } from "puppeteer";
 import * as cheerio from "cheerio";
-import newBusiness from "../models/new-Business-model";
+import Business from "../models/new-business-model";
 import newCity from "../models/new-city-model";
 
 const cities = [
@@ -37,7 +37,6 @@ export const scrapeWoltBusinessData = async () => {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.goto(`${woltURL}/tel-aviv`, { waitUntil: "networkidle2" });
-
     // Scrape both Restaurants and Stores
     const restaurants = await scrapeSection(page, "Restaurants");
     const stores = await scrapeSection(page, "Stores");
@@ -68,7 +67,7 @@ export const scrapeWoltBusinessData = async () => {
       };
 
       // Save the business and retrieve the `_id`
-      const savedBusiness = await newBusiness.findOneAndUpdate(
+      const savedBusiness = await Business.findOneAndUpdate(
         { "summary.name": business.name },
         { $set: businessData },
         { upsert: true, new: true }
@@ -122,7 +121,7 @@ const scrapeSection = async (page: Page, sectionName: string) => {
   const scrapedData = await page.$$eval(
     ".sq0n3gz.cb-elevated.cb_elevation_elevationXsmall_equ2.a164dpdw.r1bc29i8",
     (cards, type) =>
-      cards.slice(0, 50).map((card) => {
+      cards.slice(0, 1).map((card) => {
         const deliveryTimeText =
           card.querySelector(".b15bvov8.b1qdz9qo")?.textContent?.trim() ?? "";
         const deliveryTimeRange = deliveryTimeText.match(/(\d+)-(\d+)/);
