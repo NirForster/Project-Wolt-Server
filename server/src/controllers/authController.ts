@@ -171,7 +171,7 @@ const sendEmail = async (req: Request, res: Response) => {
 
     let htmlBuild = "";
     const signupURL = `${BASE_URL}${lastURL}?email=${email}`;
-    const loginURL = `${BASE_URL}/login?token=${email}&lasturl=${encodeURIComponent(
+    const loginURL = `${BASE_URL}/login?email=${email}&lasturl=${encodeURIComponent(
       lastURL
     )}`;
     if (!isNewUser) {
