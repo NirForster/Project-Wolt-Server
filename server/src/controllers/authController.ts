@@ -85,19 +85,11 @@ const signup = async (req: Request, res: Response) => {
 //* Log in with registered user
 //! POST http://localhost:3000/api/v1/auth/login
 const login = async (req: Request, res: Response) => {
-  console.log(req.body);
-
-  const { token } = req.body;
-  if (!token) {
-    res.status(404).send({ status: "Error", message: "No token was supplied" });
-  }
-  const email = getDecoded(token);
+  const { email } = req.body;
   if (!email) {
-    return res.status(400).send({
-      message: `missing email field`,
-      status: "Error",
-    });
+    res.status(400).send({ status: "Error", message: "No email was supplied" });
   }
+  // const email = decodeURIComponent(encodedEmail);
   console.log(email);
 
   const user = (await User.findOne({ email })) as IUser;
@@ -168,7 +160,6 @@ const sendEmail = async (req: Request, res: Response) => {
   const BASE_URL = "http://localhost:5173";
   const { email, lastURL } = req.body;
   try {
-    const token = getToken(email, "15m");
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -180,28 +171,42 @@ const sendEmail = async (req: Request, res: Response) => {
 
     let htmlBuild = "";
     const signupURL = `${BASE_URL}${lastURL}?email=${email}`;
-    const loginURL = `${BASE_URL}/login?token=${token}&lasturl=${encodeURIComponent(
+    const loginURL = `${BASE_URL}/login?token=${email}&lasturl=${encodeURIComponent(
       lastURL
     )}`;
     if (!isNewUser) {
-      htmlBuild = `
-      <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around border-top: 2px solid #039DE0;">
-        <img src="../assets/photos/wolt-logo.png" alt="wolt logo"/>
-        <p>היי, גם אנחנו רעבים אז נעשה את זה קצר: לחיצה אחת על הכפתור למטה וכבר יהיה לך חשבון ב-Wolt</p>
-        <a styles="height: 50px; width: 140px; background-color: #039DE0; color: white" href="${signupURL}">Create new profile in Wolt</a>
-        </div>`;
+      htmlBuild = `<div style="border-top: 2px solid #039DE0; padding: 20px; text-align: center; width: fit-content;">
+  <img src="https://ci3.googleusercontent.com/meips/ADKq_NZTjQxLSlBFisT1l62IOKcBDG5YLSdyVr2gaMOEV-0lNMUtRXyFiAk_u31QNRvp7g4JpHCZ7UbDbAno_yvBzwY7BcJ7aMo=s0-d-e1-ft#https://cdn.wolt.com/notifications/blue_logo.png" alt="wolt logo" style="max-width: 100px; margin-bottom: 20px;" />
+
+  <p style="margin: 20px 0;">היי, גם אנחנו רעבים אז נעשה את זה קצר: לחיצה אחת על הכפתור למטה וכבר יהיה לך חשבון ב-Wolt</p>
+
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tr>
+      <td style="background-color: #039DE0; border-radius: 16px;">
+        <a href="${signupURL}" style="display: inline-block; padding: 15px 30px; color: white; text-decoration: none; font-weight: bold;">Create new profile in Wolt</a>
+      </td>
+    </tr>
+  </table>
+</div>`;
     } else {
-      htmlBuild = `
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around border-top: 2px solid #039DE0;">
-        <img src="../assets/photos/wolt-logo.png" alt="wolt logo"/>
-        <p>היי, גם אנחנו רעבים אז נעשה את זה קצר: כדי להיכנס לאפליקציה צריך ללחוץ על הכפתור. משלוח Wolt שמח! משלוח Wolt שמח!</p>
-        <a styles="height: 50px; width: 140px; background-color: #039DE0; color: white" href="${loginURL}">Enter your profile</a>
-      </div>`;
+      htmlBuild = `<div style="border-top: 2px solid #039DE0; padding: 20px; text-align: center; width: fit-content;">
+  <img src="https://ci3.googleusercontent.com/meips/ADKq_NZTjQxLSlBFisT1l62IOKcBDG5YLSdyVr2gaMOEV-0lNMUtRXyFiAk_u31QNRvp7g4JpHCZ7UbDbAno_yvBzwY7BcJ7aMo=s0-d-e1-ft#https://cdn.wolt.com/notifications/blue_logo.png" alt="wolt logo" style="max-width: 100px; margin-bottom: 20px;" />
+
+  <p style="margin: 20px 0;">היי, גם אנחנו רעבים אז נעשה את זה קצר: כדי להיכנס לאפליקציה צריך ללחוץ על הכפתור. משלוח Wolt שמח!</p>
+
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tr>
+      <td style="background-color: #039DE0; border-radius: 16px;">
+        <a href="${loginURL}" style="display: inline-block; padding: 15px 30px; color: white; text-decoration: none; font-weight: bold;">Enter your profile</a>
+      </td>
+    </tr>
+  </table>
+</div>`;
     }
     const mailOptions = {
       from: "wolt8767@gmail.com",
       to: email,
-      subject: isNewUser ? "Happy to see you" : "Enter your Wolt account",
+      subject: isNewUser ? "Enter your Wolt account" : "Happy to see you",
       html: htmlBuild,
     };
 
