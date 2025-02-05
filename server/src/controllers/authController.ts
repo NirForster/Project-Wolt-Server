@@ -70,12 +70,12 @@ const signup = async (req: Request, res: Response) => {
       httpOnly: true,
       sameSite: "strict",
     });
-    res.status(201).send({
+    return res.status(201).send({
       status: "Success",
       user: { ...newUser.toObject(), password: "" },
     });
   } catch (err: any) {
-    res.status(500).send({
+    return res.status(500).send({
       message: err?.message || "An unknown error occurred",
       status: "Error",
     });
@@ -87,10 +87,10 @@ const signup = async (req: Request, res: Response) => {
 const login = async (req: Request, res: Response) => {
   const { email } = req.body;
   if (!email) {
-    res.status(400).send({ status: "Error", message: "No email was supplied" });
+    return res
+      .status(400)
+      .send({ status: "Error", message: "No email was supplied" });
   }
-  // const email = decodeURIComponent(encodedEmail);
-  console.log(email);
 
   const user = (await User.findOne({ email })) as IUser;
   if (!user) {
@@ -157,8 +157,7 @@ const getCurrentUser = async (req: RequestWithUserID, res: Response) => {
 }; // Send: 200, 401, 404, 500 ({ message?: string, status: "Success" | "Error", user?: User })
 
 const sendEmail = async (req: Request, res: Response) => {
-  const BASE_URL = "http://localhost:5173";
-  const { email, lastURL } = req.body;
+  const { email, lastEndpoints, baseURL } = req.body;
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -170,9 +169,11 @@ const sendEmail = async (req: Request, res: Response) => {
     const isNewUser = await User.exists({ email: email });
 
     let htmlBuild = "";
-    const signupURL = `${BASE_URL}${lastURL}?email=${email}`;
-    const loginURL = `${BASE_URL}/login?email=${email}&lasturl=${encodeURIComponent(
-      lastURL
+    console.log(baseURL);
+    const encodeEmail = encodeURIComponent(email);
+    const signupURL = `${baseURL}/${lastEndpoints}?email=${encodeEmail}`;
+    const loginURL = `${baseURL}/login?email=${encodeEmail}&lasturl=${encodeURIComponent(
+      lastEndpoints
     )}`;
     if (!isNewUser) {
       htmlBuild = `<div style="border-top: 2px solid #039DE0; padding: 20px; text-align: center; width: fit-content;">
