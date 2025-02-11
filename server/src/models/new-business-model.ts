@@ -9,7 +9,11 @@ const { Schema, model } = mongoose;
 export interface BusinessSummary {
   _id: Types.ObjectId;
   type: "restaurant" | "store";
-  location: { city: string; address: string };
+  location: {
+    city: string;
+    address: string;
+    coordinates: { lat: number; lon: number };
+  };
   name: string;
   link: string;
   image: string;
@@ -79,6 +83,12 @@ const businessSchema = new Schema(
       location: {
         city: { type: String, required: true },
         address: { type: String, required: true },
+        coordinates: {
+          type: {
+            lat: { type: Number },
+            lon: { type: Number },
+          },
+        },
       },
       name: { type: String, required: true, unique: true },
       link: { type: String, required: true },
