@@ -5,12 +5,16 @@ import {
   getMenu,
   getBusinessesByCity,
   getBusinessesByCategories,
+  getNearbyBusinesses,
 } from "../controllers/businessController";
 
 const router = express.Router();
 
 // Get all businesses (filtered by type: "store" or "restaurant")
 router.get("/", getAllBusinesses);
+
+// Get businesses within radius of coordinates
+router.get("/nearby", getNearbyBusinesses);
 
 // Get businesses in a specific city (filtered by type: "restaurants" or "stores")
 router.get("/cities/:cityName/:type", getBusinessesByCity);

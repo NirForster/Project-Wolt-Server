@@ -12,7 +12,10 @@ export interface BusinessSummary {
   location: {
     city: string;
     address: string;
-    coordinates: { lat: number; lon: number };
+    coordinates: {
+      type: string; // "Point"
+      coordinates: [number, number]; // [longitude, latitude] in GeoJSON format
+    };
   };
   name: string;
   link: string;
@@ -84,9 +87,12 @@ const businessSchema = new Schema(
         city: { type: String, required: true },
         address: { type: String, required: true },
         coordinates: {
-          type: {
-            lat: { type: Number },
-            lon: { type: Number },
+          type: { type: String, enum: ["Point"], default: "Point" },
+          coordinates: {
+            type: [Number],
+            required: true,
+            // Longitude first, then latitude in GeoJSON
+            // This is different from the typical lat, lng order
           },
         },
       },
@@ -131,6 +137,9 @@ const businessSchema = new Schema(
     toObject: { virtuals: true },
   }
 );
+
+// Create a 2dsphere index for geospatial queries
+businessSchema.index({ "summary.location.coordinates": "2dsphere" });
 
 // Virtuals for Reviews and Orders
 businessSchema.virtual("reviews", {
