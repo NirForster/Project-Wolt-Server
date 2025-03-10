@@ -194,3 +194,88 @@ export const getBusinessesByCategories = async (
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+/**
+ * Fetch businesses within a specific radius of coordinates
+ * @route GET /business/nearby
+ */
+export const getNearbyBusinesses = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { latitude, longitude, radius = 5, type, category } = req.query;
+
+    // Validate parameters
+    if (!latitude || !longitude) {
+      res.status(400).json({ error: "Latitude and longitude are required" });
+      return;
+    }
+
+    // Validate type parameter
+    if (type && type !== "restaurant" && type !== "store") {
+      res.status(400).json({ error: "Type must be 'restaurant' or 'store'" });
+      return;
+    }
+
+    // Convert parameters
+    const lat = parseFloat(latitude as string);
+    const lng = parseFloat(longitude as string);
+    const radiusInKm = parseFloat(radius as string);
+
+    // Validate numeric values
+    if (isNaN(lat) || isNaN(lng) || isNaN(radiusInKm)) {
+      res.status(400).json({ error: "Invalid numeric parameters" });
+      return;
+    }
+
+    // Build query
+    const query: any = {
+      "summary.location.coordinates": {
+        $near: {
+          $geometry: {
+            type: "Point",
+            coordinates: [lng, lat], // longitude first for GeoJSON
+          },
+          $maxDistance: radiusInKm * 1000, // convert km to meters
+        },
+      },
+    };
+
+    // Add type filter if specified
+    if (type) {
+      query["summary.type"] = type;
+    }
+
+    // Add category filter if specified
+    if (category) {
+      query["categories"] = category;
+    }
+
+    // Execute query
+    const businesses = await newBusiness.find(query).lean();
+
+    // Map response to match API format
+    const mappedBusinesses = businesses.map((business) => ({
+      ...business.summary,
+      id: business._id.toString(),
+    }));
+
+    res.status(200).json({
+      success: true,
+      data: mappedBusinesses,
+      meta: {
+        total: mappedBusinesses.length,
+        radius: radiusInKm,
+        coordinates: [lng, lat],
+        filters: {
+          type: type || "all",
+          category: category || "all",
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching nearby businesses:", error);
+    res.status(500).json({ error: "Failed to fetch nearby businesses" });
+  }
+};
