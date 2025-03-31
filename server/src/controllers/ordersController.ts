@@ -387,6 +387,59 @@ const sendOrders = async (req: RequestWithUserID, res: Response) => {
   }
 }; // Send: 200, 400, 401, 404, 500 ({ message: string, status: "Success" | "Error" })
 
+const sendSingleOrderByID = async (req: RequestWithUserID, res: Response) => {
+  const userID = req.userID;
+  if (userID) {
+    try {
+      const user = (await User.findById(userID)) as IUser;
+      if (!user) {
+        return res
+          .status(404)
+          .send({ status: "Error", message: "There is no user with that id" });
+      }
+      const { orderID } = req.body;
+      //  Checking if the order is in the user's cart
+      if (!user.cart.some((order) => order.toString() === orderID)) {
+        return res.status(400).send({
+          status: "Error",
+          message: "Order not found in user's cart",
+        });
+      }
+      //  Deleting the order from the user's cart
+      const newOrders = user.cart.filter((order) => {
+        const currentOrder = order as IOrder;
+        return currentOrder._id.toString() !== orderID;
+      }) as Types.ObjectId[];
+      user.cart = newOrders;
+
+      // Setting the order to sent
+      const currentOrder = await Order.findById(orderID);
+      if (!currentOrder) {
+        return res.status(404).send({
+          status: "Error",
+          message: "Order not found",
+        });
+      }
+      currentOrder.hasSent = true;
+      await currentOrder.save();
+      await user.save();
+      res.send({
+        status: "Success",
+        message: `Order was sent!`,
+      });
+    } catch (err: any) {
+      return res.status(500).send({
+        message: err.message || "An unknown error occurred",
+        status: "Error",
+      });
+    }
+  } else {
+    return res
+      .status(401)
+      .send({ message: "User not authenticated", status: "Error" });
+  }
+};
+
 //* Get the order data
 //! GET http://localhost:3000/api/v1/orders/:id
 const GetOrderData = async (req: RequestWithUserID, res: Response) => {
@@ -433,4 +486,5 @@ module.exports = {
   sendOrders,
   editOrder,
   GetOrderData,
+  sendSingleOrderByID,
 };
