@@ -30,7 +30,7 @@ router.put("/", editOrder); // Send: 200, 400, 401, 404, 500 ({ message: string,
 //! GET http://localhost:3000/api/v1/orders/send
 router.get("/send", sendOrders); // Send: 200, 400, 401, 404, 500 ({ message: string, status: "Success" | "Error" })
 
-router.post("/send", sendSingleOrderByID);
+router.put("/send", sendSingleOrderByID);
 
 //* Get the order data
 //! GET http://localhost:3000/api/v1/orders/:id

@@ -39,6 +39,7 @@ export interface BusinessAdditionalInfo {
 }
 
 export interface IBusiness extends Document {
+  _id: Types.ObjectId;
   summary: BusinessSummary; // Summary information
   additionalInfo: BusinessAdditionalInfo; // Additional details
   categories: string[]; // Categories for the business

@@ -222,6 +222,8 @@ const editOrder = async (req: RequestWithOrderData, res: Response) => {
           )) || [];
         // new order ⬆️
         user.save();
+        console.log("user.cart:");
+        console.log(user.cart);
         return res.status(201).send({
           status: "Success",
           message: "New order was created with that item",
@@ -268,6 +270,9 @@ const editOrder = async (req: RequestWithOrderData, res: Response) => {
               )
             );
             currentOrder.save();
+            console.log("user.cart:");
+            console.log(user.cart);
+
             return res.status(201).send({
               status: "Success",
               message: "New item was added to an existing order",
@@ -295,6 +300,8 @@ const editOrder = async (req: RequestWithOrderData, res: Response) => {
               if (newItems.length === 0) {
                 // Deleting the order ⬇️
                 deleteOrderHandler(user, currentOrder);
+                console.log("user.cart:");
+                console.log(user.cart);
                 return res.send({
                   status: "Success",
                   message:
@@ -308,6 +315,8 @@ const editOrder = async (req: RequestWithOrderData, res: Response) => {
                   sectionTitle,
                   "item.name": itemName,
                 });
+                console.log("user.cart:");
+                console.log(user.cart);
                 return res.send({
                   status: "Success",
                   message: "Item was removed from the order",
@@ -318,6 +327,8 @@ const editOrder = async (req: RequestWithOrderData, res: Response) => {
               // update the item's quantity ⬇️
               (currentOrder.items[itemIndex] as IOrderItem).quantity = quantity;
               (currentOrder.items[itemIndex] as IOrderItem).save();
+              console.log("user.cart:");
+              console.log(user.cart);
               return res.send({
                 status: "Success",
                 message: "Item quantity was updated",

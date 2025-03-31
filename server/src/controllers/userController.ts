@@ -11,6 +11,9 @@ import OrderItem, { IOrderItem } from "../models/Order-item-model";
 
 // Handler functions
 import { emailValidate, phoneValidate } from "../utils/dataValidate";
+import { IOrder } from "src/models/Order-model";
+import { log } from "console";
+import { IBusiness } from "src/models/new-business-model";
 
 //* Delete a registered user
 //! DELETE http://localhost:3000/api/v1/user/:id
@@ -149,8 +152,6 @@ const getCart = async (req: RequestWithUserID, res: Response) => {
   const userID = req.userID;
   if (userID) {
     try {
-      console.log("my name");
-
       const user = (await User.findById(userID).populate({
         path: "cart",
         populate: [
@@ -162,12 +163,22 @@ const getCart = async (req: RequestWithUserID, res: Response) => {
           { path: "items", model: "OrderItem" }, // Populate items array
         ],
       })) as IUser;
-      console.log("is jeff");
       if (!user) {
         return res
           .status(404)
           .send({ status: "Error", message: "There is no user with that ID" });
       }
+      console.log("user.cart: ");
+      // user.cart.forEach((order, idx) => {
+      //   const currentOrder = order as IOrder;
+      //   (user.cart[idx] as IOrder).shop = (currentOrder.shop as IBusiness)._id;
+      // });
+      console.log(user.cart);
+      // user.cart = [];
+      // user.save();
+      // res.send({ status: "Success", cart: [] });
+      // console.log("user cart cleaned");
+
       res.send({ status: "Success", cart: user.cart });
     } catch (err: any) {
       return res.status(500).send({
