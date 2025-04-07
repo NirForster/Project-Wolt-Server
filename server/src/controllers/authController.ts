@@ -141,12 +141,23 @@ const getCurrentUser = async (req: RequestWithUserID, res: Response) => {
   }
 
   try {
-    const user = await User.findById(userID).select("-password"); // Avoid sending password in response
+    const user = await User.findById(userID).populate({
+      path: "cart",
+      populate: [
+        {
+          path: "shop",
+          model: "newBusiness",
+          select: "-deliveryFeeStructure -deliveryTimes -openingTimes",
+        }, // Populate shop details
+        { path: "items", model: "OrderItem" }, // Populate items array
+      ],
+    }); // Avoid sending password in response
     if (!user) {
       return res
         .status(404)
         .send({ message: "User not found", status: "Error" });
     }
+
     res.send({ status: "Success", user });
   } catch (error: any) {
     res.status(500).send({
